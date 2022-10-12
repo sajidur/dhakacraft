@@ -1,32 +1,28 @@
-.navbar-brand img {
-    width: 100px;
+// .logo-img {
+//   // width: 100px;
+// }
+
+header a {
+ cursor: pointer;
 }
 
-.carousel-item img {
-  height: 500px;
-}
-
-.carousel-text-description {
-    position: absolute;
-    right: 15%;
-    left: 15%;
-    color: #fff;
-    text-align: center;
-    top: 0;
-}
+// .nav-link:hover {
+//   color: #000000;
+// }
 
 .footer-bg {
   background: #4f868e;
 }
 
 .fa {
-  padding: 18px;
+  padding: 15px;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 54px;
+  height: 54px;
   text-align: center;
   text-decoration: none;
   margin: 5px 2px;
+  font-size: 25px;
 }
 
 .fa:hover {
@@ -35,33 +31,71 @@
 
 .fa-facebook {
   background: white;
-  color: #3B5998;
+  color: #4267B2;
 }
 
 .fa-twitter {
   background: #ffffff;
-  color:#4f868e;
+  color:#00acee;
 }
 
-.fa-google {
-  background: #ffffff;
-  color:#4f868e;
-}
+// .fa-google {
+//   background: #ffffff;
+//   color:#4f868e;
+// }
 
-.fa-linkedin {
-  background: #ffffff;
-  color:#4f868e;
-}
+// .fa-linkedin {
+//   background: #ffffff;
+//   color:#4f868e;
+// }
 
 .fa-youtube {
   background: #ffffff;
-  color:#4f868e;
+  color:#FF0000;
 }
 
 .fa-instagram {
   background: #ffffff;
-  color:#4f868e;
+  color:#8a3ab9;
 }
+
+.footer-story a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.footer-story a:hover {
+  text-decoration: underline;
+  color: #000000;
+}
+.leave-message-popup {
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  // margin-left: 20px;
+  // max-width: 450px;
+  // border:2px solid red;
+  box-shadow: rgb(0 0 0 / 30%) 0px 4px 12px;
+  border-radius: 4px 4px 0px 0px;
+  background: rgb(246, 246, 247);
+  width: 24%;
+  display: none;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#396066;;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+  cursor: pointer;
+}
+
+
 
 
 

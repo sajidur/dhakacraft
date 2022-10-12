@@ -1,9 +1,14 @@
 <!-- Header start here -->
-<header class="container py-2 mb-3">
+<header class="container py-2">
   <nav class="navbar navbar-expand-md">
     <div class="container-fluid">
       <a class="navbar-brand">
-        <img src="../../../assets/images/DhakaHandiCraft/Dhaka-Handicrafts-logo.jpg" alt="" />
+        <img
+          routerLink=""
+          class="logo-img"
+          src="../../../assets/images/1.jpg"
+          alt=""
+        />
       </a>
       <button
         class="navbar-toggler"
@@ -18,98 +23,122 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
           <li class="nav-item dropdown1">
             <a class="nav-link">Our Story</a>
             <div>
-              <div class="dropdown-content1 p-4">
+              <div class="dropdown-content1 p-4 bg-white">
                 <div class="row">
-                 <div class="col-sm-6">
-                   <a>About Us</a>
-                   <a>Fair Trade</a>
-                   <a>Annual Report</a>
-                   <a>Contact Us</a>
-                 </div>
-                 <div class="col-sm-6">
-                   <img class="img-fluid" height="200" src="../../../assets/images/DhakaHandiCraft/_Z7A2317.JPG" alt="">
-                 </div>
+                  <div class="col-sm-6">
+                    <a (click)="ourStoryItem('about-us')">About Us</a>
+                    <a (click)="ourStoryItem('fair-trade')">Fair Trade</a>
+                    <a   (click)="
+                    downloadAnnualReportPdf(
+                      '../../../',
+                      'DhakaHandiCraftAnnualReport'
+                    )"
+                  >Annual Report</a>
+                    <a (click)="goToContactUs('contact-us')">Contact Us</a>
+                  </div>
+                  <div class="col-sm-6">
+                    <img
+                      class="img-fluid h-100"
+                      src="../../../assets/images/DhakaHandiCraft/aboutus.jpg"
+                      alt=""
+                    />
+                  </div>
                 </div>
-           </div>
+              </div>
             </div>
           </li>
 
           <li class="nav-item dropdown2">
             <a class="nav-link">Home</a>
             <div>
-            <div class="dropdown-content2 p-4">
-              <div class="row">
-               <div class="col-sm-6">
-                <a>Baskets</a>
-                <a>Home Office</a>
-                <a>Flower Vases</a>
-                <a>Home Textiles</a>
-                <a>Wall Hanging</a>
-                <a>Lamp Shade</a>
-          
-               </div>
-               <div class="col-sm-6">
-                 <img class="img-fluid" height="200" src="../../../assets/images/DhakaHandiCraft/_Z7A2317.JPG" alt="">
-               </div>
+              <div class="dropdown-content2 p-4 bg-white">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <a (click)="homeMenuItem('baskets')">Baskets</a>
+                    <a (click)="homeMenuItem('home-office')">Home Office</a>
+                    <a (click)="homeMenuItem('flower-vases')">Flower Vases</a>
+                    <a (click)="homeMenuItem('home-textiles')">Home Textiles</a>
+                    <a (click)="homeMenuItem('wall-hanging')">Wall Hanging</a>
+                    <a (click)="homeMenuItem('lamp-shade')">Lamp Shade</a>
+                  </div>
+                  <div class="col-sm-6">
+                    <img
+                      class="img-fluid h-100"
+                      src="../../../assets/images/DhakaHandiCraft/basket1.JPG"
+                      alt=""
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
             </div>
           </li>
 
           <li class="nav-item dropdown3">
             <a class="nav-link">Garden</a>
             <div>
-            <div class="dropdown-content3 p-4">
-              <div class="row">
-               <div class="col-sm-6">
-                 <a>Planters</a>
-                 <a>Birdhouse</a>
-               </div>
-               <div class="col-sm-6">
-                 <img class="img-fluid" height="200" src="../../../assets/images/DhakaHandiCraft/_Z7A2317.JPG" alt="">
-               </div>
+              <div class="dropdown-content3 p-4 bg-white">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <a>Planters</a>
+                    <a>Birdhouse</a>
+                  </div>
+                  <div class="col-sm-6">
+                    <img
+                      class="img-fluid h-100"
+                      src="../../../assets/images/DhakaHandiCraft/garden1.JPG"
+                      alt=""
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
             </div>
           </li>
 
           <li class="nav-item dropdown4">
             <a class="nav-link">Personal Accessories</a>
             <div>
-            <div class="dropdown-content4 p-4">
-              <div class="row">
-               <div class="col-sm-6">
-                 <a>Bag's</a>
-                 <a>Jewelry</a>
-                 <a>Purses</a>
-               </div>
-               <div class="col-sm-6">
-                 <img class="img-fluid" height="200" src="../../../assets/images/DhakaHandiCraft/_Z7A2317.JPG" alt="">
-               </div>
+              <div class="dropdown-content4 p-4 bg-white">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <a (click)="personalItem('bags')">Bag's</a>
+                    <a (click)="personalItem('jewelry')">Jewelry</a>
+                    <a (click)="personalItem('purses')">Purses</a>
+                  </div>
+                  <div class="col-sm-6">
+                    <img
+                      class="img-fluid h-100"
+                      src="../../../assets/images/DhakaHandiCraft/bags/bag3.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
             </div>
           </li>
 
+          
           <li class="nav-item dropdown5">
             <a class="nav-link">Christmas</a>
             <div>
-            <div class="dropdown-content5 p-4">
-              <div class="row">
-               <div class="col-sm-6">
-                 <a>Card’s & Wrap</a>
-                 <a>Tree Hanging</a>
-                 <a>Home Decoration</a>
-               </div>
-               <div class="col-sm-6">
-                 <img class="img-fluid" height="200" src="../../../assets/images/DhakaHandiCraft/_Z7A2317.JPG" alt="">
-               </div>
+              <div class="dropdown-content5 p-4 bg-white">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <a>Card’s & Wrap</a>
+                    <a>Tree Hanging</a>
+                    <a>Home Decoration</a>
+                  </div>
+                  <div class="col-sm-6">
+                    <img
+                      class="img-fluid h-100" 
+                      src="../../../assets/images/DhakaHandiCraft/card1.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
             </div>
           </li>
 
@@ -139,298 +168,52 @@
 </header>
 <!-- Header end here -->
 
-<!-- Banner area start here -->
-<section class="mb-5 mt-3">
-  <div
-    id="carouselExampleControls"
-    class="carousel slide"
-    data-bs-ride="carousel"
-  >
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img
-          src="../../../assets/images/DhakaHandiCraft/Main Sliding-1.JPG"
-          class="d-block w-100"
-          alt="image1"
-        />
-        <div
-          class="d-flex justify-content-center align-items-center carousel-text-description h-100"
-        >
-          <div>
-            <h2>Get Started Digital Learning1</h2>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
-            </p>
-            <button class="btn btn-info text-white py-2">Get Started</button>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img
-        src="../../../assets/images/DhakaHandiCraft/Main Sliding-2.JPG"
-          class="d-block w-100"
-          alt="image2"
-        />
-        <div
-          class="d-flex justify-content-center align-items-center carousel-text-description h-100"
-        >
-          <div>
-            <h2>Learn In Different way2</h2>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
-            </p>
-            <button class="btn btn-info text-white py-2">Get Started</button>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img
-        src="../../../assets/images/DhakaHandiCraft/Main Sliding-3.JPG"
-          class="d-block w-100"
-          alt="image3"
-        />
-        <div
-          class="d-flex justify-content-center align-items-center carousel-text-description h-100"
-        >
-          <div>
-            <h2>Learn With Pro Instructor3</h2>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
-            </p>
-            <button class="btn btn-info text-white py-2">Get Started</button>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img
-        src="../../../assets/images/DhakaHandiCraft/Main Sliding-4.jpg"
-          class="d-block w-100"
-          alt="image4"
-        />
-        <div
-          class="d-flex justify-content-center align-items-center carousel-text-description h-100"
-        >
-          <div>
-            <h2>ddf4</h2>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
-            </p>
-            <button class="btn btn-info text-white py-2">Get Started</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleControls"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleControls"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</section>
-<!-- Banner area end here  -->
-
-<!-- Who we are start here -->
-<section class="container mb-5">
-  <div class="row">
-    <div class="col-12 col-sm-6">
-      <img class="img-fluid" src="../../../assets/images/DhakaHandiCraft/11.jpg" alt="">
-    </div>
-    <div class="col-12 col-sm-6">
-      <h1 class="text-center">Who we are</h1>
-    </div>
-  </div>
-</section>
-<!-- Who we are ended here -->
-
-<!-- Product range area start here -->
-<section class="container mb-5">
-   <h1 class="mb-5 mt-3 text-center">Brows Through Product Range</h1>
-  <div class="row" > 
-    <div class="col-sm-5">
-      <div class="col-sm-12">
-         <img height="250" class="w-100" src="../../../assets/images/DhakaHandiCraft/_K9A9017.jpg" alt="">
-      </div>
-      <div class="col-sm-12 mt-2" >
-         <img height="250" class="w-100" src="../../../assets/images/DhakaHandiCraft/_K9A9026.jpg" alt="">
-      </div>
-    </div>
-    <div class="col-sm-7">
-      <div class="col-sm-12">
-             <img height="508" class="w-100" src="../../../assets/images/DhakaHandiCraft/_K9A9048.jpg" alt="">
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Product range area ended here -->
-
-<!-- Latest news and events started here -->
-<section class="container mb-5">
-  <h1 class="mb-5 mt-3 text-center">Latest News & Events</h1>
-  <div
-    id="carouselControls"
-    class="carousel slide"
-    data-bs-ride="carousel"
-  >
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img
-          src="assets/images/cover/cover-1.png"
-          class="d-block w-100"
-          alt="image1"
-        />
-        <div
-          class="d-flex justify-content-center align-items-center carousel-text-description h-100"
-        >
-          <div>
-            <h2>Get Started Digital Learning</h2>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
-            </p>
-            <button class="btn btn-info text-white py-2">Get Started</button>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img
-          src="assets/images/cover/cover-2.jpg"
-          class="d-block w-100"
-          alt="image2"
-        />
-        <div
-          class="d-flex justify-content-center align-items-center carousel-text-description h-100"
-        >
-          <div>
-            <h2>Learn In Different way</h2>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
-            </p>
-            <button class="btn btn-info text-white py-2">Get Started</button>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img
-          src="assets/images/cover/cover-3.jpg"
-          class="d-block w-100"
-          alt="image3"
-        />
-        <div
-          class="d-flex justify-content-center align-items-center carousel-text-description h-100"
-        >
-          <div>
-            <h2>Learn With Pro Instructor</h2>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
-            </p>
-            <button class="btn btn-info text-white py-2">Get Started</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselControls"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselControls"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</section>
-<!-- Latest news and events ended here -->
-
-<!-- Social impact started here -->
-<section class="container mb-5">
-  <div class="row">
-    <h1 class="mb-5 mt-3 text-center">Social Impact</h1>
-    <div class="col-sm-3">
-      <p>Dhaka Handicrafts Ltd. (DH Ltd.), a WFTO GS certified Fair Trade company leads the basket world leveraged by the perfect match between eco freiendly raw material sourcing & artisans sustainable livelihood. Sustainable business operation policy & fair trade practice created DH Ltd. success stories for almost last two decades. DH Ltd. pride is to bring Bangladeshi artisans skill into global market.</p>
-    </div>
-    <div class="col-sm-3">
-      <p>Dhaka Handicrafts Ltd. (DH Ltd.), a WFTO GS certified Fair Trade company leads the basket world leveraged by the perfect match between eco freiendly raw material sourcing & artisans sustainable livelihood. Sustainable business operation policy & fair trade practice created DH Ltd. success stories for almost last two decades. DH Ltd. pride is to bring Bangladeshi artisans skill into global market.</p>
-    </div>
-    <div class="col-sm-3">
-      <p>Dhaka Handicrafts Ltd. (DH Ltd.), a WFTO GS certified Fair Trade company leads the basket world leveraged by the perfect match between eco freiendly raw material sourcing & artisans sustainable livelihood. Sustainable business operation policy & fair trade practice created DH Ltd. success stories for almost last two decades. DH Ltd. pride is to bring Bangladeshi artisans skill into global market.</p>
-    </div>
-    <div class="col-sm-3">
-      <p>Dhaka Handicrafts Ltd. (DH Ltd.), a WFTO GS certified Fair Trade company leads the basket world leveraged by the perfect match between eco freiendly raw material sourcing & artisans sustainable livelihood. Sustainable business operation policy & fair trade practice created DH Ltd. success stories for almost last two decades. DH Ltd. pride is to bring Bangladeshi artisans skill into global market.</p>
-    </div>
-  </div>
-</section>
-<!-- Social impact ended here -->
-
-<!-- Membership started here -->
-<section class="container mb-5">
-  <div class="row">
-    <h1 class="mb-5 mt-3 text-center">Membership</h1>
-    <div class="col-sm-4">
-      <img height="200" class="" src="../../../assets/images/DhakaHandiCraft/Dhaka-Handicrafts-logo.png" alt="">
-    </div>
-    <div class="col-sm-4">
-     <img height="200" class="" src="../../../assets/images/DhakaHandiCraft/Dhaka-Handicrafts-logo.png" alt="">
-    </div>
-    <div class="col-sm-4">
-      <img height="200" class="" src="../../../assets/images/DhakaHandiCraft/Dhaka-Handicrafts-logo.png" alt="">
-    </div>
-
-  </div>
-</section>
-<!-- Membership ended here -->
+<main>
+  <router-outlet></router-outlet>
+</main>
 
 <!-- Footer started here -->
-<footer class="footer-bg text-white">
+<footer class="footer-bg text-white" id="contact-us">
   <div class="container py-5">
     <div class="row">
-      <div class="col-12 col-sm-4">
-        <h3>Our story</h3>
-        <a class="d-block">About</a>
-        <a class="d-block">About</a>
-        <a class="d-block">About</a>
+      <div class="col-12 col-sm-3 p-0 footer-story">
+        <h5>Our story</h5>
+        <a class="d-block">About Us</a>
+        <a class="d-block">Fair Trade</a>
+        <a class="d-block">Annual Report</a>
+        <a class="d-block">Contact Us</a>
       </div>
-      <div class="col-12 col-sm-4">
-        <h3>Contact with us</h3>
-        <a class="d-block">Contact us</a>
-        <a class="d-block">Contact us</a>
-        <a class="d-block">Contact us</a>
+      <div class="col-12 col-sm-6 p-0">
+        <h5>Contact with us</h5>
+        <div class="row">
+          <div class="col-sm-6">
+            <b>Head Office: </b>
+            <div>House#562, Road#08</div>
+            <div>Section-12, Mirpur-DOHS</div>
+            <div>Dhaka-1216, Bangladesh</div>
+            <div>Email: info@dhakahandicrafts.com</div>
+          </div>
+          <div class="col-sm-6">
+            <b>Registered address:</b> <br />
+            <div>Holding No. 430, Nanduain</div>
+            <div>Bhawal Mirzapur, Gazipur-1703</div>
+          </div>
+        </div>
       </div>
-      <div class="col-12 col-sm-4">
+      <div class="col-12 col-sm-3 p-0">
         <div>
-          <a href="" class="fa fa-facebook"></a>
-          <a href="" class="fa fa-twitter"></a>
-          <a href="" class="fa fa-google"></a>
-          <a href="" class="fa fa-linkedin"></a>
-          <a href="" class="fa fa-youtube"></a>
-          <a href="" class="fa fa-instagram"></a>
+          <a
+            target="_blank"
+            href="https://www.facebook.com/dhakahandicraftsltd/"
+            class="fa fa-facebook"
+          ></a>
+          <a
+            target="_blank"
+            href="https://www.instagram.com/dhakahandicrafts.hdht/"
+            class="fa fa-instagram"
+          ></a>
+          <a class="fa fa-twitter"></a>
+          <a class="fa fa-youtube"></a>
         </div>
         <div></div>
       </div>
@@ -439,3 +222,84 @@
 </footer>
 <!-- Footer ended here -->
 
+<div class="float" id="float-message-btn" (click)="openLeaveMessagePopup()">
+  <i
+    style="font-size: 30px; margin-top: 13px"
+    class="fa-brands fa-facebook-messenger"
+  ></i>
+</div>
+
+<div class="leave-message-popup" id="leave-message">
+  <div style="text-align: end">
+    <i
+      (click)="closeLeaveMessage()"
+      class="fa fa-close"
+      style="font-size: 24px; cursor: pointer"
+    ></i>
+  </div>
+
+  <form
+    class="w-100 px-4 py-2"
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="form-group">
+      <label>Name:*</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+      />
+      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+        <div *ngIf="f['name'].errors['required']">First Name is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email:*</label>
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+      />
+      <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+        <div *ngIf="f['email'].errors['required']">Email is required</div>
+        <div *ngIf="f['email'].errors['email']">
+          Email must be a valid email address
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Subject:*</label>
+      <input
+        type="text"
+        formControlName="subject"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['subject'].errors }"
+      />
+      <div *ngIf="submitted && f['subject'].errors" class="invalid-feedback">
+        <div *ngIf="f['subject'].errors['required']">Subject is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Message:*</label>
+      <textarea
+        formControlName="message"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['message'].errors }"
+      ></textarea>
+      <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
+        <div *ngIf="f['message'].errors['required']">
+          First Name is required
+        </div>
+      </div>
+    </div>
+    <div class="form-group mt-2">
+      <button type="submit" class="btn btn-primary w-100">
+        Leave a message
+      </button>
+    </div>
+  </form>
+</div>
