@@ -1,6 +1,14 @@
-// .logo-img {
-//   // width: 100px;
-// }
+
+.promo-header {
+  background: rgb(107 156 159);
+  padding: 6px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.main-header {
+  border-bottom: 1px solid #cdcdcd;
+}
 
 header a {
  cursor: pointer;
@@ -105,8 +113,8 @@ header a {
 .dropdown-content1 {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  width:40%;
+  min-height: 360px;
+  min-width:415px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -120,14 +128,14 @@ header a {
 
 .dropdown-content1 a:hover {background-color: #ddd;}
 
-.dropdown1:hover .dropdown-content1 {display: block;}
+// .dropdown1:hover .dropdown-content1 {display: block;}
 
 //menu2
 .dropdown-content2 {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  width:40%;
+  min-height: 360px;
+  min-width:415px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -141,17 +149,18 @@ header a {
 
 .dropdown-content2 a:hover {background-color: #ddd;}
 
-.dropdown2:hover .dropdown-content2 {display: block;}
+// .dropdown2:hover .dropdown-content2 {display: block;}
 
 
 //menu3
 .dropdown-content3 {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  width:40%;
+  min-height: 360px;
+  min-width:415px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  height: 400px;
 }
 
 .dropdown-content3 a {
@@ -163,14 +172,14 @@ header a {
 
 .dropdown-content3 a:hover {background-color: #ddd;}
 
-.dropdown3:hover .dropdown-content3 {display: block;}
+// .dropdown3:hover .dropdown-content3 {display: block;}
 
 //menu4
 .dropdown-content4 {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  width:40%;
+  min-height: 360px;
+  min-width:415px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -184,14 +193,14 @@ header a {
 
 .dropdown-content4 a:hover {background-color: #ddd;}
 
-.dropdown4:hover .dropdown-content4 {display: block;}
+// .dropdown4:hover .dropdown-content4 {display: block;}
 
 //menu5
 .dropdown-content5 {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  width:40%;
+  min-height: 360px;
+  min-width:415px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -205,4 +214,4 @@ header a {
 
 .dropdown-content5 a:hover {background-color: #ddd;}
 
-.dropdown5:hover .dropdown-content5 {display: block;}
+// .dropdown5:hover .dropdown-content5 {display: block;}

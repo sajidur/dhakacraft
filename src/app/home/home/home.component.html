@@ -1,6 +1,9 @@
 <!-- Header start here -->
-<header class="container py-2">
-  <nav class="navbar navbar-expand-md">
+<div class="promo-header">
+  Sign up for our emails and get a Promo Code for 15% off your first order!
+</div>
+<header class="container">
+  <nav class="navbar navbar-expand-md p-0">
     <div class="container-fluid">
       <a class="navbar-brand">
         <img
@@ -23,26 +26,24 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown1">
+          <li class="nav-item dropdown1" (mouseover)="mouseOver('dropdown-content1')"
+          (mouseout)="mouseOut('dropdown-content1')"
+          >
             <a class="nav-link">Our Story</a>
             <div>
               <div class="dropdown-content1 p-4 bg-white">
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-5">
                     <a (click)="ourStoryItem('about-us')">About Us</a>
                     <a (click)="ourStoryItem('fair-trade')">Fair Trade</a>
-                    <a   (click)="
-                    downloadAnnualReportPdf(
-                      '../../../',
-                      'DhakaHandiCraftAnnualReport'
-                    )"
-                  >Annual Report</a>
+                    <a (click)="downloadAnnualReportPdf()">Annual Report</a>
                     <a (click)="goToContactUs('contact-us')">Contact Us</a>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-7">
                     <img
-                      class="img-fluid h-100"
-                      src="../../../assets/images/DhakaHandiCraft/aboutus.jpg"
+                    width="220"
+                    height="300"
+                      src="../../../assets/images/DhakaHandiCraft/trade.jpg"
                       alt=""
                     />
                   </div>
@@ -51,12 +52,13 @@
             </div>
           </li>
 
-          <li class="nav-item dropdown2">
+          <li class="nav-item dropdown2" (mouseover)="mouseOver('dropdown-content2')"
+          (mouseout)="mouseOut('dropdown-content2')">
             <a class="nav-link">Home</a>
             <div>
               <div class="dropdown-content2 p-4 bg-white">
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-5">
                     <a (click)="homeMenuItem('baskets')">Baskets</a>
                     <a (click)="homeMenuItem('home-office')">Home Office</a>
                     <a (click)="homeMenuItem('flower-vases')">Flower Vases</a>
@@ -64,10 +66,11 @@
                     <a (click)="homeMenuItem('wall-hanging')">Wall Hanging</a>
                     <a (click)="homeMenuItem('lamp-shade')">Lamp Shade</a>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-7">
                     <img
-                      class="img-fluid h-100"
-                      src="../../../assets/images/DhakaHandiCraft/basket1.JPG"
+                    width="220"
+                    height="300"
+                      src="../../../assets/images/DhakaHandiCraft/home.jpg"
                       alt=""
                     />
                   </div>
@@ -76,19 +79,21 @@
             </div>
           </li>
 
-          <li class="nav-item dropdown3">
+          <li class="nav-item dropdown3" (mouseover)="mouseOver('dropdown-content3')"
+          (mouseout)="mouseOut('dropdown-content3')">
             <a class="nav-link">Garden</a>
             <div>
               <div class="dropdown-content3 p-4 bg-white">
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-5">
                     <a>Planters</a>
                     <a>Birdhouse</a>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-7">
                     <img
-                      class="img-fluid h-100"
-                      src="../../../assets/images/DhakaHandiCraft/garden1.JPG"
+                    width="200"
+                    height="300"
+                      src="../../../assets/images/DhakaHandiCraft/garden.jpg"
                       alt=""
                     />
                   </div>
@@ -97,20 +102,22 @@
             </div>
           </li>
 
-          <li class="nav-item dropdown4">
+          <li class="nav-item dropdown4" (mouseover)="mouseOver('dropdown-content4')"
+          (mouseout)="mouseOut('dropdown-content4')">
             <a class="nav-link">Personal Accessories</a>
             <div>
               <div class="dropdown-content4 p-4 bg-white">
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-5">
                     <a (click)="personalItem('bags')">Bag's</a>
                     <a (click)="personalItem('jewelry')">Jewelry</a>
                     <a (click)="personalItem('purses')">Purses</a>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-7">
                     <img
-                      class="img-fluid h-100"
-                      src="../../../assets/images/DhakaHandiCraft/bags/bag3.jpg"
+                    width="220"
+                    height="300"
+                      src="../../../assets/images/DhakaHandiCraft/lamp2.JPG"
                       alt=""
                     />
                   </div>
@@ -120,19 +127,21 @@
           </li>
 
           
-          <li class="nav-item dropdown5">
+          <li class="nav-item dropdown5" (mouseover)="mouseOver('dropdown-content5')"
+          (mouseout)="mouseOut('dropdown-content5')">
             <a class="nav-link">Christmas</a>
             <div>
               <div class="dropdown-content5 p-4 bg-white">
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-5">
                     <a>Card’s & Wrap</a>
                     <a>Tree Hanging</a>
                     <a>Home Decoration</a>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-7">
                     <img
-                      class="img-fluid h-100" 
+                    width="220"
+                    height="300"
                       src="../../../assets/images/DhakaHandiCraft/card1.jpg"
                       alt=""
                     />
@@ -141,16 +150,6 @@
               </div>
             </div>
           </li>
-
-          <!-- <li class="nav-item">
-            <a class="nav-link">Partners</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">FAQ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">About</a>
-          </li> -->
         </ul>
         <form class="d-flex" role="search">
           <input

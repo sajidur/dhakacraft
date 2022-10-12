@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { MenuControllerService } from 'src/app/services/menu-controller/menu-controller.service';
+const FileSaver = require('file-saver');
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -45,24 +47,31 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
       this.submitted = true;
-
       // stop here if form is invalid
       if (this.registerForm.invalid) {
           return;
       }
-
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+      // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 
   ourStoryItem = (menu: any) => {
+     $(".dropdown-content1").css("display", "none");
     this.menuControllerSrv.ourStoryMenuItem = menu
     this.router.navigate(['our-story']);
   }
+  mouseOver = (dropdownContent: any) => {
+    console.log('over')
+    $("."+dropdownContent).css("display", "block");
+  }
+  mouseOut = (dropdownContent: any) => {
+    console.log('out')
+    $("."+dropdownContent).css("display", "none");
+  }
 
-  downloadAnnualReportPdf(pdfUrl: string, pdfName: string) {
-		// const pdfUrl = '../../../../assets/sample.pdf';
-		// const pdfName = 'your_pdf_file';
-		// FileSaver.saveAs(pdfUrl, pdfName);
+  downloadAnnualReportPdf = () => {
+		const pdfUrl = "../../../assets/pdf/AnnualReport.pdf";
+		const pdfName = 'DhakaHandiCraftAnnualReport';
+		FileSaver.saveAs(pdfUrl, pdfName);
 	}
 
   goToContactUs = (id:any) => {
