@@ -10,8 +10,9 @@ export class MenuControllerService {
 
   ourStoryMenuItem: any;
   homeMenuItem: any;
-  personalMenuItem: any
-
+  personalMenuItem: any;
+  gardenMenuItem: any;
+  christmasMenuItem: any
 
   constructor(private http: HttpClient) { }
 }
