@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
+  currentYear: number;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,6 +29,8 @@ export class HomeComponent implements OnInit {
       subject: ['', Validators.required],
       message: ['', Validators.required],
   });
+  this.stickyChatButton()
+  this.currentYear = new Date().getFullYear();
   }
 
   closeLeaveMessage() {
@@ -54,11 +57,6 @@ export class HomeComponent implements OnInit {
       // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 
-  ourStoryItem = (menu: any) => {
-     $(".dropdown-content1").css("display", "none");
-    this.menuControllerSrv.ourStoryMenuItem = menu
-    this.router.navigate(['our-story']);
-  }
   mouseOver = (dropdownContent: any) => {
     console.log('over')
     $("."+dropdownContent).css("display", "block");
@@ -66,6 +64,36 @@ export class HomeComponent implements OnInit {
   mouseOut = (dropdownContent: any) => {
     console.log('out')
     $("."+dropdownContent).css("display", "none");
+  }
+
+  ourStoryItem = (item: any) => {
+     $(".dropdown-content1").css("display", "none");
+     this.menuControllerSrv.ourStoryMenuItem = item
+     this.router.navigate(['our-story']);
+  }
+
+  homeMenuItem = (item: any) => {
+    $(".dropdown-content2").css("display", "none");
+    this.menuControllerSrv.homeMenuItem = item
+    this.router.navigate(['home']);
+  }
+
+  gardenMenu = (item: any) => {
+    $(".dropdown-content3").css("display", "none");
+    this.menuControllerSrv.gardenMenuItem = item
+    this.router.navigate(['garden']);
+  }
+
+  personalItem = (item: any) => {
+    $(".dropdown-content4").css("display", "none");
+    this.menuControllerSrv.personalMenuItem = item
+    this.router.navigate(['personal-accessories']);
+  }
+
+  christmasItem = (item: any) => {
+    $(".dropdown-content5").css("display", "none");
+    this.menuControllerSrv.christmasMenuItem = item
+    this.router.navigate(['christmas']);
   }
 
   downloadAnnualReportPdf = () => {
@@ -84,14 +112,19 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  homeMenuItem = (homeMenu: any) => {
-    this.menuControllerSrv.homeMenuItem = homeMenu
-    this.router.navigate(['home']);
-  }
-
-  personalItem = (item: any) => {
-    this.menuControllerSrv.personalMenuItem = item
-    this.router.navigate(['personal-accessories']);
-  }
+  stickyChatButton = () => {
+		$(window).on('scroll', function () {
+			const scroll: any = $(window).scrollTop();
+			if (scroll < 150) {
+        $("#float-message-btn").css("display", "none")
+				// $('#sticky-header').removeClass('sticky');
+				// $('#back-top').fadeIn(500);
+			} else {
+        $("#float-message-btn").css("display", "block")
+				// $('#sticky-header').addClass('sticky');
+				// $('#back-top').fadeIn(500);
+			}
+		});
+	}
 
 }

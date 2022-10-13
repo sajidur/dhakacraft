@@ -8,6 +8,9 @@ import { MainContantComponent } from './main-contant/main-contant.component';
 import { OurStoryComponent } from './our-story/our-story.component';
 import { PersonalAccessoriesComponent } from './personal-accessories/personal-accessories.component';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
+import { GardenMenuComponent } from './garden-menu/garden-menu.component';
+import { ChristmasMenuComponent } from './christmas-menu/christmas-menu.component';
+import { NewsEventComponent } from './news-event/news-event.component';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { HomeMenuComponent } from './home-menu/home-menu.component';
     MainContantComponent,
     OurStoryComponent,
     PersonalAccessoriesComponent,
-    HomeMenuComponent
+    HomeMenuComponent,
+    GardenMenuComponent,
+    ChristmasMenuComponent,
+    NewsEventComponent
   ],
   imports: [
     CommonModule,

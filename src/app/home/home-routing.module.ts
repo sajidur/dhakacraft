@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChristmasMenuComponent } from './christmas-menu/christmas-menu.component';
+import { GardenMenuComponent } from './garden-menu/garden-menu.component';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { HomeComponent } from './home/home.component';
 import { MainContantComponent } from './main-contant/main-contant.component';
+import { NewsEventComponent } from './news-event/news-event.component';
 import { OurStoryComponent } from './our-story/our-story.component';
 import { PersonalAccessoriesComponent } from './personal-accessories/personal-accessories.component';
 
@@ -10,11 +13,6 @@ const routes: Routes = [
 { 
     path: '', component: HomeComponent,
     children: [
-      // {
-      //   path:'',
-      //   redirectTo: 'home',
-      //   pathMatch:'full'
-      // },
       {
         path:'',
         component: MainContantComponent
@@ -30,6 +28,18 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeMenuComponent
+      },
+      {
+        path: 'garden',
+        component: GardenMenuComponent
+      },
+      {
+        path: 'christmas',
+        component: ChristmasMenuComponent
+      },
+      {
+        path: 'news-event',
+        component: NewsEventComponent
       }
      
     ]
