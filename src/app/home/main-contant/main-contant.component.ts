@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-contant',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainContantComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { 
+
+  }
 
   ngOnInit(): void {
+  }
+
+  gToNewsAndEventDetails = () => {
+    this.router.navigateByUrl('news-event')
   }
 
 }
