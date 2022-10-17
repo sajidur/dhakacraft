@@ -15,6 +15,13 @@
   top: 0;
 }
 
+.carousel-text {
+  background:   linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    )
+}
+
 .membership-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
