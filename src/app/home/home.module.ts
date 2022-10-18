@@ -11,6 +11,7 @@ import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { GardenMenuComponent } from './garden-menu/garden-menu.component';
 import { ChristmasMenuComponent } from './christmas-menu/christmas-menu.component';
 import { NewsEventComponent } from './news-event/news-event.component';
+import { ImagesDetailsComponent } from './images-details/images-details.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NewsEventComponent } from './news-event/news-event.component';
     HomeMenuComponent,
     GardenMenuComponent,
     ChristmasMenuComponent,
-    NewsEventComponent
+    NewsEventComponent,
+    ImagesDetailsComponent
   ],
   imports: [
     CommonModule,

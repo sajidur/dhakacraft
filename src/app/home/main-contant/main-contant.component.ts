@@ -17,7 +17,7 @@ export class MainContantComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  gToNewsAndEventDetails = () => {
+  goToNewsAndEventDetails = () => {
     this.router.navigateByUrl('news-event')
   }
 

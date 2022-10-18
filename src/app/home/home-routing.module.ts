@@ -4,6 +4,7 @@ import { ChristmasMenuComponent } from './christmas-menu/christmas-menu.componen
 import { GardenMenuComponent } from './garden-menu/garden-menu.component';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
 import { HomeComponent } from './home/home.component';
+import { ImagesDetailsComponent } from './images-details/images-details.component';
 import { MainContantComponent } from './main-contant/main-contant.component';
 import { NewsEventComponent } from './news-event/news-event.component';
 import { OurStoryComponent } from './our-story/our-story.component';
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'news-event',
         component: NewsEventComponent
+      },
+      {
+        path: 'details',
+        component: ImagesDetailsComponent
       }
      
     ]
