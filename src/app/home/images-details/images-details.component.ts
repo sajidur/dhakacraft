@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactFromComponent } from 'src/app/contact-from/contact-from.component';
 
 @Component({
   selector: 'app-images-details',
@@ -7,7 +9,12 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 })
 export class ImagesDetailsComponent implements OnInit {
 
-  constructor(private el: ElementRef) { }
+  constructor(
+    public dialog: MatDialog
+    ) 
+    { 
+
+    }
 
   ngOnInit(): void {
   }
@@ -24,6 +31,22 @@ export class ImagesDetailsComponent implements OnInit {
     }
 
      e.target.parentElement.classList.add('active')
+  }
+
+  handleContactForm = () => {
+    const dialogRef = this.dialog.open(ContactFromComponent, {
+      disableClose: true,
+      width: '50%',
+      height: '85%',
+      maxWidth: '90vw',
+      data: '',
+    });
+
+    // After closed is fired when dialog component send data 
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.data == 'send-message') {
+      } 
+    });
   }
 
 }

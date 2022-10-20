@@ -12,6 +12,7 @@ import { GardenMenuComponent } from './garden-menu/garden-menu.component';
 import { ChristmasMenuComponent } from './christmas-menu/christmas-menu.component';
 import { NewsEventComponent } from './news-event/news-event.component';
 import { ImagesDetailsComponent } from './images-details/images-details.component';
+import { MaterialModule } from '../shared/modules/material/material.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ImagesDetailsComponent } from './images-details/images-details.componen
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class HomeModule { }

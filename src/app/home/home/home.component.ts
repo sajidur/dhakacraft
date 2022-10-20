@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { ContactFromComponent } from 'src/app/contact-from/contact-from.component';
 import { MenuControllerService } from 'src/app/services/menu-controller/menu-controller.service';
 const FileSaver = require('file-saver');
 
@@ -19,7 +21,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
-    public menuControllerSrv: MenuControllerService
+    public menuControllerSrv: MenuControllerService,
+    public dialog: MatDialog,
     ) { }
 
   ngOnInit() {
@@ -126,5 +129,21 @@ export class HomeComponent implements OnInit {
 			}
 		});
 	}
+
+  handleContactForm = () => {
+    const dialogRef = this.dialog.open(ContactFromComponent, {
+      disableClose: true,
+      width: '50%',
+      height: '85%',
+      maxWidth: '90vw',
+      data: '',
+    });
+
+    // After closed is fired when dialog component send data 
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.data == 'view-catalog') {
+      } 
+    });
+  }
 
 }
