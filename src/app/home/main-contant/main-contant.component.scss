@@ -1,14 +1,41 @@
-
-
-.carousel-item img {
+#carouselExampleControls2 .carousel-item img {
   height: 500px;
 }
 
+#carouselExampleControls .carousel-item img {
+  height: 580px;
+}
+
 .carousel-text-description {
-    position: absolute;
-    right: 15%;
-    left: 15%;
-    color: #fff;
-    text-align: center;
-    top: 0;
+  position: absolute;
+  right: 8rem;
+  left: 8rem;
+  color: #fff;
+  text-align: center;
+  top: 0;
+}
+
+.carousel-text {
+  background:   linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    );
+    cursor: pointer;
+}
+
+.membership-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 3rem;
+  align-items: center;
+}
+
+.who-we-are img:hover, .product-range img:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.who-we-are-iframe {
+   width: 100%;
+   height: 100%;
 }

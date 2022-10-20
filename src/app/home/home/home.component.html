@@ -1,189 +1,201 @@
 <!-- Header start here -->
-<header class="container py-2">
-  <nav class="navbar navbar-expand-md">
-    <div class="container-fluid">
-      <a class="navbar-brand">
-        <img
-          routerLink=""
-          class="logo-img"
-          src="../../../assets/images/1.jpg"
-          alt=""
-        />
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown1">
-            <a class="nav-link">Our Story</a>
-            <div>
-              <div class="dropdown-content1 p-4 bg-white">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <a (click)="ourStoryItem('about-us')">About Us</a>
-                    <a (click)="ourStoryItem('fair-trade')">Fair Trade</a>
-                    <a   (click)="
-                    downloadAnnualReportPdf(
-                      '../../../',
-                      'DhakaHandiCraftAnnualReport'
-                    )"
-                  >Annual Report</a>
-                    <a (click)="goToContactUs('contact-us')">Contact Us</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <img
-                      class="img-fluid h-100"
-                      src="../../../assets/images/DhakaHandiCraft/aboutus.jpg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li class="nav-item dropdown2">
-            <a class="nav-link">Home</a>
-            <div>
-              <div class="dropdown-content2 p-4 bg-white">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <a (click)="homeMenuItem('baskets')">Baskets</a>
-                    <a (click)="homeMenuItem('home-office')">Home Office</a>
-                    <a (click)="homeMenuItem('flower-vases')">Flower Vases</a>
-                    <a (click)="homeMenuItem('home-textiles')">Home Textiles</a>
-                    <a (click)="homeMenuItem('wall-hanging')">Wall Hanging</a>
-                    <a (click)="homeMenuItem('lamp-shade')">Lamp Shade</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <img
-                      class="img-fluid h-100"
-                      src="../../../assets/images/DhakaHandiCraft/basket1.JPG"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li class="nav-item dropdown3">
-            <a class="nav-link">Garden</a>
-            <div>
-              <div class="dropdown-content3 p-4 bg-white">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <a>Planters</a>
-                    <a>Birdhouse</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <img
-                      class="img-fluid h-100"
-                      src="../../../assets/images/DhakaHandiCraft/garden1.JPG"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li class="nav-item dropdown4">
-            <a class="nav-link">Personal Accessories</a>
-            <div>
-              <div class="dropdown-content4 p-4 bg-white">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <a (click)="personalItem('bags')">Bag's</a>
-                    <a (click)="personalItem('jewelry')">Jewelry</a>
-                    <a (click)="personalItem('purses')">Purses</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <img
-                      class="img-fluid h-100"
-                      src="../../../assets/images/DhakaHandiCraft/bags/bag3.jpg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          
-          <li class="nav-item dropdown5">
-            <a class="nav-link">Christmas</a>
-            <div>
-              <div class="dropdown-content5 p-4 bg-white">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <a>Card’s & Wrap</a>
-                    <a>Tree Hanging</a>
-                    <a>Home Decoration</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <img
-                      class="img-fluid h-100" 
-                      src="../../../assets/images/DhakaHandiCraft/card1.jpg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <!-- <li class="nav-item">
-            <a class="nav-link">Partners</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">FAQ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">About</a>
-          </li> -->
-        </ul>
-        <form class="d-flex" role="search">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
+<div class="promo-header">
+  Sign up for our emails and get a Promo Code for 15% off your first order!
+</div>
+<header style="border-bottom: 1px solid #cdcdcd">
+  <div class="container">
+    <nav class="navbar navbar-expand-md p-0">
+      <div class="container-fluid">
+        <a class="navbar-brand">
+          <img 
+            routerLink=""
+            class="logo-img slide-in-left"
+            src="../../../assets/images/1.jpg"
+            alt=""
           />
-          <button class="btn btn-success" type="submit">Search</button>
-        </form>
-        <!-- <a href="#register" class="btn btn-outline-info">Register</a> -->
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown1" (mouseover)="mouseOver('dropdown-content1')"
+            (mouseout)="mouseOut('dropdown-content1')"
+            >
+              <a class="nav-link">Our Story</a>
+              <div>
+                <div class="dropdown-content1 p-4 bg-white">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a (click)="ourStoryItem('about-us')">About Us</a>
+                      <a (click)="ourStoryItem('fair-trade')">Fair Trade</a>
+                      <a (click)="downloadAnnualReportPdf()">Annual Report</a>
+                      <a (click)="goToContactUs('contact-us')">Contact Us</a>
+                    </div>
+                    <div class="col-sm-7">
+                      <img
+                      width="220"
+                      height="300"
+                        src="../../../assets/images/DhakaHandiCraft/trade.jpg"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+  
+            <li class="nav-item dropdown2" (mouseover)="mouseOver('dropdown-content2')"
+            (mouseout)="mouseOut('dropdown-content2')">
+              <a class="nav-link">Home</a>
+              <div>
+                <div class="dropdown-content2 p-4 bg-white">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a (click)="homeMenuItem('baskets')">Baskets</a>
+                      <a (click)="homeMenuItem('home-office')">Home Office</a>
+                      <a (click)="homeMenuItem('flower-vases')">Flower Vases</a>
+                      <a (click)="homeMenuItem('home-textiles')">Home Textiles</a>
+                      <a (click)="homeMenuItem('wall-hanging')">Wall Hanging</a>
+                      <a (click)="homeMenuItem('lamp-shade')">Lamp Shade</a>
+                    </div>
+                    <div class="col-sm-7">
+                      <img
+                      width="220"
+                      height="300"
+                        src="../../../assets/images/DhakaHandiCraft/home.jpg"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+  
+            <li class="nav-item dropdown3" (mouseover)="mouseOver('dropdown-content3')"
+            (mouseout)="mouseOut('dropdown-content3')">
+              <a class="nav-link">Garden</a>
+              <div>
+                <div class="dropdown-content3 p-4 bg-white">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a (click)="gardenMenu('planters')">Planters</a>
+                      <a (click)="gardenMenu('birdhouse')">Birdhouse</a>
+                    </div>
+                    <div class="col-sm-7">
+                      <img
+                      width="200"
+                      height="300"
+                        src="../../../assets/images/DhakaHandiCraft/garden.jpg"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+  
+            <li class="nav-item dropdown4" (mouseover)="mouseOver('dropdown-content4')"
+            (mouseout)="mouseOut('dropdown-content4')">
+              <a class="nav-link">Personal Accessories</a>
+              <div>
+                <div class="dropdown-content4 p-4 bg-white">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a (click)="personalItem('bags')">Bag's</a>
+                      <a (click)="personalItem('jewelry')">Jewelry</a>
+                      <a (click)="personalItem('purses')">Purses</a>
+                    </div>
+                    <div class="col-sm-7">
+                      <img
+                      width="220"
+                      height="300"
+                        src="../../../assets/images/DhakaHandiCraft/lamp2.JPG"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+  
+            
+            <li class="nav-item dropdown5" (mouseover)="mouseOver('dropdown-content5')"
+            (mouseout)="mouseOut('dropdown-content5')">
+              <a class="nav-link">Christmas</a>
+              <div>
+                <div class="dropdown-content5 p-4 bg-white">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <a (click)="christmasItem('card-and-wrap')">Card’s & Wrap</a>
+                      <a (click)="christmasItem('tree-hanging')">Tree Hanging</a>
+                      <a (click)="christmasItem('home-decoration')">Home Decoration</a>
+                    </div>
+                    <div class="col-sm-7">
+                      <img
+                      width="220"
+                      height="300"
+                        src="../../../assets/images/DhakaHandiCraft/card1.jpg"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-success" type="submit">Search</button>
+          </form>
+          <!-- <a href="#register" class="btn btn-outline-info">Register</a> -->
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
 <!-- Header end here -->
 
-<main>
+<main class="mb-5 bg-light">
   <router-outlet></router-outlet>
 </main>
 
 <!-- Footer started here -->
-<footer class="footer-bg text-white" id="contact-us">
-  <div class="container py-5">
+<footer class="footer-bg text-white container-fluid" id="contact-us">
+  <div class="px-2 pt-5">
     <div class="row">
-      <div class="col-12 col-sm-3 p-0 footer-story">
+      <div class="col-12 col-sm-3">
+        <div class="d-flex align-items-center">
+          <!-- <div class="col-sm-6 text-right"> -->
+            <img  width="120"  src="../../../assets/images/bt.png" alt=""> &nbsp;
+          <!-- </div> -->
+          <!-- <div class="col-sm-6 text-left"> -->
+            <img  height="100" src="../../../assets/images/asg (2).png" alt="">
+          <!-- </div> -->
+        </div>
+      
+      </div>
+      <div class="col-12 col-sm-2 p-0 footer-story">
         <h5>Our story</h5>
         <a class="d-block">About Us</a>
         <a class="d-block">Fair Trade</a>
         <a class="d-block">Annual Report</a>
         <a class="d-block">Contact Us</a>
       </div>
-      <div class="col-12 col-sm-6 p-0">
+      <div class="col-12 col-sm-4 p-0">
         <h5>Contact with us</h5>
         <div class="row">
           <div class="col-sm-6">
@@ -212,10 +224,22 @@
             href="https://www.instagram.com/dhakahandicrafts.hdht/"
             class="fa fa-instagram"
           ></a>
-          <a class="fa fa-twitter"></a>
-          <a class="fa fa-youtube"></a>
+          <a target="_blank" href="https://twitter.com/dhakahandicraf1" class="fa fa-twitter"></a>
+          <a target="_blank" href="https://www.youtube.com/watch?v=OII0JpbyAkM" class="fa fa-youtube"></a>
         </div>
-        <div></div>
+        <div class="footer-story py-2">
+          <a target="_blank" href="../../../assets/pdf/AnnualReport.pdf">View Catalog</a> |
+          <a class="cursor_pointer" (click)="handleContactForm()">Request Catalog</a>
+
+          <div class="my-3" style="padding-right: 4.5rem;">
+            <img class="img-fluid" src="../../../assets/images/DhakaHandiCraft/7.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 my-5 text-center">
+        <p>&copy; Copyright {{currentYear}} Dhakahandicrafts. All Rights Reserved.</p>
       </div>
     </div>
   </div>

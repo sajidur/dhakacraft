@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { ContactFromComponent } from 'src/app/contact-from/contact-from.component';
 import { MenuControllerService } from 'src/app/services/menu-controller/menu-controller.service';
+const FileSaver = require('file-saver');
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,11 +16,13 @@ export class HomeComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
+  currentYear: number;
 
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
-    public menuControllerSrv: MenuControllerService
+    public menuControllerSrv: MenuControllerService,
+    public dialog: MatDialog,
     ) { }
 
   ngOnInit() {
@@ -26,6 +32,8 @@ export class HomeComponent implements OnInit {
       subject: ['', Validators.required],
       message: ['', Validators.required],
   });
+  this.stickyChatButton()
+  this.currentYear = new Date().getFullYear();
   }
 
   closeLeaveMessage() {
@@ -45,24 +53,56 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
       this.submitted = true;
-
       // stop here if form is invalid
       if (this.registerForm.invalid) {
           return;
       }
-
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+      // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 
-  ourStoryItem = (menu: any) => {
-    this.menuControllerSrv.ourStoryMenuItem = menu
-    this.router.navigate(['our-story']);
+  mouseOver = (dropdownContent: any) => {
+    console.log('over')
+    $("."+dropdownContent).css("display", "block");
+  }
+  mouseOut = (dropdownContent: any) => {
+    console.log('out')
+    $("."+dropdownContent).css("display", "none");
   }
 
-  downloadAnnualReportPdf(pdfUrl: string, pdfName: string) {
-		// const pdfUrl = '../../../../assets/sample.pdf';
-		// const pdfName = 'your_pdf_file';
-		// FileSaver.saveAs(pdfUrl, pdfName);
+  ourStoryItem = (item: any) => {
+     $(".dropdown-content1").css("display", "none");
+     this.menuControllerSrv.ourStoryMenuItem = item
+     this.router.navigate(['our-story']);
+  }
+
+  homeMenuItem = (item: any) => {
+    $(".dropdown-content2").css("display", "none");
+    this.menuControllerSrv.homeMenuItem = item
+    this.router.navigate(['home']);
+  }
+
+  gardenMenu = (item: any) => {
+    $(".dropdown-content3").css("display", "none");
+    this.menuControllerSrv.gardenMenuItem = item
+    this.router.navigate(['garden']);
+  }
+
+  personalItem = (item: any) => {
+    $(".dropdown-content4").css("display", "none");
+    this.menuControllerSrv.personalMenuItem = item
+    this.router.navigate(['personal-accessories']);
+  }
+
+  christmasItem = (item: any) => {
+    $(".dropdown-content5").css("display", "none");
+    this.menuControllerSrv.christmasMenuItem = item
+    this.router.navigate(['christmas']);
+  }
+
+  downloadAnnualReportPdf = () => {
+		const pdfUrl = "../../../assets/pdf/AnnualReport.pdf";
+		const pdfName = 'DhakaHandiCraftAnnualReport';
+		FileSaver.saveAs(pdfUrl, pdfName);
 	}
 
   goToContactUs = (id:any) => {
@@ -75,14 +115,35 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  homeMenuItem = (homeMenu: any) => {
-    this.menuControllerSrv.homeMenuItem = homeMenu
-    this.router.navigate(['home']);
-  }
+  stickyChatButton = () => {
+		$(window).on('scroll', function () {
+			const scroll: any = $(window).scrollTop();
+			if (scroll < 150) {
+        $("#float-message-btn").css("display", "none")
+				// $('#sticky-header').removeClass('sticky');
+				// $('#back-top').fadeIn(500);
+			} else {
+        $("#float-message-btn").css("display", "block")
+				// $('#sticky-header').addClass('sticky');
+				// $('#back-top').fadeIn(500);
+			}
+		});
+	}
 
-  personalItem = (item: any) => {
-    this.menuControllerSrv.personalMenuItem = item
-    this.router.navigate(['personal-accessories']);
+  handleContactForm = () => {
+    const dialogRef = this.dialog.open(ContactFromComponent, {
+      disableClose: true,
+      width: '50%',
+      height: '85%',
+      maxWidth: '90vw',
+      data: '',
+    });
+
+    // After closed is fired when dialog component send data 
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.data == 'view-catalog') {
+      } 
+    });
   }
 
 }

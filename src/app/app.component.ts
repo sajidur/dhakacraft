@@ -11,6 +11,16 @@ export class AppComponent {
   constructor
   (public router: Router) 
   {
-   this.router.navigate([''])
+    // this.router.navigate([''])
+     	// Page loading animation
+    //    $(window).on('load', function() {
+    //     setTimeout(() => {
+    //       $('#js-preloader').addClass('loaded');
+    //     }, 2000);
+  
+    // });
+    
+
   }
+
 }

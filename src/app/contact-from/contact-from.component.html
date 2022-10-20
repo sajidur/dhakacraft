@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <div class="leave-message-popup" id="leave-message">
+        <div style="text-align: end">
+          <span style="float:left;font-size: 18px;">Please fill up form</span>
+          <i style="float:right"
+            (click)="closeDialogModal()"
+            class="fa fa-close"
+            style="font-size: 24px; cursor: pointer"
+          ></i>
+        </div>
+      
+        <form
+          class="w-100 px-4 py-4"
+          [formGroup]="registerForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="form-group">
+            <label>Name:*</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+            />
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+              <div *ngIf="f['name'].errors['required']">First Name is required</div>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label>Email:*</label>
+            <input
+              type="text"
+              formControlName="email"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+            />
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']">Email is required</div>
+              <div *ngIf="f['email'].errors['email']">
+                Email must be a valid email address
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject:*</label>
+            <input
+              type="text"
+              formControlName="subject"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['subject'].errors }"
+            />
+            <div *ngIf="submitted && f['subject'].errors" class="invalid-feedback">
+              <div *ngIf="f['subject'].errors['required']">Subject is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message:*</label>
+            <textarea
+              formControlName="message"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['message'].errors }"
+            ></textarea>
+            <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
+              <div *ngIf="f['message'].errors['required']">
+                First Name is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group mt-2 text-center">
+            <button type="submit" class="btn btn-primary px-3">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+      
+</div>

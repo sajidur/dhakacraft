@@ -1,6 +1,6 @@
 
 <!-- Baskets started here -->
-<section *ngIf="menuControllerSrv?.homeMenuItem === 'baskets' " class="container my-5">
+<section *ngIf="menuControllerSrv?.homeMenuItem === 'baskets' " class="container pt-3">
     <h1>Baskets</h1>
     <p class="mb-4">
         A basket is a container that is traditionally constructed from stiff fibers and can be made from a range of materials, including wood splints, runners, and cane. While most baskets are made from plant materials, other materials such as horsehair, baleen, or metal wire can be used. Baskets are generally woven by hand. Some baskets are fitted with a lid, while others are left open on top.
@@ -8,7 +8,7 @@
   
    
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-          <div class="col">
+          <div (click)="basketDetails()" class="col">
             <div class="card">
               <img
                 src="../../../assets/images/DhakaHandiCraft/basket1.JPG"
@@ -21,7 +21,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div (click)="basketDetails()" class="col">
             <div class="card">
               <img
               src="../../../assets/images/DhakaHandiCraft/basket2.JPG"
@@ -34,7 +34,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div (click)="basketDetails()" class="col">
             <div class="card">
               <img
               src="../../../assets/images/DhakaHandiCraft/basket3.jpg"
@@ -53,7 +53,7 @@
 <!-- Baskets ended here -->
 
 <!-- Home office started here -->
-<section *ngIf="menuControllerSrv?.homeMenuItem === 'home-office' " class="container my-5">
+<section *ngIf="menuControllerSrv?.homeMenuItem === 'home-office' " class="container pt-3">
     <h1>Home Office</h1>
     <p class="mb-4">
         Work From Home Essentials That'll Boost Productivity.
@@ -106,7 +106,7 @@
 <!-- Home office ended here -->
 
 <!-- Flower started here -->
-<section *ngIf="menuControllerSrv?.homeMenuItem === 'flower-vases' " class="container my-5">
+<section *ngIf="menuControllerSrv?.homeMenuItem === 'flower-vases' " class="container pt-3">
     <h1>Flower Vases</h1>
     <p class="mb-4">
         Vases are often decorated, and they are often used to hold cut flowers.
@@ -159,7 +159,7 @@
 <!-- Flower ended here -->
 
 <!-- Wall hanging started here -->
-<section *ngIf="menuControllerSrv?.homeMenuItem === 'wall-hanging' " class="container my-5">
+<section *ngIf="menuControllerSrv?.homeMenuItem === 'wall-hanging' " class="container pt-3">
     <h1>Wall Hanging</h1>
     <p class="mb-4">
         A wall hanging craft is a decoration, an amulet, a religious or a symbolic object that is hung from the ceiling or another structure.
@@ -212,7 +212,7 @@
 <!-- Wall hanging ended here -->
 
 <!-- Flower started here -->
-<section *ngIf="menuControllerSrv?.homeMenuItem === 'lamp-shade' " class="container my-5">
+<section *ngIf="menuControllerSrv?.homeMenuItem === 'lamp-shade' " class="container">
     <h1>Lamp Shade</h1>
     <p class="mb-4">
         A lampshade is a fixture that covers the lightbulb on a lamp to diffuse the light it emits 

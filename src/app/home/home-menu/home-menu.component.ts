@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuControllerService } from 'src/app/services/menu-controller/menu-controller.service';
 
 @Component({
@@ -8,9 +9,18 @@ import { MenuControllerService } from 'src/app/services/menu-controller/menu-con
 })
 export class HomeMenuComponent implements OnInit {
 
-  constructor(public menuControllerSrv: MenuControllerService) { }
+  constructor(
+    public menuControllerSrv: MenuControllerService,
+    public router: Router
+    ) { 
+      
+    }
 
   ngOnInit(): void {
+  }
+
+  basketDetails = () => {
+    this.router.navigateByUrl('details')
   }
 
 }
