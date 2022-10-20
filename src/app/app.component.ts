@@ -13,12 +13,12 @@ export class AppComponent {
   {
     // this.router.navigate([''])
      	// Page loading animation
-       $(window).on('load', function() {
-        setTimeout(() => {
-          $('#js-preloader').addClass('loaded');
-        }, 2000);
+    //    $(window).on('load', function() {
+    //     setTimeout(() => {
+    //       $('#js-preloader').addClass('loaded');
+    //     }, 2000);
   
-    });
+    // });
     
 
   }
