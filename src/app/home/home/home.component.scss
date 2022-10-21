@@ -219,4 +219,11 @@ header a {
 
 .dropdown-content5 a:hover {background-color: #ddd;}
 
-// .dropdown5:hover .dropdown-content5 {display: block;}
+.nav-link {
+  padding: 3px 0px;
+}
+ .dropdown1:hover,.dropdown2:hover,.dropdown3:hover,.dropdown4:hover,.dropdown5:hover .nav-link {
+    // text-decoration: underline;
+    font-weight: bold;
+    // border-bottom: 2px solid #cdcdcd;
+ }
