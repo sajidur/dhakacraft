@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
     public router: Router,
     public menuControllerSrv: MenuControllerService,
     public dialog: MatDialog,
+    private viewportScroller: ViewportScroller
     ) { }
 
   ngOnInit() {
@@ -69,10 +71,18 @@ export class HomeComponent implements OnInit {
     $("."+dropdownContent).css("display", "none");
   }
 
-  ourStoryItem = (item: any) => {
+  ourStoryItem = (item: any, scrollToRequiredId: any) => {
      $(".dropdown-content1").css("display", "none");
      this.menuControllerSrv.ourStoryMenuItem = item
-     this.router.navigate(['our-story']);
+    //  this.router.navigate(['our-story']);
+    this.router.navigate(['our-story']).then(()=>{
+     if(scrollToRequiredId){
+      setTimeout(() => {
+        this.viewportScroller.scrollToAnchor('our-story');
+      }, 1000);
+     }
+    });''
+ 
   }
 
   homeMenuItem = (item: any) => {

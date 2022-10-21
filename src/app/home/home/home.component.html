@@ -35,8 +35,8 @@
                 <div class="dropdown-content1 p-4 bg-white">
                   <div class="row">
                     <div class="col-sm-5">
-                      <a (click)="ourStoryItem('about-us')">About Us</a>
-                      <a (click)="ourStoryItem('fair-trade')">Fair Trade</a>
+                      <a (click)="ourStoryItem('about-us', false)">About Us</a>
+                      <a (click)="ourStoryItem('fair-trade', false)">Fair Trade</a>
                       <a target="_blank" href="../../../assets/pdf/AnnualReport.pdf">Annual Report</a>
                       <a (click)="handleContactForm('Request from contact us')">Contact Us</a>
                     </div>
@@ -194,8 +194,8 @@
         <a class="d-block">Fair Trade</a>
         <a class="d-block">Annual Report</a>
         <a class="d-block">Contact Us</a> -->
-        <a class="d-block" (click)="ourStoryItem('about-us')">About Us</a>
-        <a class="d-block" (click)="ourStoryItem('fair-trade')">Fair Trade</a>
+        <a class="d-block" (click)="ourStoryItem('about-us',true)">About Us</a>
+        <a class="d-block" (click)="ourStoryItem('fair-trade', true)">Fair Trade</a>
         <a class="d-block" target="_blank" href="../../../assets/pdf/AnnualReport.pdf">Annual Report</a>
         <a class="d-block" (click)="handleContactForm('Request from contact us')">Contact Us</a>
       </div>
