@@ -130,13 +130,13 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
-  handleContactForm = () => {
+  handleContactForm = (data: any) => {
     const dialogRef = this.dialog.open(ContactFromComponent, {
       disableClose: true,
       width: '50%',
       height: '85%',
       maxWidth: '90vw',
-      data: '',
+      data: data,
     });
 
     // After closed is fired when dialog component send data 
