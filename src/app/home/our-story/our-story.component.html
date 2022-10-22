@@ -1,5 +1,6 @@
-<!-- About us started here -->
-<section *ngIf="menuControllerSrv?.ourStoryMenuItem === 'about-us' " class="container pt-3">
+<section id="our-story">
+  <!-- About us started here -->
+<div *ngIf="menuControllerSrv?.ourStoryMenuItem === 'about-us' " class="container pt-3">
   <h2 class="fw-bold mb-4">About Us</h2>
   <div class="my-5 p-3">
     <img class="img-fluid" src="../../../assets/images/DhakaHandiCraft/aboutus.jpg" alt="">
@@ -58,11 +59,11 @@
     Collaborate with the impoverished artisans in production of natural resource
     and recycled material based handicrafts
   </p>
-</section>
+</div>
 <!-- About us ended here -->
 
 <!-- Fair trade started here -->
-<section *ngIf="menuControllerSrv?.ourStoryMenuItem === 'fair-trade' " class="container pt-3">
+<div *ngIf="menuControllerSrv?.ourStoryMenuItem === 'fair-trade' " class="container pt-3">
     <h2 class="fw-bold mb-4">Fair Trade</h2>
     <div class="my-5 p-3">
       <img class="img-fluid" src="../../../assets/images/DhakaHandiCraft/trade.jpg" alt="">
@@ -87,14 +88,15 @@
       <li>Provide prepayments for orders & raw materials</li>
       <li>And of course, pay a fair price for working force</li>
     </ul>
-</section>
+</div>
 <!-- Fair trade ended here -->
 
 <!-- Annual report started here -->
-<section *ngIf="menuControllerSrv?.ourStoryMenuItem === 'annual-report' " class="container pt-3">
+<!-- <section *ngIf="menuControllerSrv?.ourStoryMenuItem === 'annual-report' " class="container pt-3">
     <h2 class="fw-bold mb-4">Annual Report</h2>
 
-    <h5>2020-21 Annual Report</h5>
+    <h3>2020-21 Annual Report</h3>
   
-</section>
+</section> -->
 <!-- Annual report ended here -->
+</section>

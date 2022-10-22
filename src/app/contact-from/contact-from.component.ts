@@ -21,12 +21,22 @@ export class ContactFromComponent implements OnInit {
   { }
 
   ngOnInit(): void {
+    // console.log(this.data)
+    this.formHandler()
+    this.formValueSet()
+  }
+ 
+  formHandler = () => {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       subject: ['', Validators.required],
       message: ['', Validators.required],
-  });
+   });
+  } 
+
+  formValueSet = () => {
+    this.registerForm.patchValue({"subject": this.data});
   }
 
   get f() { 

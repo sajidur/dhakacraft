@@ -35,10 +35,10 @@
                 <div class="dropdown-content1 p-4 bg-white">
                   <div class="row">
                     <div class="col-sm-5">
-                      <a (click)="ourStoryItem('about-us')">About Us</a>
-                      <a (click)="ourStoryItem('fair-trade')">Fair Trade</a>
-                      <a (click)="downloadAnnualReportPdf()">Annual Report</a>
-                      <a (click)="goToContactUs('contact-us')">Contact Us</a>
+                      <a (click)="ourStoryItem('about-us', false)">About Us</a>
+                      <a (click)="ourStoryItem('fair-trade', false)">Fair Trade</a>
+                      <a target="_blank" href="../../../assets/pdf/AnnualReport.pdf">Annual Report</a>
+                      <a (click)="handleContactForm('Request from contact us')">Contact Us</a>
                     </div>
                     <div class="col-sm-7">
                       <img
@@ -176,8 +176,8 @@
 <!-- Footer started here -->
 <footer class="footer-bg text-white container-fluid" id="contact-us">
   <div class="px-2 pt-5">
-    <div class="row">
-      <div class="col-12 col-sm-3">
+    <div class="d-flex">
+      <div style="width: 22%;">
         <div class="d-flex align-items-center">
           <!-- <div class="col-sm-6 text-right"> -->
             <img  width="120"  src="../../../assets/images/bt.png" alt=""> &nbsp;
@@ -188,31 +188,37 @@
         </div>
       
       </div>
-      <div class="col-12 col-sm-2 p-0 footer-story">
-        <h5>Our story</h5>
-        <a class="d-block">About Us</a>
+      <div style="width: 15%;" class="footer-div footer-story">
+        <h2>Our story</h2>
+        <!-- <a class="d-block">About Us</a>
         <a class="d-block">Fair Trade</a>
         <a class="d-block">Annual Report</a>
-        <a class="d-block">Contact Us</a>
+        <a class="d-block">Contact Us</a> -->
+        <a class="d-block" (click)="ourStoryItem('about-us',true)">About Us</a>
+        <a class="d-block" (click)="ourStoryItem('fair-trade', true)">Fair Trade</a>
+        <a class="d-block" target="_blank" href="../../../assets/pdf/AnnualReport.pdf">Annual Report</a>
+        <a class="d-block" (click)="handleContactForm('Request from contact us')">Contact Us</a>
       </div>
-      <div class="col-12 col-sm-4 p-0">
-        <h5>Contact with us</h5>
-        <div class="row">
-          <div class="col-sm-6">
+      <div style="width: 20%;" class="footer-div">
+        <h2>Contact with us</h2>
+        <!-- <div class="row"> -->
+          <!-- <div class="col-sm-6"> -->
             <b>Head Office: </b>
             <div>House#562, Road#08</div>
             <div>Section-12, Mirpur-DOHS</div>
             <div>Dhaka-1216, Bangladesh</div>
             <div>Email: info@dhakahandicrafts.com</div>
-          </div>
-          <div class="col-sm-6">
+          <!-- </div> -->
+      </div>
+      <div style="width: 19%;">
+            <h2 style="height: 32px;"></h2>
             <b>Registered address:</b> <br />
             <div>Holding No. 430, Nanduain</div>
             <div>Bhawal Mirzapur, Gazipur-1703</div>
-          </div>
-        </div>
       </div>
-      <div class="col-12 col-sm-3 p-0">
+      <!-- </div> -->
+      <!-- </div> -->
+      <div style="width: 23%;" class="footer-div">
         <div>
           <a
             target="_blank"
@@ -227,11 +233,11 @@
           <a target="_blank" href="https://twitter.com/dhakahandicraf1" class="fa fa-twitter"></a>
           <a target="_blank" href="https://www.youtube.com/watch?v=OII0JpbyAkM" class="fa fa-youtube"></a>
         </div>
-        <div class="footer-story py-2">
-          <a target="_blank" href="../../../assets/pdf/AnnualReport.pdf">View Catalog</a> |
-          <a class="cursor_pointer" (click)="handleContactForm()">Request Catalog</a>
+        <div class="footer-story py-3">
+          <!-- <a target="_blank" href="../../../assets/pdf/AnnualReport.pdf">View Catalog</a> | -->
+          <a class="cursor_pointer" (click)="handleContactForm('Request Catalog')">Request Catalog</a>
 
-          <div class="my-3" style="padding-right: 4.5rem;">
+          <div class="my-3" style="padding-right: 2.5rem;">
             <img class="img-fluid" src="../../../assets/images/DhakaHandiCraft/7.jpg" alt="">
           </div>
         </div>
@@ -239,7 +245,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 my-5 text-center">
-        <p>&copy; Copyright {{currentYear}} Dhakahandicrafts. All Rights Reserved.</p>
+        <p>&copy; Copyright {{currentYear}} Dhaka Handicrafts Limited. All Rights Reserved.</p>
       </div>
     </div>
   </div>
@@ -276,7 +282,7 @@
         [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
       />
       <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-        <div *ngIf="f['name'].errors['required']">First Name is required</div>
+        <div *ngIf="f['name'].errors['required']">Name is required</div>
       </div>
     </div>
 
@@ -316,7 +322,7 @@
       ></textarea>
       <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
         <div *ngIf="f['message'].errors['required']">
-          First Name is required
+          Message is required
         </div>
       </div>
     </div>
