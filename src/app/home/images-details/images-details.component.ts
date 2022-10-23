@@ -43,10 +43,10 @@ export class ImagesDetailsComponent implements OnInit {
     });
 
     // After closed is fired when dialog component send data 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.data == 'send-message') {
-      } 
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result.data == 'send-message') {
+    //   } 
+    // });
   }
 
 }

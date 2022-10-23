@@ -150,10 +150,10 @@ export class HomeComponent implements OnInit {
     });
 
     // After closed is fired when dialog component send data 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.data == 'view-catalog') {
-      } 
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result.data == 'view-catalog') {
+    //   } 
+    // });
   }
 
 }
