@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class GlobalService {
 
   constructor() { }
+
+  public domain = 'https://dhakacraftapi.rexsystemsbd.com/api';
+
+  
 }

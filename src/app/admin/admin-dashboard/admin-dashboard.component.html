@@ -1,3 +1,60 @@
-<h1>
-    Admin Dashboard
-</h1>
+<div class="main-container" [class.is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="header-toolbar">
+        <img height="40" src="../../../assets/images/asg (2).png" alt="">
+        <button class="toggle-icon" mat-icon-button (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <div class="header-right">
+            
+            <!-- <form class="d-flex" role="search">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button class="btn btn-success" type="submit">Search</button>
+              </form> -->
+              &nbsp;
+            <span style="cursor: pointer;" (click)="logout()">Logout</span>
+        </div>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav class="left-sidebar" #snav opened [mode]="mobileQuery.matches ? 'over' : 'side'"
+            [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list class="nav-list">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                    <a  [class.activeMenu] = "currentRoute == '/admin/menu-img'" [routerLink]="['/admin/menu-img']" class="nav-link button-deselected btn-selector" >
+                        <img src="../../../assets/menu/jazz-system.png" alt=""> &nbsp; 
+                        Menu 
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                      <a [class.activeMenu] = "currentRoute === '/admin/news-event-slider'"  [routerLink]="['/admin/news-event-slider']" class="nav-link btn-selector  button-deselected">
+                        <img src="../../../assets/menu/user-manange.png" alt=""> &nbsp; 
+                          Slider, News & Events</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                      
+                      <a [class.activeMenu] = "currentRoute === '/dashboard/server-type' || urlEndCheck === '/dashboard/add-server-type'" [routerLink]="['/dashboard/server-type']" class="nav-link btn-selector  button-deselected " >
+                        <img src="../../../assets/menu/server.png" alt=""> &nbsp; 
+                        Slider Image</a>
+                    </li>
+                    <li class="nav-item">
+                        
+                        <a [class.activeMenu] = "currentRoute === '/dashboard/roles' || urlEndCheck === '/dashboard/add-role'" [routerLink]="['/dashboard/roles']" class="nav-link btn-selector  button-deselected" >
+                            <img src="../../../assets/menu/role.png" alt=""> &nbsp; 
+                            Help</a>
+                    </li> -->
+                  </ul>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>   
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    <mat-toolbar class="footer">Footer</mat-toolbar>
+</div>
