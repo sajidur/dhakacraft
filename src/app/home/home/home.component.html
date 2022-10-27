@@ -1,6 +1,7 @@
 <!-- Header start here -->
 <div class="promo-header">
-  Sign up for our emails and get a Promo Code for 15% off your first order!
+  <!-- <p>Sign up for our emails and get a Promo Code for 15% off your first order!</p> -->
+  <p (click)="goToNewsAndEventDetails(topBarObj?.Id)">{{topBarObj?.MainText}}</p>
 </div>
 <header style="border-bottom: 1px solid #cdcdcd">
   <div class="container">
@@ -10,8 +11,8 @@
           <img 
             routerLink=""
             class="logo-img slide-in-left"
-            src="../../../assets/images/1.jpg"
-            alt=""
+            src="../../../assets/images/logo.jpg"
+            alt="logo"
           />
         </a>
         <button
@@ -161,8 +162,8 @@
             />
             <button class="btn btn-success" type="submit">Search</button>
           </form>
-          &nbsp;
-          <a routerLink="/login" class="btn btn-outline-info">Login</a>
+          <!-- &nbsp; -->
+          <!-- <a routerLink="/login" class="btn btn-outline-info">Login</a> -->
         </div>
       </div>
     </nav>
@@ -181,10 +182,10 @@
       <div style="width: 22%;">
         <div class="d-flex align-items-center">
           <!-- <div class="col-sm-6 text-right"> -->
-            <img  width="120"  src="../../../assets/images/bt.png" alt=""> &nbsp;
+            <img  width="120"  src="../../../assets/images/logo-tranparent.png" alt=""> &nbsp;
           <!-- </div> -->
           <!-- <div class="col-sm-6 text-left"> -->
-            <img  height="100" src="../../../assets/images/asg (2).png" alt="">
+            <img  height="100" src="../../../assets/images/dh-transparent.png" alt="">
           <!-- </div> -->
         </div>
       

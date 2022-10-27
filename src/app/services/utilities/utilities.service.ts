@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, filter, map } from 'rxjs/operators';
 import { GlobalService } from '../global/global.service';
 
 
@@ -10,6 +10,7 @@ import { GlobalService } from '../global/global.service';
 })
 export class UtilitiesService {
 
+
   constructor(
     private http: HttpClient,
     public globalSrv: GlobalService
@@ -17,9 +18,13 @@ export class UtilitiesService {
 
     }
 
-  contactUsUrl = `${this.globalSrv.domain}/contactus/contact`
-  imgUploadUrl = `${this.globalSrv.domain}/Upload`
-  newsEventSliderUrl = `${this.globalSrv.domain}/NewsContent`
+
+  contactUsUrl = `${this.globalSrv.domain}/api/contactus/contact`
+  imgUploadUrl = `${this.globalSrv.domain}/api/Upload`
+  newsEventSliderUrl = `${this.globalSrv.domain}/api/NewsContent`
+  
+  newsEventSliderList = new BehaviorSubject<any>(null);
+  newsEventSliderListCast = this.newsEventSliderList.asObservable().pipe(filter((value) => !!value));
 
   //Post contact us form service
   postContactUs(body: any): Observable<any> {
@@ -30,7 +35,6 @@ export class UtilitiesService {
       })
     );
   }
-
 
   //File upload
   uploadFile(file: any) {
@@ -46,7 +50,6 @@ export class UtilitiesService {
     );
   }
 
-
    // Post all news, event, slider img
    postNewsEventSliderImg(body: any): Observable<any> {
     return this.http.post(this.newsEventSliderUrl, body).pipe(
@@ -60,13 +63,15 @@ export class UtilitiesService {
   // Get all news, event, slider img
   getAllNewsEventSliderImg(): Observable<any> {
     return this.http.get(this.newsEventSliderUrl).pipe(
-      map((x: any) => x),
+      map((x: any) => {
+        this.newsEventSliderList.next(x)
+        return x
+      }),
       catchError((error: Response) => {
         return throwError(()=>error);
       })
     );
   }
-
 
 
   // getAssetById(id) {
@@ -78,8 +83,6 @@ export class UtilitiesService {
   //     })
   //   );
   // }
-
-
 
 
 }

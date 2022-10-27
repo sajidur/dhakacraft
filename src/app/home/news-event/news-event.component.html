@@ -1,13 +1,11 @@
 
 <section class="container pt-3">
-  <h2>consequuntur adipisci illo possimus rerum blanditiis</h2>
-   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium odio ad nemo iste quidem similique natus a officiis eaque unde, explicabo odit esse architecto sapiente quos possimus. Unde, dolores blanditiis.
-   Sit mollitia alias consequuntur adipisci illo possimus rerum blanditiis, et, laboriosam, sunt odit earum voluptate! Nulla aspernatur veniam non autem ea amet, rerum consequuntur ipsa voluptatibus dolor tenetur tempore nobis!
-   </p>
+  <h2>{{newsEventSlideObj?.Headline}}</h2>
+   <p>{{newsEventSlideObj?.DetailText}}</p>
    <div class="row">
     <div class="col-sm-12 my-3">
         <div>
-            <img height="500" src="../../../assets/images/DhakaHandiCraft/sliding1.jpg" alt="">
+            <img height="500" [src]="newsEventSlideObj?.ImageUrl" alt="">
         </div>
     </div>
    </div>

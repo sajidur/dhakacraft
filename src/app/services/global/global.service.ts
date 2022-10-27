@@ -7,7 +7,7 @@ export class GlobalService {
 
   constructor() { }
 
-  public domain = 'https://dhakacraftapi.rexsystemsbd.com/api';
+  public domain = 'https://dhakacraftapi.rexsystemsbd.com';
 
   
 }

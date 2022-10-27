@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { UtilitiesService } from './services/utilities/utilities.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'Dhaka Handicrafts Limited';
-  constructor
-  (public router: Router) 
+
+  constructor(
+    public router: Router,
+    public utilitiesSrv: UtilitiesService,
+    public spinner: NgxSpinnerService
+    ) 
   {
-    // this.router.navigate([''])
+    // this.getAllNewsEventSlider()
+  }
+
+     // this.router.navigate([''])
      	// Page loading animation
     //    $(window).on('load', function() {
     //     setTimeout(() => {
@@ -20,7 +30,19 @@ export class AppComponent {
   
     // });
     
-
-  }
+    // getAllNewsEventSlider = () => {
+    //   this.spinner.show();
+    //   this.utilitiesSrv.getAllNewsEventSliderImg().subscribe({
+    //     next: (result) => {
+    //       this.spinner.hide();
+    //       console.log('newsListRes', result);
+    //       // this.utilitiesSrv.allNewsEventSliderList = result;
+    //     },
+    //     error: (err) => {
+    //       this.spinner.hide();
+    //       console.log('newsListErr', err);
+    //     },
+    //   });
+    // }
 
 }

@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/modules/material/material.module';
 import { MenuImgComponent } from './menu-img/menu-img.component';
 import { NewsEventSliderImgComponent } from './news-event-slider-img/news-event-slider-img.component';
+import { DevExtremeModule } from '../shared/modules/dev-extreme/dev-extreme.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NewsEventSliderImgComponent } from './news-event-slider-img/news-event-
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    DevExtremeModule
   ]
 })
 export class AdminModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 // import { NgxSpinner } from 'ngx-spinner';
 
 @Component({
@@ -51,7 +52,17 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.router.navigateByUrl('admin')
+    if(this.loginForm.value.name === 'admin' && this.loginForm.value.password === 'admin@handicraft') {
+      this.router.navigateByUrl('admin')
+    }
+   else {
+    Swal.fire({
+      icon:'error',
+      title: 'Error',
+      text: 'Invalid user name or password'
+    })
+    return
+   }
     // this.spinner.show()
     // this.utilitiesSrv.postContactUs(this.loginForm.value).subscribe({
     //   next: (result) => {

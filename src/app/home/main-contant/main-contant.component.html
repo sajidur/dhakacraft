@@ -5,32 +5,32 @@
       class="carousel slide"
       data-bs-ride="carousel"
     >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
+      <div *ngIf="slidingList?.length" class="carousel-inner">
+        <div [class.active] = "elementOfIndex === 0"  class="carousel-item" *ngFor="let slideImg of slidingList; let elementOfIndex = index">
           <img
-            src="../../../assets/images/DhakaHandiCraft/sliding1.jpg"
+            src="{{slideImg?.ImageUrl}}"
             class="d-block w-100"
             alt="image1"
           />
-          <div (click)="goToNewsAndEventDetails()"
+          <div (click)="goToNewsAndEventDetails(slideImg?.Id)"
             class="d-flex justify-content-center align-items-center carousel-text-description h-100"
           >
             <div class="carousel-text p-2">
-              <h2>Welfare of Artisans</h2>
+              <h2>{{slideImg?.Headline}}</h2>
               <p>
-                Dhaka Handicrafts Ltd. (DH), a leading organization producing craft for international market, shares.
+                {{slideImg?.MainText}}
               </p>
-              <!-- <button class="btn btn-info text-white py-2">Get Started</button> -->
+            
             </div>
           </div>
         </div>
-        <div class="carousel-item">
+        <!-- <div class="carousel-item">
           <img
           src="../../../assets/images/DhakaHandiCraft/sliding2.jpg"
             class="d-block w-100"
             alt="image2"
           />
-          <div (click)="goToNewsAndEventDetails()"
+          <div 
             class="d-flex justify-content-center align-items-center carousel-text-description h-100"
           >
             <div class="carousel-text p-2">
@@ -38,7 +38,7 @@
               <p>
                 Systematic process of determining whether a product or service meets specified requirements.
               </p>
-              <!-- <button class="btn btn-info text-white py-2">Get Started</button> -->
+            
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@
             class="d-block w-100"
             alt="image3"
           />
-          <div (click)="goToNewsAndEventDetails()"
+          <div 
             class="d-flex justify-content-center align-items-center carousel-text-description h-100"
           >
             <div class="carousel-text p-2">
@@ -56,7 +56,7 @@
               <p>
                 The quality of treating people equally or in a way that is right or reasonable.
               </p>
-              <!-- <button class="btn btn-info text-white py-2">Get Started</button> -->
+            
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@
             class="d-block w-100"
             alt="image4"
           />
-          <div (click)="goToNewsAndEventDetails()"
+          <div 
             class="d-flex justify-content-center align-items-center carousel-text-description h-100"
           >
             <div class="carousel-text p-2">
@@ -74,10 +74,10 @@
               <p>
                 The quality or state of being transparent.
               </p>
-              <!-- <button class="btn btn-info text-white py-2">Get Started</button> -->
+            
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <button
         class="carousel-control-prev"
@@ -149,31 +149,31 @@
     data-bs-ride="carousel"
   >
     <div class="carousel-inner">
-      <div class="carousel-item active">
+      <div [class.active] = "elementOfIndex === 0" class="carousel-item" *ngFor="let item of newsAndEventList; let elementOfIndex = index">
         <img
-          src="../../../assets/images/DhakaHandiCraft/sliding1.jpg"
-          class="d-block w-100"
-          alt="image1"
-        />
-        <div (click)="goToNewsAndEventDetails()"
-          class="d-flex justify-content-center align-items-center carousel-text-description h-100"
-        >
-          <div class="carousel-text p-2">
-            <h2>Welfare of Artisans</h2>
-            <p>
-              Dhaka Handicrafts Ltd. (DH), a leading organization producing craft for international market, shares.
-            </p>
-            <!-- <button class="btn btn-info text-white py-2">Get Started</button> -->
+            src="{{item?.ImageUrl}}"
+            class="d-block w-100"
+            alt="image1"
+          />
+          <div (click)="goToNewsAndEventDetails(item?.Id)"
+            class="d-flex justify-content-center align-items-center carousel-text-description h-100"
+          >
+            <div class="carousel-text p-2">
+              <h2>{{item?.Headline}}</h2>
+              <p>
+                {{item?.MainText}}
+              </p>
+            
+            </div>
           </div>
-        </div>
       </div>
-      <div class="carousel-item">
+      <!-- <div class="carousel-item">
         <img
         src="../../../assets/images/DhakaHandiCraft/sliding2.jpg"
           class="d-block w-100"
           alt="image2"
         />
-        <div (click)="goToNewsAndEventDetails()"
+        <div 
           class="d-flex justify-content-center align-items-center carousel-text-description h-100"
         >
           <div class="carousel-text p-2">
@@ -181,7 +181,7 @@
             <p>
               Systematic process of determining whether a product or service meets specified requirements.
             </p>
-            <!-- <button class="btn btn-info text-white py-2">Get Started</button> -->
+          
           </div>
         </div>
       </div>
@@ -191,7 +191,7 @@
           class="d-block w-100"
           alt="image3"
         />
-        <div (click)="goToNewsAndEventDetails()"
+        <div 
           class="d-flex justify-content-center align-items-center carousel-text-description h-100"
         >
           <div class="carousel-text p-2">
@@ -199,7 +199,7 @@
             <p>
               The quality of treating people equally or in a way that is right or reasonable.
             </p>
-            <!-- <button class="btn btn-info text-white py-2">Get Started</button> -->
+          
           </div>
         </div>
       </div>
@@ -209,7 +209,7 @@
           class="d-block w-100"
           alt="image4"
         />
-        <div (click)="goToNewsAndEventDetails()"
+        <div 
           class="d-flex justify-content-center align-items-center carousel-text-description h-100"
         >
           <div class="carousel-text p-2">
@@ -217,10 +217,10 @@
             <p>
               The quality or state of being transparent.
             </p>
-            <!-- <button class="btn btn-info text-white py-2">Get Started</button> -->
+          
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <button
       class="carousel-control-prev"

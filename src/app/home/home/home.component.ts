@@ -4,8 +4,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Subscription } from 'rxjs';
 import { ContactFromComponent } from 'src/app/contact-from/contact-from.component';
 import { MenuControllerService } from 'src/app/services/menu-controller/menu-controller.service';
+import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 const FileSaver = require('file-saver');
 
 @Component({
@@ -18,25 +21,81 @@ export class HomeComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   currentYear: number;
-
+  private subscriptions: Array<Subscription> = [];
+  newsEventSlideList: any[] = [];
+  topBarList: any[] = [];
+  topBarObj: any;
+  
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
     public menuControllerSrv: MenuControllerService,
     public dialog: MatDialog,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    public utilitiesSrv: UtilitiesService,
+    public spinner: NgxSpinnerService
     ) { }
 
   ngOnInit() {
+    this.formHandler()
+    this.stickyChatButton()
+    this.currentYear = new Date().getFullYear();
+    // this.currentPushSubscription()
+    this.getAllNewsEventSlider()
+  }
+
+ 
+   ngOnDestroy() {
+     console.log()
+     // this.utilitiesSrv.newsEventSliderList.next(null);
+     this.subscriptions.forEach((subscription: Subscription) => {
+       subscription.unsubscribe();
+     });
+   }
+
+   formHandler = () => {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       subject: ['', Validators.required],
       message: ['', Validators.required],
   });
-  this.stickyChatButton()
-  this.currentYear = new Date().getFullYear();
+   }
+ 
+  //  currentPushSubscription() {
+  //    this.subscriptions.push(
+  //      this.utilitiesSrv.newsEventSliderListCast.subscribe((result) => {
+  //       console.log(result)
+  //       this.newsEventSlideList = result
+  //      })
+  //    );
+  //  }
+
+   getAllNewsEventSlider = () => {
+    this.spinner.show();
+    this.utilitiesSrv.getAllNewsEventSliderImg().subscribe({
+      next: (result) => {
+        this.spinner.hide();
+        console.log('newsListRes', result);
+        // this.utilitiesSrv.allNewsEventSliderList = result;
+        this.newsEventSlideList = result;
+        if(this.newsEventSlideList?.length) {
+          this.topBarList =  this.newsEventSlideList.filter(e => e.Type === 'Topbar')
+          if(this.topBarList?.length) {
+            this.topBarObj = this.topBarList[this.topBarList.length-1]
+          }
+         
+        }
+      
+
+      },
+      error: (err) => {
+        this.spinner.hide();
+        console.log('newsListErr', err);
+      },
+    });
   }
+
 
   closeLeaveMessage() {
     $("#leave-message").css("display", "none");
@@ -63,11 +122,11 @@ export class HomeComponent implements OnInit {
   }
 
   mouseOver = (dropdownContent: any) => {
-    console.log('over')
+    // console.log('over')
     $("."+dropdownContent).css("display", "block");
   }
   mouseOut = (dropdownContent: any) => {
-    console.log('out')
+    // console.log('out')
     $("."+dropdownContent).css("display", "none");
   }
 
@@ -154,6 +213,11 @@ export class HomeComponent implements OnInit {
     //   if (result.data == 'view-catalog') {
     //   } 
     // });
+  }
+
+  goToNewsAndEventDetails = (Id: any) => {
+    // this.router.navigateByUrl('news-event?id=' + Id + '&as=' + as + '&cd=' + cd);
+    this.router.navigateByUrl('news-event?Id=' + Id);
   }
 
 }
