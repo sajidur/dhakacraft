@@ -97,12 +97,17 @@ export class NewsEventSliderImgComponent implements OnInit {
       }
       const newsEventSliderRes = await this.postNewsEventSlider(this.model);
       if(!!newsEventSliderRes) {
+        this.getAllNewsEventSlider()
         this.spinner.hide()
-              Swal.fire({
-                  icon: 'success',
-                  title: 'Data added successfully!',
-                  confirmButtonText: 'Ok',
-                });
+        this.model = {
+          
+        }
+          Swal.fire({
+              icon: 'success',
+              title: 'Data added successfully!',
+              confirmButtonText: 'Ok',
+            });
+
       }
       else {
 
@@ -189,7 +194,7 @@ export class NewsEventSliderImgComponent implements OnInit {
         this.spinner.hide();
         console.log('deleteRes', result);
         if(result) {
-          this.newsEventSlideList = result;
+          this.getAllNewsEventSlider()
         }
       },
       error: (err) => {

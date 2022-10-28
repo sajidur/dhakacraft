@@ -86,7 +86,7 @@ export class UtilitiesService {
 
   //Delete By Id
   deleteNewsEventSliderById = (Id: any) => {
-    return this.http.delete(`${this.newsEventSliderUrl}/Delete?id=${Id}`).pipe(
+    return this.http.post(`${this.newsEventSliderUrl}/Delete?id=${Id}`,{}).pipe(
       map((x: any) => x),
       catchError((error: Response) => {
         return throwError(()=>error);
