@@ -22,6 +22,7 @@ export class UtilitiesService {
   contactUsUrl = `${this.globalSrv.domain}/api/contactus/contact`
   imgUploadUrl = `${this.globalSrv.domain}/api/Upload`
   newsEventSliderUrl = `${this.globalSrv.domain}/api/NewsContent`
+  loginUrl = `${this.globalSrv.domain}/api/User`
   
   newsEventSliderList = new BehaviorSubject<any>(null);
   newsEventSliderListCast = this.newsEventSliderList.asObservable().pipe(filter((value) => !!value));
@@ -52,7 +53,7 @@ export class UtilitiesService {
 
    // Post all news, event, slider img
    postNewsEventSliderImg(body: any): Observable<any> {
-    return this.http.post(this.newsEventSliderUrl, body).pipe(
+    return this.http.post(`${this.newsEventSliderUrl}/Post`, body).pipe(
       map((x: any) => x),
       catchError((error: Response) => {
         return throwError(()=>error);
@@ -62,7 +63,7 @@ export class UtilitiesService {
 
   // Get all news, event, slider img
   getAllNewsEventSliderImg(): Observable<any> {
-    return this.http.get(this.newsEventSliderUrl).pipe(
+    return this.http.get(`${this.newsEventSliderUrl}/GetAll`).pipe(
       map((x: any) => {
         this.newsEventSliderList.next(x)
         return x
@@ -73,16 +74,26 @@ export class UtilitiesService {
     );
   }
 
+  //Login 
+  login(body: any): Observable<any> {
+    return this.http.post(this.loginUrl, body).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(()=>error);
+      })
+    );
+  }
 
-  // getAssetById(id) {
-  //   return this.http.get(this.assetAPI + '/' + id).pipe(
-  //     map((x: Response) => x),
-  //     map((x: any) => x),
-  //     catchError((error: Response) => {
-  //       return throwError(error);
-  //     })
-  //   );
-  // }
+  //Delete By Id
+  deleteNewsEventSliderById = (Id: any) => {
+    return this.http.delete(`${this.newsEventSliderUrl}/Delete?id=${Id}`).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(()=>error);
+      })
+    );
+  }
+
 
 
 }

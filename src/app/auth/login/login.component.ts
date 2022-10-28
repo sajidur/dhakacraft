@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 import Swal from 'sweetalert2';
 // import { NgxSpinner } from 'ngx-spinner';
 
@@ -16,7 +18,9 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    public spinner: NgxSpinnerService,
+    public utilitiesSrv: UtilitiesService
     ) { 
       
     }
@@ -27,8 +31,8 @@ export class LoginComponent implements OnInit {
 
   formHandler = () => {
     this.loginForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      password: ['', Validators.required],
+      UserName: ['', Validators.required],
+      Password: ['', Validators.required],
       // email: [
       //   '',
       //   [
@@ -52,37 +56,32 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    if(this.loginForm.value.name === 'admin' && this.loginForm.value.password === 'admin@handicraft') {
-      this.router.navigateByUrl('admin')
-    }
-   else {
-    Swal.fire({
-      icon:'error',
-      title: 'Error',
-      text: 'Invalid user name or password'
-    })
-    return
-   }
-    // this.spinner.show()
-    // this.utilitiesSrv.postContactUs(this.loginForm.value).subscribe({
-    //   next: (result) => {
-    //     this.spinner.hide()
-    //     console.log('contactUsFormRes', result);
-  
-    //     if (result) {
-    //       this.dialogRef.close()
-    //       Swal.fire({
-    //         icon:'success',
-    //         title:'Form submitted successfully!',
-    //         confirmButtonText: 'Ok'
-    //     })
-    //     }
-    //   },
-    //   error: (err) => {
-    //     this.spinner.hide()
-    //     console.log('contactUsFormErr', err);
-    //   },
-    // });
+      this.spinner.show()
+      this.utilitiesSrv.login(this.loginForm.value).subscribe({
+        next: (result) => {
+          this.spinner.hide()
+          console.log('loginRes', result);
+          if (!result) {
+            Swal.fire({
+              icon:'error',
+              title: 'Error',
+              text: 'Invalid user name or password'
+            })
+            return
+          }
+
+            this.router.navigateByUrl('admin')
+          
+        },
+        error: (err) => {
+          this.spinner.hide()
+          console.log('loginErr', err);
+        },
+      });
+
+
+
+   
   }
 
 }

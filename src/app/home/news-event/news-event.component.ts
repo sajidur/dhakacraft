@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { GlobalService } from 'src/app/services/global/global.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class NewsEventComponent implements OnInit {
 
   constructor(
     public utilitiesSrv: UtilitiesService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public globalSrv: GlobalService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,11 @@ export class NewsEventComponent implements OnInit {
        console.log(this.newsEventSlideObj)
       }
     });
+   }
+
+   imageUrlGet = (url: any) => {
+    console.log(this.globalSrv.imageUrlGet(url))
+    return this.globalSrv.imageUrlGet(url)
    }
 
 }

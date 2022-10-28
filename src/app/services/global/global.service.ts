@@ -9,5 +9,9 @@ export class GlobalService {
 
   public domain = 'https://dhakacraftapi.rexsystemsbd.com';
 
+  imageUrlGet = (imageName: any) => {
+    const url = `${this.domain}/Upload/${imageName}`
+    return url
+  }
   
 }

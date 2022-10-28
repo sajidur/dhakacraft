@@ -1,122 +1,162 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12" style="padding:3rem">
+    <div class="col-sm-12">
       <h2>Upload slider, news and event image</h2>
+
       <div class="form-group row">
         <div class="col-sm-6">
           <label class="col-form-label">Select Type</label>
-          <div class="row">
-            <dx-select-box
-              class="col-sm-11"
-              [dataSource]="typeList"
-              valueExpr="name"
-              displayExpr="name"
-              [searchEnabled]="true"
-              [searchExpr]="['name']"
-              [(ngModel)]="model.Type"
-              (onSelectionChanged)="typeOptionChange($event)"
-            >
-              <dx-validator validationGroup="validationGrp">
-                <dxi-validation-rule
-                  type="required"
-                  message="Type is required"
-                ></dxi-validation-rule>
-              </dx-validator>
-            </dx-select-box>
-          </div>
+          <dx-select-box
+            class="w-100"
+            [dataSource]="typeList"
+            valueExpr="name"
+            displayExpr="name"
+            [searchEnabled]="true"
+            [searchExpr]="['name']"
+            [(ngModel)]="model.Type"
+            (onSelectionChanged)="typeOptionChange($event)"
+          >
+            <dx-validator validationGroup="validationGrp">
+              <dxi-validation-rule
+                type="required"
+                message="Type is required"
+              ></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
         </div>
         <div class="col-sm-6">
           <label class="col-form-label">Upload Image</label>
-          <div class="row">
-            <input accept="image/*"  type="file" id="file" multiple ngModel
-            (change)="getFiles($event)" />
-            <!-- <input
+          <div class="w-100">
+            <input
               accept="image/*"
-              style="opacity: 0"
               type="file"
               id="file"
               multiple
               ngModel
               (change)="getFiles($event)"
-              [ngModelOptions]="{ standalone: true }"
             />
-            <label for="file" class="btn-3">
-              <div>
-                <div
-                  class="d-flex justify-content-center align-items-center"
-                  style="
-                    width: 50px;
-                    height: 50px;
-                    background: #ddeaff;
-                    border-radius: 50%;
-                  "
-                >
-                  <mat-icon style="font-size: 26px; color: #9c9c9c"
-                    >attach_file</mat-icon
-                  >
-                </div>
-              </div>
-              <div style="font-size: 13px; margin-top: 5px; color: #4e4e4e">
-                Upload Image
-              </div>
-            </label> -->
           </div>
         </div>
       </div>
-    
+
       <div class="form-group row">
         <div class="col-sm-6">
           <label class="col-form-label">Headline</label>
-          <div class="row">
-            <dx-text-box
-              class="col-sm-11"
-              [(ngModel)]="model.Headline"
-              (onChange)="model.Headline = model.Headline.trim()"
-            >
-              <!-- <dx-validator validationGroup="validationGrp">
-                            <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
-                          </dx-validator> -->
-            </dx-text-box>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <label class="col-form-label">Main Text</label>
-          <div class="row">
-            <dx-text-box
-              class="col-sm-11"
-              [(ngModel)]="model.MainText"
-              (onChange)="model.MainText = model.MainText.trim()"
-            >
-              <!-- <dx-validator validationGroup="validationGrp">
-                            <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
-                          </dx-validator> -->
-            </dx-text-box>
-          </div>
-        </div>
-      </div>
-    
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <label class="col-form-label">Detail Text</label>
-          <div class="row">
-            <dx-text-area
-              class="col-sm-12"
-              [maxHeight]="120"
-              height="120px"
-              [(ngModel)]="model.DetailText"
-              (onChange)="model.DetailText = model.DetailText.trim()"
-            ></dx-text-area>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.Headline"
+            (onChange)="model.Headline = model.Headline.trim()"
+          >
             <!-- <dx-validator validationGroup="validationGrp">
                             <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
                           </dx-validator> -->
-          </div>
+          </dx-text-box>
+        </div>
+        <div class="col-sm-6">
+          <label class="col-form-label">Main Text</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.MainText"
+            (onChange)="model.MainText = model.MainText.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                            <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
+                          </dx-validator> -->
+          </dx-text-box>
         </div>
       </div>
-    
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <label class="col-form-label">Details Text</label>
+
+          <dx-text-area
+            class="w-100"
+            [maxHeight]="140"
+            height="120px"
+            [(ngModel)]="model.DetailText"
+            (onChange)="model.DetailText = model.DetailText.trim()"
+          ></dx-text-area>
+          <!-- <dx-validator validationGroup="validationGrp">
+                            <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
+                          </dx-validator> -->
+        </div>
+      </div>
+
       <div class="text-center mt-3">
-        <button (onClick)="onDataSubmit()" class="btn btn-primary">
-          Submit
-        </button>
+        <button (click)="onDataSubmit()" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row py-5">
+    <div class="col-sm-12">
+      <div class="card-body">
+        <div class="row mt-2 mb-3">
+          <h3>News and Event, Main Slider, Topbar List</h3>
+        </div>
+
+        <dx-data-grid
+          #gridContainer
+          [dataSource]="newsEventSlideList"
+          [showBorders]="false"
+          [showColumnLines]="false"
+          [showRowLines]="false"
+          [allowColumnResizing]="true"
+          columnResizingMode="widget"
+          [focusedRowEnabled]="false"
+          rowTemplate="rowTemplateName"
+          [rowAlternationEnabled]="true"
+          keyExpr="Id"
+          [wordWrapEnabled]="true"
+        >
+          <dxo-sorting mode="multiple"></dxo-sorting>
+          <dxo-export
+            [enabled]="true"
+            fileName="serverList"
+            [printingEnabled]="false"
+          ></dxo-export>
+          <dxo-paging [pageSize]="rowSize"></dxo-paging>
+          <dxo-search-panel
+            [visible]="true"
+            [width]="240"
+            placeholder="Search..."
+          >
+          </dxo-search-panel>
+          <dxo-header-filter [visible]="true"></dxo-header-filter>
+          <dxo-pager
+            [showPageSizeSelector]="true"
+            [allowedPageSizes]="[10, 20, 50, 100, 250, 500, 1000]"
+            [showInfo]="true"
+          >
+          </dxo-pager>
+          <dxo-column-chooser [enabled]="true" mode="dragAndDrop">
+          </dxo-column-chooser>
+          <dxo-grouping></dxo-grouping>
+
+          <!-- <dxi-column caption="#SL" width='60' > </dxi-column> -->
+          <dxi-column caption="Type" dataField="Type"></dxi-column>
+          <dxi-column caption="Headline" dataField="Headline"></dxi-column>
+          <dxi-column caption="ImageUrl" dataField="ImageUrl"> </dxi-column>
+          <dxi-column caption="Action"></dxi-column>
+
+          <tbody class="dx-row" *dxTemplate="let row of 'rowTemplateName'">
+            <tr class="custom-row">
+              <td>{{ row?.data?.Type }}</td>
+              <td>{{ row?.data?.Headline }}</td>
+              <td>
+                <img
+                  height="50"
+                  src="{{ globalSrv.imageUrlGet(row?.data?.ImageUrl) }}"
+                  alt=""
+                />
+              </td>
+              <td>
+                <dx-button (onClick)="delete(row?.data?.Id)" icon="trash"> </dx-button>
+              </td>
+            </tr>
+          </tbody>
+        </dx-data-grid>
       </div>
     </div>
   </div>

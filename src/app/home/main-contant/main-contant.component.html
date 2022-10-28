@@ -6,19 +6,19 @@
       data-bs-ride="carousel"
     >
       <div *ngIf="slidingList?.length" class="carousel-inner">
-        <div [class.active] = "elementOfIndex === 0"  class="carousel-item" *ngFor="let slideImg of slidingList; let elementOfIndex = index">
+        <div [class.active] = "elementOfIndex === 0"  class="carousel-item" *ngFor="let item of slidingList; let elementOfIndex = index">
           <img
-            src="{{slideImg?.ImageUrl}}"
+            src="{{globalSrv.imageUrlGet(item?.ImageUrl)}}"
             class="d-block w-100"
             alt="image1"
           />
-          <div (click)="goToNewsAndEventDetails(slideImg?.Id)"
+          <div (click)="goToNewsAndEventDetails(item?.Id)"
             class="d-flex justify-content-center align-items-center carousel-text-description h-100"
           >
             <div class="carousel-text p-2">
-              <h2>{{slideImg?.Headline}}</h2>
+              <h2>{{item?.Headline}}</h2>
               <p>
-                {{slideImg?.MainText}}
+                {{item?.MainText}}
               </p>
             
             </div>
@@ -151,7 +151,7 @@
     <div class="carousel-inner">
       <div [class.active] = "elementOfIndex === 0" class="carousel-item" *ngFor="let item of newsAndEventList; let elementOfIndex = index">
         <img
-            src="{{item?.ImageUrl}}"
+            src="{{globalSrv.imageUrlGet(item?.ImageUrl)}}"
             class="d-block w-100"
             alt="image1"
           />

@@ -57,12 +57,6 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
-  // selectedMenuChange = (e: any) => {
-  //   console.log(e)
-  //   $(".btn-selector")
-  //   .removeClass("button-selected")
-  //   .addClass("button-deselected");
-  //   $(e.target.classList.add("button-selected"));
-  // }
+
 
 }

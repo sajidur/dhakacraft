@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { GlobalService } from 'src/app/services/global/global.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class MainContantComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public utilitiesSrv: UtilitiesService
+    public utilitiesSrv: UtilitiesService,
+    public globalSrv: GlobalService
   ) { 
 
   }
@@ -40,8 +42,8 @@ export class MainContantComponent implements OnInit {
       //  console.log(result)
        this.newsEventSlideList = result
        if(this.newsEventSlideList?.length) {
-        this.slidingList = this.newsEventSlideList.filter(e => e.Type === 'Sliding')
-        this.newsAndEventList = this.newsEventSlideList.filter(e => e.Type === 'News & Event')
+        this.slidingList = this.newsEventSlideList.filter(e => e.Type === 'Main Slider')
+        this.newsAndEventList = this.newsEventSlideList.filter(e => e.Type === 'News and Event')
         console.log('fffff',this.newsAndEventList)
        }
       })
