@@ -8,13 +8,21 @@ import { MaterialModule } from '../shared/modules/material/material.module';
 import { MenuImgComponent } from './menu-img/menu-img.component';
 import { NewsEventSliderImgComponent } from './news-event-slider-img/news-event-slider-img.component';
 import { DevExtremeModule } from '../shared/modules/dev-extreme/dev-extreme.module';
+import { AddMenuImgComponent } from './add-menu-img/add-menu-img.component';
+import { AddNewsEventSliderImgComponent } from './add-news-event-slider-img/add-news-event-slider-img.component';
+import { ProductImgComponent } from './product-img/product-img.component';
+import { AddProductImgComponent } from './add-product-img/add-product-img.component';
 
 
 @NgModule({
   declarations: [
     AdminDashboardComponent,
     MenuImgComponent,
-    NewsEventSliderImgComponent
+    NewsEventSliderImgComponent,
+    AddMenuImgComponent,
+    AddNewsEventSliderImgComponent,
+    ProductImgComponent,
+    AddProductImgComponent
   ],
   imports: [
     CommonModule,

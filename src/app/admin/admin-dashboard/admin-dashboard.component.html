@@ -15,7 +15,7 @@
             <mat-nav-list class="nav-list">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                    <a  [class.activeMenu] = "currentRoute == '/admin/menu-img'" [routerLink]="['/admin/menu-img']" class="nav-link button-deselected btn-selector" >
+                    <a  [class.activeMenu] = "currentRoute == '/admin/menu' || currentRoute == '/admin/add-menu' " [routerLink]="['/admin/menu']" class="nav-link button-deselected btn-selector" >
                         
                         Menu 
                     </a>

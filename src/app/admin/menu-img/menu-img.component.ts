@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { GlobalService } from 'src/app/services/global/global.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-menu-img',
@@ -7,58 +10,66 @@ import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
   styleUrls: ['./menu-img.component.scss']
 })
 export class MenuImgComponent implements OnInit {
-  imgUrl: any;
-  file:any
-  @Output() onChange: EventEmitter<File> = new EventEmitter<File>();
+
+  rowSize =10
+  categoryList: any[] = [];
+
 
   constructor(
-    public utilitiesSrv: UtilitiesService
+    public utilitiesSrv: UtilitiesService,
+    public spinner: NgxSpinnerService,
+    public globalSrv: GlobalService
   ) { }
 
   ngOnInit(): void {
+    this.getAllCategory()
   }
 
-  onSelectFiles = (e: any) => {
-    this.file = e.target.files[0];
-
-    // const filesArray = e.target.files;
-    // if (filesArray.length > 0) {
-    //   for (let i = 0; i < filesArray.length; i++) {
-    //     let fileType = filesArray[i].type.substring(
-    //       0,
-    //       filesArray[i].type.indexOf('/')
-    //     );
-    //     if (fileType == 'application') {
-    //       fileType = 'file';
-    //     }
-
-    //     if (fileType) {
-    //       this.utilitiesSrv.audioVideoUpload(filesArray[i]).subscribe(
-    //         (result) => {
-    //           if (result.status == 'ok') {
-    //             // this.uploadImgUrl = result?.result?.url;
-    //             console.log('Help result', result);
-    //           }
-    //         },
-    //         (err) => {
-    //           console.log('file upload err', err);
-    //         }
-    //       );
-    //     }
-    //   }
-    // }
-  }
-
-  upload = () => {
-    this.utilitiesSrv.uploadFile(this.file).subscribe({
+  getAllCategory = () => {
+    this.spinner.show();
+    this.utilitiesSrv.getAllCategory().subscribe({
       next: (result) => {
-        // this.spinner.hide()
-        console.log('home', result);
-  
+        this.spinner.hide();
+        console.log('categoryListRes', result);
+        if(result) {
+          this.categoryList = result;
+        }
       },
       error: (err) => {
-        // this.spinner.hide()
-        console.log('homeerr', err);
+        this.spinner.hide();
+        console.log('categoryListErr', err);
+      },
+    });
+  }
+
+  delete = (Id: any) => {
+    Swal.fire({
+      icon: 'warning',
+      html: `Are you sure do you want to delete it?`,
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      confirmButtonColor: '#28a745',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No, Thanks',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // this.deleteNewsEventSlider(Id);
+      }
+    });
+  }
+
+  deleteNewsEventSlider = (Id: any) => {
+    this.utilitiesSrv.deleteNewsEventSliderById(Id).subscribe({
+      next: (result) => {
+        this.spinner.hide();
+        console.log('deleteRes', result);
+        if(result) {
+          this.getAllCategory()
+        }
+      },
+      error: (err) => {
+        this.spinner.hide();
+        console.log('deleteErr', err);
       },
     });
   }
