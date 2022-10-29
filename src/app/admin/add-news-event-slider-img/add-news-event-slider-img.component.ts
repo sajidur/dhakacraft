@@ -56,6 +56,7 @@ export class AddNewsEventSliderImgComponent implements OnInit {
       return await this.utilitiesSrv.uploadFile(this.file).toPromise()
     }
     catch (error) {
+      this.spinner.hide()
        console.log(error)
     }
   }
@@ -91,6 +92,7 @@ export class AddNewsEventSliderImgComponent implements OnInit {
       return await this.utilitiesSrv.postNewsEventSliderImg(body).toPromise()
     }
     catch(error) {
+       this.spinner.hide()
        console.log(error)
     }
   };

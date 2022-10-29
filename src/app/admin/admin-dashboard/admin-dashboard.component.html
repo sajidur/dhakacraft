@@ -1,50 +1,79 @@
 <div class="main-container" [class.is-mobile]="mobileQuery.matches">
-    <mat-toolbar color="primary" class="header-toolbar">
-        <img height="40" src="../../../assets/images/logo.jpg" alt="">
-        <button class="toggle-icon" mat-icon-button (click)="snav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <div class="header-right">
-            <span style="cursor: pointer;" (click)="logout()">Logout</span>
-        </div>
-    </mat-toolbar>
+  <mat-toolbar color="primary" class="header-toolbar">
+    <img height="40" src="../../../assets/images/logo.jpg" alt="" />
+    <button class="toggle-icon" mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="header-right">
+      <span style="cursor: pointer" (click)="logout()">Logout</span>
+    </div>
+  </mat-toolbar>
 
-    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-        <mat-sidenav class="left-sidebar" #snav opened [mode]="mobileQuery.matches ? 'over' : 'side'"
-            [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-            <mat-nav-list class="nav-list">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                    <a  [class.activeMenu] = "currentRoute == '/admin/menu' || currentRoute == '/admin/add-menu' " [routerLink]="['/admin/menu']" class="nav-link button-deselected btn-selector" >
-                        
-                        Menu 
-                    </a>
-                    </li>
-                    <li class="nav-item">
-                      <a [class.activeMenu] = "currentRoute === '/admin/news-event-slider'"  [routerLink]="['/admin/news-event-slider']" class="nav-link btn-selector  button-deselected">
-                        
-                          Slider, News & Events</a>
-                    </li>
-                    <li class="nav-item">
-                      
-                      <a  class="nav-link btn-selector  button-deselected " >
-                       
-                        Products</a>
-                    </li>
-                    <!-- <li class="nav-item">
+  <mat-sidenav-container
+    class="sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      class="left-sidebar"
+      #snav
+      opened
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list class="nav-list">
+        <ul class="nav flex-column">
+       
+          <li class="nav-item">
+            <a
+              [class.activeMenu]="
+                currentRoute === '/admin/news-event-slider' ||
+                currentRoute === '/admin/add-news-event-slider'
+              "
+              [routerLink]="['/admin/news-event-slider']"
+              class="nav-link btn-selector button-deselected"
+            >
+              Slider, News & Events</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              [class.activeMenu]="
+                currentRoute == '/admin/menu' ||
+                currentRoute == '/admin/add-menu'
+              "
+              [routerLink]="['/admin/menu']"
+              class="nav-link button-deselected btn-selector"
+            >
+              Category
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              [class.activeMenu]="
+                currentRoute === '/admin/product' ||
+                currentRoute === '/admin/add-product'
+              "
+              [routerLink]="['/admin/product']"
+              class="nav-link btn-selector button-deselected"
+            >
+              Products</a
+            >
+          </li>
+          <!-- <li class="nav-item">
                         
                         <a class="nav-link btn-selector  button-deselected" >
                             Help</a>
                     </li> -->
-                  </ul>
-            </mat-nav-list>
-        </mat-sidenav>
+        </ul>
+      </mat-nav-list>
+    </mat-sidenav>
 
-        <mat-sidenav-content>   
-            <div class="p-3">
-                <router-outlet></router-outlet>
-            </div>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
-    <!-- <mat-toolbar class="footer">Footer</mat-toolbar> -->
+    <mat-sidenav-content>
+      <div class="p-3">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- <mat-toolbar class="footer">Footer</mat-toolbar> -->
 </div>

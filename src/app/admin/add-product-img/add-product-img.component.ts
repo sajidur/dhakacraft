@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { GlobalService } from 'src/app/services/global/global.service';
+import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
+import ValidationEngine from 'devextreme/ui/validation_engine';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-product-img',
@@ -7,9 +12,147 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProductImgComponent implements OnInit {
 
-  constructor() { }
+ 
+  file: any;
+  categoryList:any[] = [];
 
-  ngOnInit(): void {
+  model: any = {
+    CategoryId: 0,
+    Name: "string",
+    TitleText: "string",
+    InStockText: "string",
+    ShortText: "string",
+    Price: 0,
+    DetailText: "string",
+  };
+  productId: any;
+
+  imgModel: any = {
+    IsDefault: true,
+    ProductId: null,
+    ImageUrl: null,
+    ImageText: null,
   }
 
+  constructor(
+    public utilitiesSrv: UtilitiesService,
+    public spinner: NgxSpinnerService,
+    public globalSrv: GlobalService
+  ) { }
+
+  ngOnInit(): void {
+    this.categoryList = this.utilitiesSrv.allCategory
+  }
+
+   //add news, event, slider
+   addProduct = async (body: any) => {
+    try {
+      return await this.utilitiesSrv.addProduct(body).toPromise()
+    }
+    catch(error) {
+       this.spinner.hide()
+       console.log(error)
+    }
+  };
+
+
+  onDataSubmit = async () => {
+    const { isValid } = ValidationEngine.validateGroup('validationGrp');
+    if (isValid) {
+      // console.log(this.model);
+      this.spinner.show()
+      // let uploadRes = null
+      // if(this.file) {
+      //   uploadRes = await this.upload();
+      // }
+      // if(!!uploadRes) {
+      //   this.model.ImageUrl = uploadRes
+      // }
+      const addProductRes = await this.addProduct(this.model);
+      console.log(addProductRes)
+      this.productId = addProductRes
+      if(!!addProductRes) {
+        this.spinner.hide()
+        // this.model = {}
+        Swal.fire({
+            icon: 'success',
+            title: 'Data added successfully!',
+            confirmButtonText: 'Ok',
+           });
+      }
+    }
+  };
+
+
+  //get file from storage
+  getFiles = async(e: any) => {
+    this.file = e.target.files[0];
+    console.log(this.file);
+    if(this.file?.size > 1048578) { //1048576 1mb
+      Swal.fire({
+        icon: 'warning',
+        title: 'Warning',
+        text: `Please select image size is less than 1MB`,
+      })
+      return
+    }
+    // Swal.fire({
+    //   icon: 'warning',
+    //   html: `Are you sure do you want to upload?`,
+    //   showCancelButton: true,
+    //   cancelButtonColor: '#d33',
+    //   confirmButtonColor: '#28a745',
+    //   confirmButtonText: 'Yes',
+    //   cancelButtonText: 'No, Thanks',
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     this.upload();
+    //   }
+    // });
+    };
+  //  upload img
+  upload = async () => {
+    try {
+      return await this.utilitiesSrv.uploadFile(this.file).toPromise()
+    }
+    catch (error) {
+      this.spinner.hide()
+       console.log(error)
+    }
+  }
+
+
+  saveImageProduct = async () => {
+     let uploadRes = null
+      if(this.file) {
+        uploadRes = await this.upload();
+      }
+      if(!!uploadRes) {
+        this.imgModel.ImageUrl = uploadRes
+        this.imgModel.ProductId = this.productId
+      }
+      console.log('imgModel', this.imgModel)
+      const saveImgRes = await this.saveImgProduct(this.imgModel);
+      if(!!saveImgRes) {
+        this.spinner.hide()
+        this.model = {}
+        Swal.fire({
+            icon: 'success',
+            title: 'Image added successfully!',
+            confirmButtonText: 'Ok',
+           });
+      }
+   }
+
+   saveImgProduct = async (body: any) => {
+    try {
+      return await this.utilitiesSrv.saveImgProduct(body).toPromise()
+    }
+    catch(error) {
+       this.spinner.hide()
+       console.log(error)
+    }
+   }
+
 }
+

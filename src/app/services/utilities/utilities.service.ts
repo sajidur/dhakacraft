@@ -8,6 +8,7 @@ import { GlobalService } from '../global/global.service';
   providedIn: 'root',
 })
 export class UtilitiesService {
+  allCategory: any[] = [];
   constructor(private http: HttpClient, public globalSrv: GlobalService) {}
 
   contactUsUrl = `${this.globalSrv.domain}/api/contactus/contact`;
@@ -15,6 +16,7 @@ export class UtilitiesService {
   newsEventSliderUrl = `${this.globalSrv.domain}/api/NewsContent`;
   loginUrl = `${this.globalSrv.domain}/api/User`;
   categoryUrl = `${this.globalSrv.domain}/api/Category`
+  productUrl = `${this.globalSrv.domain}`
 
   newsEventSliderList = new BehaviorSubject<any>(null);
   newsEventSliderListCast = this.newsEventSliderList
@@ -104,6 +106,7 @@ export class UtilitiesService {
     getAllCategory(): Observable<any> {
       return this.http.get(`${this.categoryUrl}`).pipe(
         map((x: any) => {
+          this.allCategory = x
           return x;
         }),
         catchError((error: Response) => {
@@ -111,5 +114,36 @@ export class UtilitiesService {
         })
       );
     }
+
+    //Get all product 
+
+    getProductByCategoryId(Id: any): Observable<any> {
+      return this.http.get(`${this.productUrl}/api/Product?categoryId=${Id}`).pipe(
+        map((x: any) => x),
+        catchError((error: Response) => {
+          return throwError(() => error);
+        })
+      );
+    }
+
+    //Add Product 
+    addProduct = (body: any): Observable<any> =>  {
+      return this.http.post(`${this.productUrl}/Save`, body).pipe(
+        map((x: any) => x),
+        catchError((error: Response) => {
+          return throwError(() => error);
+        })
+      );
+    }
+
+      //Save Img Product 
+      saveImgProduct = (body: any): Observable<any> =>  {
+        return this.http.post(`${this.productUrl}/SaveProductImage`, body).pipe(
+          map((x: any) => x),
+          catchError((error: Response) => {
+            return throwError(() => error);
+          })
+        );
+      }
 
 }

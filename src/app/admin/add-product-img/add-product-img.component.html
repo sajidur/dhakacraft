@@ -1,1 +1,170 @@
-<p>add-product-img works!</p>
+<div class="container-fluid">
+
+    <div class="row mt-2 mb-3">
+        <div class="col-sm-6">
+         <h2 class="fw-bold">Add New Product</h2>
+        </div>
+        <div class="col-sm-6 text-end">
+           <button routerLink="../product" class="btn btn-primary px-4">Back To List</button>
+        </div>
+     </div>
+
+  <div class="row">
+    
+    <div class="col-sm-12">
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <label class="col-form-label">Select Category</label>
+          <dx-select-box
+            class="w-100"
+            [dataSource]="categoryList"
+            valueExpr="Id"
+            displayExpr="Name"
+            [searchEnabled]="true"
+            [searchExpr]="['Name']"
+            [(ngModel)]="model.CategoryId"
+          >
+            <dx-validator validationGroup="validationGrp">
+              <dxi-validation-rule
+                type="required"
+                message="Type is required"
+              ></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
+        </div>
+
+        <div class="col-sm-6">
+            <label class="col-form-label">Name</label>
+            <dx-text-box
+              class="w-100"
+              [(ngModel)]="model.Name"
+              (onChange)="model.Name = model.Name.trim()"
+            >
+              <dx-validator validationGroup="validationGrp">
+                     <dxi-validation-rule type="required" message="Name Required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-text-box>
+        </div>
+      
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+            <label class="col-form-label">Title Text</label>
+            <dx-text-box
+              class="w-100"
+              [(ngModel)]="model.TitleText"
+              (onChange)="model.TitleText = model.TitleText.trim()"
+            >
+              <dx-validator validationGroup="validationGrp">
+                     <dxi-validation-rule type="required" message="Title Required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-text-box>
+          </div>
+        <div class="col-sm-6">
+          <label class="col-form-label">Short Text</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.ShortText"
+            (onChange)="model.ShortText = model.ShortText.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                                <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
+            </dx-validator> -->
+          </dx-text-box>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+            <label class="col-form-label">In Stock</label>
+            <dx-text-box
+              class="w-100"
+              [(ngModel)]="model.InStockText"
+              (onChange)="model.InStockText = model.InStockText.trim()"
+            >
+              <!-- <dx-validator validationGroup="validationGrp">
+                     <dxi-validation-rule type="required" message="InStockText Required"></dxi-validation-rule>
+              </dx-validator> -->
+            </dx-text-box>
+          </div>
+          <div class="col-sm-6">
+            <label class="col-form-label">Price</label>
+            <dx-number-box class="col-sm-11" [(ngModel)]="model.Price">
+                <!-- <dx-validator validationGroup="validationGrp">
+                  <dxi-validation-rule type="required" message="Number of Installment Required">
+                  </dxi-validation-rule>
+                </dx-validator> -->
+              </dx-number-box>
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <label class="col-form-label">Details Text</label>
+
+          <dx-text-area
+            class="w-100"
+            [maxHeight]="140"
+            height="120px"
+            [(ngModel)]="model.DetailText"
+            (onChange)="model.DetailText = model.DetailText.trim()"
+          ></dx-text-area>
+          <!-- <dx-validator validationGroup="validationGrp">
+                                <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
+                              </dx-validator> -->
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <button (click)="onDataSubmit()" class="btn btn-primary px-5">
+          Add Product
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+    
+   <div class="col-sm-12">
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <label class="col-form-label">Image Text</label>
+            <dx-text-box
+              class="w-100"
+              [(ngModel)]="imgModel.ImageText"
+              (onChange)="imgModel.ImageText = imgModel.ImageText.trim()"
+            >
+              <!-- <dx-validator validationGroup="validationGrp">
+                     <dxi-validation-rule type="required" message="InStockText Required"></dxi-validation-rule>
+              </dx-validator> -->
+            </dx-text-box>
+          </div>
+          <div class="col-sm-6">
+            <label class="col-form-label">Upload Image</label>
+            <div class="w-100">
+              <input
+                accept="image/*"
+                type="file"
+                id="file"
+                multiple
+                ngModel
+                (change)="getFiles($event)"
+              />
+            </div>
+          </div>
+    </div>
+   </div>
+
+      <div class="text-center mt-3">
+        <button (click)="saveImageProduct()" class="btn btn-primary px-5">
+          Submit
+        </button>
+      </div>
+</div>
+
+
