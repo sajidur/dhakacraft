@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
  
   }
 
-  homeMenuItem = (item: any, categoryId: any) => {
+  homeMenuItem = (categoryId: any) => {
     $(".dropdown-content2").css("display", "none");
     // this.menuControllerSrv.homeMenuItem = item
     this.router.navigateByUrl(`home?categoryId=${categoryId}`);

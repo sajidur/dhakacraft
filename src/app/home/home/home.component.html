@@ -67,7 +67,7 @@
                       <a (click)="homeMenuItem('home-textiles')">Home Textiles</a>
                       <a (click)="homeMenuItem('wall-hanging')">Wall Hanging</a>
                       <a (click)="homeMenuItem('lamp-shade')">Lamp Shade</a> -->
-                      <a (click)="homeMenuItem('baskets',item?.Id)" *ngFor="let item of homeCategory">{{item?.Name}}</a>
+                      <a (click)="homeMenuItem(item?.Id)" *ngFor="let item of homeCategory">{{item?.Name}}</a>
                     </div>
                     <div class="col-sm-7">
                       <img
@@ -89,8 +89,9 @@
                 <div class="dropdown-content3 p-4 bg-white">
                   <div class="row">
                     <div class="col-sm-5">
-                      <a (click)="gardenMenu('planters')">Planters</a>
-                      <a (click)="gardenMenu('birdhouse')">Birdhouse</a>
+                      <!-- <a (click)="gardenMenu('planters')">Planters</a>
+                      <a (click)="gardenMenu('birdhouse')">Birdhouse</a> -->
+                      <a (click)="homeMenuItem(item?.Id)" *ngFor="let item of gardenCategory">{{item?.Name}}</a>
                     </div>
                     <div class="col-sm-7">
                       <img
@@ -112,9 +113,10 @@
                 <div class="dropdown-content4 p-4 bg-white">
                   <div class="row">
                     <div class="col-sm-5">
-                      <a (click)="personalItem('bags')">Bag's</a>
+                      <!-- <a (click)="personalItem('bags')">Bag's</a>
                       <a (click)="personalItem('jewelry')">Jewelry</a>
-                      <a (click)="personalItem('purses')">Purses</a>
+                      <a (click)="personalItem('purses')">Purses</a> -->
+                      <a (click)="homeMenuItem(item?.Id)" *ngFor="let item of personalCategory">{{item?.Name}}</a>
                     </div>
                     <div class="col-sm-7">
                       <img
@@ -136,9 +138,10 @@
                 <div class="dropdown-content5 p-4 bg-white">
                   <div class="row">
                     <div class="col-sm-5">
-                      <a (click)="christmasItem('card-and-wrap')">Card’s & Wrap</a>
+                      <!-- <a (click)="christmasItem('card-and-wrap')">Card’s & Wrap</a>
                       <a (click)="christmasItem('tree-hanging')">Tree Hanging</a>
-                      <a (click)="christmasItem('home-decoration')">Home Decoration</a>
+                      <a (click)="christmasItem('home-decoration')">Home Decoration</a> -->
+                      <a (click)="homeMenuItem(item?.Id)" *ngFor="let item of christmasCategory">{{item?.Name}}</a>
                     </div>
                     <div class="col-sm-7">
                       <img
@@ -152,6 +155,7 @@
                 </div>
               </div>
             </li>
+
           </ul>
           <form class="d-flex" role="search">
             <input
