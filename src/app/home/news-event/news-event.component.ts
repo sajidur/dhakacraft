@@ -14,20 +14,23 @@ export class NewsEventComponent implements OnInit {
   private subscriptions: Array<Subscription> = [];
   newsEventSlideList: any[] = [];
   newsEventSlideObj: any;
+  Id: number;
 
   constructor(
     public utilitiesSrv: UtilitiesService,
     public route: ActivatedRoute,
     public globalSrv: GlobalService
-  ) { }
+  ) { 
+    this.getQueryParams()
+  }
 
   ngOnInit(): void {
     this.currentPushSubscription()
-    this.getQueryParams()
    }
+
  
    ngOnDestroy() {
-     console.log()
+     console.log('destroy.....')
      // this.utilitiesSrv.newsEventSliderList.next(null);
      this.subscriptions.forEach((subscription: Subscription) => {
        subscription.unsubscribe();
@@ -39,6 +42,8 @@ export class NewsEventComponent implements OnInit {
        this.utilitiesSrv.newsEventSliderListCast.subscribe((result) => {
        //  console.log(result)
         this.newsEventSlideList = result
+        this.newsEventSlideObj =  this.newsEventSlideList.find(e => e.Id === this.Id)
+        console.log(this.newsEventSlideObj)
        })
      );
    }
@@ -46,9 +51,8 @@ export class NewsEventComponent implements OnInit {
    getQueryParams = () => {
     this.route.queryParams.subscribe((params) => {
       if (params['Id']) {
-        let Id = Number(params['Id'])
-       this.newsEventSlideObj =  this.newsEventSlideList.find(e => e.Id === Id)
-       console.log(this.newsEventSlideObj)
+        this.Id = Number(params['Id'])
+ 
       }
     });
    }

@@ -1,27 +1,30 @@
-
 <!-- Baskets started here -->
-<section *ngIf="menuControllerSrv?.homeMenuItem === 'baskets' " class="container pt-3">
-    <h1>Baskets</h1>
-    <p class="mb-4">
-        A basket is a container that is traditionally constructed from stiff fibers and can be made from a range of materials, including wood splints, runners, and cane. While most baskets are made from plant materials, other materials such as horsehair, baleen, or metal wire can be used. Baskets are generally woven by hand. Some baskets are fitted with a lid, while others are left open on top.
-    </p>
-  
-   
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-          <div (click)="basketDetails()" class="col">
-            <div class="card">
-              <img
-                src="../../../assets/images/DhakaHandiCraft/basket1.JPG"
-                class="card-img-top"
-                alt="student1"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Basket1</h3>
-                <p class="card-text">Basket1 description</p>
-              </div>
-            </div>
-          </div>
-          <div (click)="basketDetails()" class="col">
+<section class="container pt-4">
+  <h3 *ngIf="!productList.length">No product found</h3>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
+    <div
+      (click)="productDetails(item?.Id)"
+      *ngFor="let item of productList"
+      class="col cursor_pointer"
+    >
+      <div class="card">
+        <span *ngFor="let img of item.Images">
+          <img
+            *ngIf="img?.IsDefault"
+            [src]="globalSrv.imageUrlGet(img?.ImageUrl)"
+            class="card-img-top"
+            alt=""
+          />
+        </span>
+
+        <div class="m-3">
+          <h3 class="card-title">{{ item?.Name }}</h3>
+          <p class="card-text">{{ item?.TitleText }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- <div (click)="basketDetails()" class="col">
             <div class="card">
               <img
               src="../../../assets/images/DhakaHandiCraft/basket2.JPG"
@@ -46,14 +49,13 @@
                 <p class="card-text">Basket3 description</p>
               </div>
             </div>
-          </div>
-      </div>
-  
+          </div> -->
+  </div>
 </section>
 <!-- Baskets ended here -->
 
 <!-- Home office started here -->
-<section *ngIf="menuControllerSrv?.homeMenuItem === 'home-office' " class="container pt-3">
+<!-- <section *ngIf="menuControllerSrv?.homeMenuItem === 'home-office' " class="container pt-3">
     <h1>Home Office</h1>
     <p class="mb-4">
         Work From Home Essentials That'll Boost Productivity.
@@ -66,7 +68,7 @@
               <img
                 src="../../../assets/images/DhakaHandiCraft/home-office1.jpg"
                 class="card-img-top"
-                alt="student1"
+                alt=""
               />
               <div class="m-3">
                 <h3 class="card-title">Home Office Title</h3>
@@ -102,11 +104,11 @@
           </div>
       </div>
   
-</section>
+</section> -->
 <!-- Home office ended here -->
 
 <!-- Flower started here -->
-<section *ngIf="menuControllerSrv?.homeMenuItem === 'flower-vases' " class="container pt-3">
+<!-- <section *ngIf="menuControllerSrv?.homeMenuItem === 'flower-vases' " class="container pt-3">
     <h1>Flower Vases</h1>
     <p class="mb-4">
         Vases are often decorated, and they are often used to hold cut flowers.
@@ -119,7 +121,7 @@
               <img
                 src="../../../assets/images/DhakaHandiCraft/flower1.JPG"
                 class="card-img-top"
-                alt="student1"
+                alt=""
               />
               <div class="m-3">
                 <h3 class="card-title">Flower Vases Title</h3>
@@ -155,11 +157,11 @@
           </div>
       </div>
   
-</section>
+</section> -->
 <!-- Flower ended here -->
 
 <!-- Wall hanging started here -->
-<section *ngIf="menuControllerSrv?.homeMenuItem === 'wall-hanging' " class="container pt-3">
+<!-- <section *ngIf="menuControllerSrv?.homeMenuItem === 'wall-hanging' " class="container pt-3">
     <h1>Wall Hanging</h1>
     <p class="mb-4">
         A wall hanging craft is a decoration, an amulet, a religious or a symbolic object that is hung from the ceiling or another structure.
@@ -172,7 +174,7 @@
               <img
                 src="../../../assets/images/DhakaHandiCraft/7.jpg"
                 class="card-img-top"
-                alt="student1"
+                alt=""
               />
               <div class="m-3">
                 <h3 class="card-title">Wall Hanging Title</h3>
@@ -208,11 +210,11 @@
           </div>
       </div>
   
-</section>
+</section> -->
 <!-- Wall hanging ended here -->
 
 <!-- Flower started here -->
-<section *ngIf="menuControllerSrv?.homeMenuItem === 'lamp-shade' " class="container">
+<!-- <section *ngIf="menuControllerSrv?.homeMenuItem === 'lamp-shade' " class="container">
     <h1>Lamp Shade</h1>
     <p class="mb-4">
         A lampshade is a fixture that covers the lightbulb on a lamp to diffuse the light it emits 
@@ -225,7 +227,7 @@
               <img
                 src="../../../assets/images/DhakaHandiCraft/lamp1.JPG"
                 class="card-img-top"
-                alt="student1"
+                alt=""
               />
               <div class="m-3">
                 <h3 class="card-title">Lamp Shade Title</h3>
@@ -261,5 +263,5 @@
           </div>
       </div>
   
-</section>
+</section> -->
 <!-- Flower ended here -->

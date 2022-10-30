@@ -118,7 +118,7 @@ export class UtilitiesService {
     //Get all product 
 
     getProductByCategoryId(Id: any): Observable<any> {
-      return this.http.get(`${this.productUrl}/api/Product?categoryId=${Id}`).pipe(
+      return this.http.get(`${this.productUrl}/GetTopList?categoryId=${Id}`).pipe(
         map((x: any) => x),
         catchError((error: Response) => {
           return throwError(() => error);
@@ -146,4 +146,12 @@ export class UtilitiesService {
         );
       }
 
+      getProductByProductId = (Id: any): Observable<any> => {
+        return this.http.get(`${this.productUrl}/GetByProductId?productId=${Id}`).pipe(
+          map((x: any) => x),
+          catchError((error: Response) => {
+            return throwError(() => error);
+          })
+        );
+      }
 }

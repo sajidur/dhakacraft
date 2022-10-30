@@ -25,6 +25,11 @@ export class HomeComponent implements OnInit {
   newsEventSlideList: any[] = [];
   topBarList: any[] = [];
   topBarObj: any;
+  categoryList: any[] = [];
+  homeCategory: any[] = [];
+  gardenCategory: any[] = [];
+  personalCategory: any[] = [];
+  christmasCategory: any[] = [];
   
   constructor(
     private formBuilder: FormBuilder,
@@ -40,18 +45,10 @@ export class HomeComponent implements OnInit {
     this.formHandler()
     this.stickyChatButton()
     this.currentYear = new Date().getFullYear();
-    // this.currentPushSubscription()
     this.getAllNewsEventSlider()
+    this.getAllCategory()
   }
 
- 
-   ngOnDestroy() {
-     console.log()
-     // this.utilitiesSrv.newsEventSliderList.next(null);
-     this.subscriptions.forEach((subscription: Subscription) => {
-       subscription.unsubscribe();
-     });
-   }
 
    formHandler = () => {
     this.registerForm = this.formBuilder.group({
@@ -62,22 +59,13 @@ export class HomeComponent implements OnInit {
   });
    }
  
-  //  currentPushSubscription() {
-  //    this.subscriptions.push(
-  //      this.utilitiesSrv.newsEventSliderListCast.subscribe((result) => {
-  //       console.log(result)
-  //       this.newsEventSlideList = result
-  //      })
-  //    );
-  //  }
-
+  // Get all news, event, slider list
    getAllNewsEventSlider = () => {
     this.spinner.show();
     this.utilitiesSrv.getAllNewsEventSliderImg().subscribe({
       next: (result) => {
         this.spinner.hide();
-        console.log('newsListRes', result);
-        // this.utilitiesSrv.allNewsEventSliderList = result;
+        console.log('newsEventSliderListRes', result);
         this.newsEventSlideList = result;
         if(this.newsEventSlideList?.length) {
           this.topBarList =  this.newsEventSlideList.filter(e => e.Type === 'Topbar')
@@ -85,31 +73,39 @@ export class HomeComponent implements OnInit {
             this.topBarObj = this.topBarList[this.topBarList.length-1]
           }
          
-        }
-      
-
+        } 
       },
       error: (err) => {
         this.spinner.hide();
-        console.log('newsListErr', err);
+        console.log('newsEventSliderListErr', err);
       },
     });
-  }
-
-
-  closeLeaveMessage() {
-    $("#leave-message").css("display", "none");
-    $("#float-message-btn").css("display", "block");
-  }
-
-  openLeaveMessagePopup() {
-    $("#float-message-btn").css("display", "none");
-    $("#leave-message").css("display", "block");
   }
 
   // convenience getter for easy access to form fields
   get f() { 
     return this.registerForm.controls; 
+  }
+
+  getAllCategory = () => {
+    // this.spinner.show();
+    this.utilitiesSrv.getAllCategory().subscribe({
+      next: (result) => {
+        // this.spinner.hide();
+        console.log('categoryListRes', result);
+        if(result && result?.length) {
+          this.categoryList = result;
+          this.homeCategory =  this.categoryList.filter((e) => e.MenuId === 1) 
+          this.gardenCategory =  this.categoryList.filter((e) => e.MenuId === 2) 
+          this.personalCategory =  this.categoryList.filter((e) => e.MenuId === 3) 
+          this.christmasCategory =  this.categoryList.filter((e) => e.MenuId === 4) 
+        }
+      },
+      error: (err) => {
+        // this.spinner.hide();
+        console.log('categoryListErr', err);
+      },
+    });
   }
 
   onSubmit() {
@@ -144,10 +140,11 @@ export class HomeComponent implements OnInit {
  
   }
 
-  homeMenuItem = (item: any) => {
+  homeMenuItem = (item: any, categoryId: any) => {
     $(".dropdown-content2").css("display", "none");
-    this.menuControllerSrv.homeMenuItem = item
-    this.router.navigate(['home']);
+    // this.menuControllerSrv.homeMenuItem = item
+    this.router.navigateByUrl(`home?categoryId=${categoryId}`);
+
   }
 
   gardenMenu = (item: any) => {
@@ -207,17 +204,22 @@ export class HomeComponent implements OnInit {
       maxWidth: '90vw',
       data: data,
     });
-
-    // After closed is fired when dialog component send data 
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result.data == 'view-catalog') {
-    //   } 
-    // });
   }
 
   goToNewsAndEventDetails = (Id: any) => {
-    // this.router.navigateByUrl('news-event?id=' + Id + '&as=' + as + '&cd=' + cd);
     this.router.navigateByUrl('news-event?Id=' + Id);
   }
+
+  closeLeaveMessage() {
+    $("#leave-message").css("display", "none");
+    $("#float-message-btn").css("display", "block");
+  }
+
+  // Open message send dialog modal
+  openLeaveMessagePopup() {
+    $("#float-message-btn").css("display", "none");
+    $("#leave-message").css("display", "block");
+  }
+
 
 }

@@ -61,12 +61,13 @@
                 <div class="dropdown-content2 p-4 bg-white">
                   <div class="row">
                     <div class="col-sm-5">
-                      <a (click)="homeMenuItem('baskets')">Baskets</a>
+                      <!-- <a (click)="homeMenuItem('baskets')">Baskets</a>
                       <a (click)="homeMenuItem('home-office')">Home Office</a>
                       <a (click)="homeMenuItem('flower-vases')">Flower Vases</a>
                       <a (click)="homeMenuItem('home-textiles')">Home Textiles</a>
                       <a (click)="homeMenuItem('wall-hanging')">Wall Hanging</a>
-                      <a (click)="homeMenuItem('lamp-shade')">Lamp Shade</a>
+                      <a (click)="homeMenuItem('lamp-shade')">Lamp Shade</a> -->
+                      <a (click)="homeMenuItem('baskets',item?.Id)" *ngFor="let item of homeCategory">{{item?.Name}}</a>
                     </div>
                     <div class="col-sm-7">
                       <img

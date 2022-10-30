@@ -8,59 +8,56 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-product-img',
   templateUrl: './add-product-img.component.html',
-  styleUrls: ['./add-product-img.component.scss']
+  styleUrls: ['./add-product-img.component.scss'],
 })
 export class AddProductImgComponent implements OnInit {
-
- 
   file: any;
-  categoryList:any[] = [];
+  categoryList: any[] = [];
 
   model: any = {
-    CategoryId: 0,
-    Name: "string",
-    TitleText: "string",
-    InStockText: "string",
-    ShortText: "string",
+    CategoryId: null,
+    Name: null,
+    TitleText: null,
+    InStockText: null,
+    ShortText: null,
     Price: 0,
-    DetailText: "string",
+    DetailText: null,
   };
   productId: any;
 
   imgModel: any = {
-    IsDefault: true,
+    IsDefault: false,
     ProductId: null,
     ImageUrl: null,
     ImageText: null,
-  }
+  };
+  isDefaultCheckBoxDisabled: boolean = false;
 
   constructor(
     public utilitiesSrv: UtilitiesService,
     public spinner: NgxSpinnerService,
     public globalSrv: GlobalService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.categoryList = this.utilitiesSrv.allCategory
+    this.categoryList = this.utilitiesSrv.allCategory;
   }
 
-   //add news, event, slider
-   addProduct = async (body: any) => {
+  //add news, event, slider
+  addProduct = async (body: any) => {
     try {
-      return await this.utilitiesSrv.addProduct(body).toPromise()
-    }
-    catch(error) {
-       this.spinner.hide()
-       console.log(error)
+      return await this.utilitiesSrv.addProduct(body).toPromise();
+    } catch (error) {
+      this.spinner.hide();
+      console.log(error);
     }
   };
-
 
   onDataSubmit = async () => {
     const { isValid } = ValidationEngine.validateGroup('validationGrp');
     if (isValid) {
       // console.log(this.model);
-      this.spinner.show()
+      this.spinner.show();
       // let uploadRes = null
       // if(this.file) {
       //   uploadRes = await this.upload();
@@ -69,90 +66,84 @@ export class AddProductImgComponent implements OnInit {
       //   this.model.ImageUrl = uploadRes
       // }
       const addProductRes = await this.addProduct(this.model);
-      console.log(addProductRes)
-      this.productId = addProductRes
-      if(!!addProductRes) {
-        this.spinner.hide()
-        // this.model = {}
+      console.log(addProductRes);
+      this.productId = addProductRes;
+      this.isDefaultCheckBoxDisabled = false;
+      if (!!addProductRes) {
+        this.spinner.hide();
+        //  this.resetImgModel()
         Swal.fire({
-            icon: 'success',
-            title: 'Data added successfully!',
-            confirmButtonText: 'Ok',
-           });
+          icon: 'success',
+          title: 'Product added successfully!',
+          confirmButtonText: 'Ok',
+        });
       }
     }
   };
 
-
   //get file from storage
-  getFiles = async(e: any) => {
+  getFiles = async (e: any) => {
     this.file = e.target.files[0];
     console.log(this.file);
-    if(this.file?.size > 1048578) { //1048576 1mb
+    if (this.file?.size > 1048578) {
+      //1048576 1mb
       Swal.fire({
         icon: 'warning',
         title: 'Warning',
         text: `Please select image size is less than 1MB`,
-      })
-      return
+      });
+      return;
     }
-    // Swal.fire({
-    //   icon: 'warning',
-    //   html: `Are you sure do you want to upload?`,
-    //   showCancelButton: true,
-    //   cancelButtonColor: '#d33',
-    //   confirmButtonColor: '#28a745',
-    //   confirmButtonText: 'Yes',
-    //   cancelButtonText: 'No, Thanks',
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     this.upload();
-    //   }
-    // });
-    };
+  };
   //  upload img
   upload = async () => {
     try {
-      return await this.utilitiesSrv.uploadFile(this.file).toPromise()
+      return await this.utilitiesSrv.uploadFile(this.file).toPromise();
+    } catch (error) {
+      this.spinner.hide();
+      console.log(error);
     }
-    catch (error) {
-      this.spinner.hide()
-       console.log(error)
-    }
-  }
-
+  };
 
   saveImageProduct = async () => {
-     let uploadRes = null
-      if(this.file) {
-        uploadRes = await this.upload();
+    this.spinner.show();
+    let uploadRes = null;
+    if (this.file) {
+      uploadRes = await this.upload();
+    }
+    if (!!uploadRes) {
+      this.imgModel.ImageUrl = uploadRes;
+
+      if (this.imgModel.IsDefault) {
+        this.isDefaultCheckBoxDisabled = true;
       }
-      if(!!uploadRes) {
-        this.imgModel.ImageUrl = uploadRes
-        this.imgModel.ProductId = this.productId
-      }
-      console.log('imgModel', this.imgModel)
+
+      this.imgModel.ProductId = this.productId;
+      console.log('imgModel', this.imgModel);
       const saveImgRes = await this.saveImgProduct(this.imgModel);
-      if(!!saveImgRes) {
-        this.spinner.hide()
-        this.model = {}
+      if (!!saveImgRes) {
+        this.spinner.hide();
+        this.resetImgModel();
         Swal.fire({
-            icon: 'success',
-            title: 'Image added successfully!',
-            confirmButtonText: 'Ok',
-           });
+          icon: 'success',
+          title: 'Image added successfully!',
+          confirmButtonText: 'Ok',
+        });
       }
-   }
+    }
+  };
 
-   saveImgProduct = async (body: any) => {
+  saveImgProduct = async (body: any) => {
     try {
-      return await this.utilitiesSrv.saveImgProduct(body).toPromise()
+      return await this.utilitiesSrv.saveImgProduct(body).toPromise();
+    } catch (error) {
+      this.spinner.hide();
+      console.log(error);
     }
-    catch(error) {
-       this.spinner.hide()
-       console.log(error)
-    }
-   }
-
+  };
+  resetImgModel = () => {
+    this.imgModel.IsDefault = false;
+    this.imgModel.ImageText = null;
+    this.imgModel.ImageUrl = null;
+  };
 }
-

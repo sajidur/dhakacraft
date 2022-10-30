@@ -91,7 +91,7 @@
           </div>
           <div class="col-sm-6">
             <label class="col-form-label">Price</label>
-            <dx-number-box class="col-sm-11" [(ngModel)]="model.Price">
+            <dx-number-box class="w-100" [(ngModel)]="model.Price">
                 <!-- <dx-validator validationGroup="validationGrp">
                   <dxi-validation-rule type="required" message="Number of Installment Required">
                   </dxi-validation-rule>
@@ -128,7 +128,7 @@
 
 
 
-<div class="row">
+<div class="row py-3">
     
    <div class="col-sm-12">
     <div class="form-group row">
@@ -143,8 +143,8 @@
                      <dxi-validation-rule type="required" message="InStockText Required"></dxi-validation-rule>
               </dx-validator> -->
             </dx-text-box>
-          </div>
-          <div class="col-sm-6">
+        </div>
+        <div class="col-sm-6">
             <label class="col-form-label">Upload Image</label>
             <div class="w-100">
               <input
@@ -156,10 +156,12 @@
                 (change)="getFiles($event)"
               />
             </div>
-          </div>
+        </div>
     </div>
    </div>
-
+   <div class="col-sm-12 py-4">
+    <dx-check-box [disabled]="isDefaultCheckBoxDisabled" [(ngModel)]="imgModel.IsDefault" text="Default"></dx-check-box>
+  </div>
       <div class="text-center mt-3">
         <button (click)="saveImageProduct()" class="btn btn-primary px-5">
           Submit
