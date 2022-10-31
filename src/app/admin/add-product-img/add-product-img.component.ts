@@ -4,6 +4,7 @@ import { GlobalService } from 'src/app/services/global/global.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 import ValidationEngine from 'devextreme/ui/validation_engine';
 import Swal from 'sweetalert2';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-product-img',
@@ -23,6 +24,14 @@ export class AddProductImgComponent implements OnInit {
     Price: 0,
     DetailText: null,
   };
+  // "CategoryId": 0,
+  // "Name": "string",
+  // "TitleText": "string",
+  // "InStockText": "string",
+  // "ShortText": "string",
+  // "Price": 0,
+  // "DetailText": "string",
+  // "Id": 0,
   productId: any;
 
   imgModel: any = {
@@ -32,15 +41,57 @@ export class AddProductImgComponent implements OnInit {
     ImageText: null,
   };
   isDefaultCheckBoxDisabled: boolean = false;
+  productDetail: any;
+  editMode: boolean = false;
 
   constructor(
     public utilitiesSrv: UtilitiesService,
     public spinner: NgxSpinnerService,
-    public globalSrv: GlobalService
+    public globalSrv: GlobalService,
+    public route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.categoryList = this.utilitiesSrv.allCategory;
+    this.getQueryParams()
+  }
+
+  getQueryParams = () => {
+    this.route.queryParams.subscribe((params) => {
+      if (params['productId']) {
+        this.productId = Number(params['productId']);
+        this.getProductByProductId(this.productId);
+      }
+    });
+  }
+
+  getProductByProductId = (Id: any) => {
+    this.spinner.show();
+    // this.productList = [];
+    this.utilitiesSrv.getProductByProductId(Id).subscribe({
+      next: (result) => {
+        this.spinner.hide();
+        console.log('In edit mode getProductById', result);
+        this.productDetail = result 
+        // this.productId = result?.Id
+        const { CategoryId, Name, TitleText, InStockText, ShortText, Price, DetailText } = this.productDetail
+        this.model = {
+          CategoryId,
+          Name,
+          TitleText,
+          InStockText,
+          ShortText,
+          Price,
+          DetailText
+        }
+        this.editMode = true;
+       
+      },
+      error: (err) => {
+        this.spinner.hide();
+        console.log('getProductByIdErr', err);
+      },
+    });
   }
 
   //add news, event, slider
@@ -51,20 +102,13 @@ export class AddProductImgComponent implements OnInit {
       this.spinner.hide();
       console.log(error);
     }
-  };
+  }
 
   onDataSubmit = async () => {
     const { isValid } = ValidationEngine.validateGroup('validationGrp');
     if (isValid) {
       // console.log(this.model);
       this.spinner.show();
-      // let uploadRes = null
-      // if(this.file) {
-      //   uploadRes = await this.upload();
-      // }
-      // if(!!uploadRes) {
-      //   this.model.ImageUrl = uploadRes
-      // }
       const addProductRes = await this.addProduct(this.model);
       console.log(addProductRes);
       this.productId = addProductRes;
@@ -79,7 +123,7 @@ export class AddProductImgComponent implements OnInit {
         });
       }
     }
-  };
+  }
 
   //get file from storage
   getFiles = async (e: any) => {
@@ -94,7 +138,7 @@ export class AddProductImgComponent implements OnInit {
       });
       return;
     }
-  };
+  }
   //  upload img
   upload = async () => {
     try {
@@ -103,11 +147,19 @@ export class AddProductImgComponent implements OnInit {
       this.spinner.hide();
       console.log(error);
     }
-  };
+  }
 
   saveImageProduct = async () => {
     this.spinner.show();
     let uploadRes = null;
+    if(!this.file) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Warning',
+        text: 'Please select your image first!'
+      })
+      return
+    }
     if (this.file) {
       uploadRes = await this.upload();
     }
@@ -131,7 +183,7 @@ export class AddProductImgComponent implements OnInit {
         });
       }
     }
-  };
+  }
 
   saveImgProduct = async (body: any) => {
     try {
@@ -140,10 +192,70 @@ export class AddProductImgComponent implements OnInit {
       this.spinner.hide();
       console.log(error);
     }
-  };
+  }
+
   resetImgModel = () => {
     this.imgModel.IsDefault = false;
     this.imgModel.ImageText = null;
     this.imgModel.ImageUrl = null;
-  };
+  }
+
+  //delete confirmation dialog
+  delete = (Id: any, index: any) => {
+    Swal.fire({
+      icon: 'warning',
+      html: `Are you sure do you want to delete it?`,
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      confirmButtonColor: '#28a745',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No, Thanks',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteProductImg(Id, index);
+      }
+    });
+  }
+  // Delete product image 
+  deleteProductImg = (Id: any, index: any) => {
+    this.utilitiesSrv.deleteProductImg(Id).subscribe({
+      next: (result) => {
+        this.spinner.hide();
+        console.log('deleteProductImgRes', result);
+        if(result) {
+          this.productDetail?.Images.splice(index, 1)
+        }
+      },
+      error: (err) => {
+        this.spinner.hide();
+        console.log('deleteProductImgErr', err);
+      },
+    });
+  }
+
+  //Product edit
+  editProduct = () => {
+    this.spinner.show();
+    this.utilitiesSrv.editProduct(this.model,this.productId).subscribe({
+      next: (result) => {
+        this.spinner.hide();
+        console.log('productEditRes',result)
+        this.isDefaultCheckBoxDisabled = false;
+       if(result) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Product updated successfully!',
+          confirmButtonText: 'Ok',
+        });
+       }
+       
+      },
+      error: (err) => {
+        this.spinner.hide();
+        console.log('productEditErr', err);
+      },
+    });
+
+  }
+
 }

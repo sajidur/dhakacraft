@@ -104,7 +104,7 @@ export class ProductImgComponent implements OnInit {
   }
 
   editProduct = (Id: any) => {
-    this.router.navigateByUrl(`/admin/add-product?Id=${Id}`)
+    this.router.navigateByUrl(`/admin/add-product?productId=${Id}`)
   }
 
 

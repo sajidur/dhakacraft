@@ -116,7 +116,6 @@ export class UtilitiesService {
   }
 
   //Get all product
-
   getProductByCategoryId(Id: any): Observable<any> {
     return this.http.get(`${this.productUrl}/GetTopList?categoryId=${Id}`).pipe(
       map((x: any) => x),
@@ -172,17 +171,23 @@ export class UtilitiesService {
   };
 
     //Delete product By Product Id
-    deleteProductImgByProductId = (Id: any, imageUrl:any): Observable<any> => {
-      const body = {
-        ProductId: Id,
-        ImageUrl: imageUrl
-      };
-      return this.http.post(`${this.productUrl}/ProductDelete`, body).pipe(
+  deleteProductImg = (Id: any): Observable<any> => { 
+      return this.http.post(`${this.productUrl}/ProductImageDelete?Id=${Id}`, {}).pipe(
         map((x: any) => x),
         catchError((error: Response) => {
           return throwError(() => error);
         })
       );
-    }
+  }
+
+  editProduct = (body: any, Id: any) => {
+     body.Id = Id
+    return this.http.post(`${this.productUrl}/ProductEdit`, body).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  }
 
 }
