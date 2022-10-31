@@ -76,17 +76,29 @@
   
             <!-- <dxi-column caption="#SL" width='60' > </dxi-column> -->
             <dxi-column caption="Name" dataField="Name"></dxi-column>
-            <dxi-column caption="TitleText" dataField="TitleText"></dxi-column>
+            <!-- <dxi-column caption="TitleText" dataField="TitleText"></dxi-column> -->
             <dxi-column caption="Price" dataField="Price" alignment="left"></dxi-column>
             <dxi-column caption="InStockText" dataField="InStockText"></dxi-column>
+            <dxi-column caption="Images" dataField="Images"></dxi-column>
             <dxi-column caption="Action"></dxi-column>
   
             <tbody class="dx-row" *dxTemplate="let row of 'rowTemplateName'">
               <tr class="custom-row">
                 <td>{{ row?.data?.Name}}</td>
-                <td>{{ row?.data?.TitleText }}</td>
+                <!-- <td>{{ row?.data?.TitleText }}</td> -->
                 <td>{{ row?.data?.Price }}</td>
                 <td>{{ row?.data?.InStockText }}</td>
+                <td>
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
+                      <div  *ngFor="
+                      let item of row?.data?.Images;
+                      let indexOfElement = index
+                    " class="col">
+                         <img height="40"
+                         width="60" [src]="globalSrv.imageUrlGet(item?.ImageUrl)" />
+                      </div>
+                    </div>
+                </td>
                 <td>
                   <dx-button (onClick)="delete(row?.data?.Id)" icon="trash"> </dx-button>
                 </td>

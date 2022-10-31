@@ -15,8 +15,8 @@ export class UtilitiesService {
   imgUploadUrl = `${this.globalSrv.domain}/api/Upload`;
   newsEventSliderUrl = `${this.globalSrv.domain}/api/NewsContent`;
   loginUrl = `${this.globalSrv.domain}/api/User`;
-  categoryUrl = `${this.globalSrv.domain}/api/Category`
-  productUrl = `${this.globalSrv.domain}`
+  categoryUrl = `${this.globalSrv.domain}/api/Category`;
+  productUrl = `${this.globalSrv.domain}`;
 
   newsEventSliderList = new BehaviorSubject<any>(null);
   newsEventSliderListCast = this.newsEventSliderList
@@ -93,8 +93,32 @@ export class UtilitiesService {
   };
 
   //Add category
-  postCategory = (body: any): Observable<any> =>  {
+  postCategory = (body: any): Observable<any> => {
     return this.http.post(`${this.categoryUrl}/Save`, body).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  };
+
+  // Get all news, event, slider img
+  getAllCategory(): Observable<any> {
+    return this.http.get(`${this.categoryUrl}`).pipe(
+      map((x: any) => {
+        this.allCategory = x;
+        return x;
+      }),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  }
+
+  //Get all product
+
+  getProductByCategoryId(Id: any): Observable<any> {
+    return this.http.get(`${this.productUrl}/GetTopList?categoryId=${Id}`).pipe(
       map((x: any) => x),
       catchError((error: Response) => {
         return throwError(() => error);
@@ -102,23 +126,58 @@ export class UtilitiesService {
     );
   }
 
-    // Get all news, event, slider img
-    getAllCategory(): Observable<any> {
-      return this.http.get(`${this.categoryUrl}`).pipe(
-        map((x: any) => {
-          this.allCategory = x
-          return x;
-        }),
+  //Add Product
+  addProduct = (body: any): Observable<any> => {
+    return this.http.post(`${this.productUrl}/Save`, body).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  };
+
+  //Save Img Product
+  saveImgProduct = (body: any): Observable<any> => {
+    return this.http.post(`${this.productUrl}/SaveProductImage`, body).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  };
+
+  //Get product by product Id
+  getProductByProductId = (Id: any): Observable<any> => {
+    return this.http
+      .get(`${this.productUrl}/GetByProductId?productId=${Id}`)
+      .pipe(
+        map((x: any) => x),
         catchError((error: Response) => {
           return throwError(() => error);
         })
       );
-    }
+  };
 
-    //Get all product 
+  //Delete product By Product Id
+  deleteProductByProductId = (Id: any): Observable<any> => {
+    const body = {
+      ProductId: Id,
+    };
+    return this.http.post(`${this.productUrl}/ProductDelete`, body).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  };
 
-    getProductByCategoryId(Id: any): Observable<any> {
-      return this.http.get(`${this.productUrl}/GetTopList?categoryId=${Id}`).pipe(
+    //Delete product By Product Id
+    deleteProductImgByProductId = (Id: any, imageUrl:any): Observable<any> => {
+      const body = {
+        ProductId: Id,
+        ImageUrl: imageUrl
+      };
+      return this.http.post(`${this.productUrl}/ProductDelete`, body).pipe(
         map((x: any) => x),
         catchError((error: Response) => {
           return throwError(() => error);
@@ -126,32 +185,4 @@ export class UtilitiesService {
       );
     }
 
-    //Add Product 
-    addProduct = (body: any): Observable<any> =>  {
-      return this.http.post(`${this.productUrl}/Save`, body).pipe(
-        map((x: any) => x),
-        catchError((error: Response) => {
-          return throwError(() => error);
-        })
-      );
-    }
-
-      //Save Img Product 
-      saveImgProduct = (body: any): Observable<any> =>  {
-        return this.http.post(`${this.productUrl}/SaveProductImage`, body).pipe(
-          map((x: any) => x),
-          catchError((error: Response) => {
-            return throwError(() => error);
-          })
-        );
-      }
-
-      getProductByProductId = (Id: any): Observable<any> => {
-        return this.http.get(`${this.productUrl}/GetByProductId?productId=${Id}`).pipe(
-          map((x: any) => x),
-          catchError((error: Response) => {
-            return throwError(() => error);
-          })
-        );
-      }
 }

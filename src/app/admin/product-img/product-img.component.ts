@@ -79,23 +79,23 @@ export class ProductImgComponent implements OnInit {
       cancelButtonText: 'No, Thanks',
     }).then((result) => {
       if (result.isConfirmed) {
-        // this.deleteNewsEventSlider(Id);
+        // this.deleteProduct(Id);
       }
     });
   }
 
-  deleteNewsEventSlider = (Id: any) => {
-    this.utilitiesSrv.deleteNewsEventSliderById(Id).subscribe({
+  deleteProduct = (Id: any) => {
+    this.utilitiesSrv.deleteProductByProductId(Id).subscribe({
       next: (result) => {
         this.spinner.hide();
-        console.log('deleteRes', result);
+        console.log('deleteProductRes', result);
         if(result) {
-          // this.getAllNewsEventSlider()
+          this.getProductById(this.categoryId)
         }
       },
       error: (err) => {
         this.spinner.hide();
-        console.log('deleteErr', err);
+        console.log('deleteProductErr', err);
       },
     });
   }
