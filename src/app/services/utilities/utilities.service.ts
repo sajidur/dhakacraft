@@ -160,10 +160,10 @@ export class UtilitiesService {
 
   //Delete product By Product Id
   deleteProductByProductId = (Id: any): Observable<any> => {
-    const body = {
-      ProductId: Id,
-    };
-    return this.http.post(`${this.productUrl}/ProductDelete`, body).pipe(
+    // const body = {
+    //   ProductId: Id,
+    // };
+    return this.http.post(`${this.productUrl}/ProductDelete?Id=${Id}`,{}).pipe(
       map((x: any) => x),
       catchError((error: Response) => {
         return throwError(() => error);

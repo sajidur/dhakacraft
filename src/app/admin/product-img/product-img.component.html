@@ -100,7 +100,8 @@
                     </div>
                 </td>
                 <td>
-                  <dx-button (onClick)="delete(row?.data?.Id)" icon="trash"> </dx-button>
+                  <dx-button (onClick)="delete(row?.data?.Id, row?.rowIndex)" icon="trash"> </dx-button> &nbsp;
+                  <dx-button (onClick)="editProduct(row?.data?.Id)" icon="edit"> </dx-button>
                 </td>
               </tr>
             </tbody>

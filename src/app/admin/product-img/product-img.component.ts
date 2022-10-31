@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { GlobalService } from 'src/app/services/global/global.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
@@ -19,7 +20,8 @@ export class ProductImgComponent implements OnInit {
   constructor(
     public utilitiesSrv: UtilitiesService,
     public spinner: NgxSpinnerService,
-    public globalSrv: GlobalService
+    public globalSrv: GlobalService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -47,11 +49,11 @@ export class ProductImgComponent implements OnInit {
     console.log(e)
     this.categoryId = e.selectedItem.Id
     console.log(this.categoryId)
-    this.getProductById(this.categoryId)
+    this.getProductByCategoryId(this.categoryId)
    };
 
  
-  getProductById = (Id: any) => {
+  getProductByCategoryId = (Id: any) => {
     this.spinner.show();
     this.utilitiesSrv.getProductByCategoryId(Id).subscribe({
       next: (result) => {
@@ -68,7 +70,7 @@ export class ProductImgComponent implements OnInit {
     });
   }
 
-  delete = (Id: any) => {
+  delete = (Id: any, index:any) => {
     Swal.fire({
       icon: 'warning',
       html: `Are you sure do you want to delete it?`,
@@ -79,18 +81,19 @@ export class ProductImgComponent implements OnInit {
       cancelButtonText: 'No, Thanks',
     }).then((result) => {
       if (result.isConfirmed) {
-        // this.deleteProduct(Id);
+        this.deleteProduct(Id, index);
       }
     });
   }
 
-  deleteProduct = (Id: any) => {
+  deleteProduct = (Id: any, index: any) => {
     this.utilitiesSrv.deleteProductByProductId(Id).subscribe({
       next: (result) => {
         this.spinner.hide();
         console.log('deleteProductRes', result);
         if(result) {
-          this.getProductById(this.categoryId)
+          // this.getProductByCategoryId(this.categoryId)
+          this.productList.splice(index, 1)
         }
       },
       error: (err) => {
@@ -100,6 +103,9 @@ export class ProductImgComponent implements OnInit {
     });
   }
 
+  editProduct = (Id: any) => {
+    this.router.navigateByUrl(`/admin/add-product?Id=${Id}`)
+  }
 
 
 }
