@@ -28,7 +28,7 @@
           <dxo-sorting mode="multiple"></dxo-sorting>
           <dxo-export
             [enabled]="true"
-            fileName="serverList"
+            fileName="newsEventSliderList"
             [printingEnabled]="false"
           ></dxo-export>
           <dxo-paging [pageSize]="rowSize"></dxo-paging>
@@ -45,8 +45,8 @@
             [showInfo]="true"
           >
           </dxo-pager>
-          <dxo-column-chooser [enabled]="true" mode="dragAndDrop">
-          </dxo-column-chooser>
+          <!-- <dxo-column-chooser [enabled]="true" mode="dragAndDrop">
+          </dxo-column-chooser> -->
           <dxo-grouping></dxo-grouping>
 
           <!-- <dxi-column caption="#SL" width='60' > </dxi-column> -->
@@ -68,7 +68,7 @@
                 />
               </td>
               <td>
-                <dx-button (onClick)="delete(row?.data?.Id)" icon="trash"> </dx-button>
+                <dx-button matTooltip="Delete"  matTooltipPosition="above"  (onClick)="delete(row?.data?.Id)" icon="trash"> </dx-button>
               </td>
             </tr>
           </tbody>

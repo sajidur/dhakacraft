@@ -52,8 +52,25 @@ export class AddProductImgComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.categoryList = this.utilitiesSrv.allCategory;
+    // this.categoryList = this.utilitiesSrv.allCategory;
+    this.getAllCategory()
     this.getQueryParams()
+  }
+  getAllCategory = () => {
+    this.spinner.show();
+    this.utilitiesSrv.getAllCategory().subscribe({
+      next: (result) => {
+        this.spinner.hide();
+        console.log('categoryListRes', result);
+        if(result) {
+          this.categoryList = result;
+        }
+      },
+      error: (err) => {
+        this.spinner.hide();
+        console.log('categoryListErr', err);
+      },
+    });
   }
 
   getQueryParams = () => {
@@ -175,6 +192,7 @@ export class AddProductImgComponent implements OnInit {
       const saveImgRes = await this.saveImgProduct(this.imgModel);
       if (!!saveImgRes) {
         this.spinner.hide();
+        this.getProductByProductId(this.productId)
         this.resetImgModel();
         Swal.fire({
           icon: 'success',
@@ -236,12 +254,14 @@ export class AddProductImgComponent implements OnInit {
   //Product edit
   editProduct = () => {
     this.spinner.show();
+    console.log(this.model)
     this.utilitiesSrv.editProduct(this.model,this.productId).subscribe({
       next: (result) => {
         this.spinner.hide();
         console.log('productEditRes',result)
         this.isDefaultCheckBoxDisabled = false;
        if(result) {
+  
         Swal.fire({
           icon: 'success',
           title: 'Product updated successfully!',

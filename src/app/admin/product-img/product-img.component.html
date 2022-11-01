@@ -53,7 +53,7 @@
             <dxo-sorting mode="multiple"></dxo-sorting>
             <dxo-export
               [enabled]="true"
-              fileName="serverList"
+              fileName="ProductList"
               [printingEnabled]="false"
             ></dxo-export>
             <dxo-paging [pageSize]="rowSize"></dxo-paging>
@@ -70,8 +70,8 @@
               [showInfo]="true"
             >
             </dxo-pager>
-            <dxo-column-chooser [enabled]="true" mode="dragAndDrop">
-            </dxo-column-chooser>
+            <!-- <dxo-column-chooser [enabled]="true" mode="dragAndDrop">
+            </dxo-column-chooser> -->
             <dxo-grouping></dxo-grouping>
   
             <!-- <dxi-column caption="#SL" width='60' > </dxi-column> -->
@@ -100,8 +100,8 @@
                     </div>
                 </td>
                 <td>
-                  <dx-button (onClick)="delete(row?.data?.Id, row?.rowIndex)" icon="trash"> </dx-button> &nbsp;
-                  <dx-button (onClick)="editProduct(row?.data?.Id)" icon="edit"> </dx-button>
+                  <dx-button matTooltip="Delete"  matTooltipPosition="above"  (onClick)="delete(row?.data?.Id, row?.rowIndex)" icon="trash"> </dx-button> &nbsp;
+                  <dx-button matTooltip="Edit"  matTooltipPosition="above"  (onClick)="editProduct(row?.data?.Id)" icon="edit"> </dx-button>
                 </td>
               </tr>
             </tbody>
