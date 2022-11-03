@@ -5,6 +5,7 @@ import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 import ValidationEngine from 'devextreme/ui/validation_engine';
 import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-add-product-img',
@@ -114,7 +115,9 @@ export class AddProductImgComponent implements OnInit {
   //add news, event, slider
   addProduct = async (body: any) => {
     try {
-      return await this.utilitiesSrv.addProduct(body).toPromise();
+       const res =  this.utilitiesSrv.addProduct(body)
+       return await lastValueFrom(res)
+      // return await this.utilitiesSrv.addProduct(body).toPromise();
     } catch (error) {
       this.spinner.hide();
       console.log(error);
@@ -159,7 +162,9 @@ export class AddProductImgComponent implements OnInit {
   //  upload img
   upload = async () => {
     try {
-      return await this.utilitiesSrv.uploadFile(this.file).toPromise();
+      const res =  this.utilitiesSrv.uploadFile(this.file)
+      return await lastValueFrom(res)
+      // return await this.utilitiesSrv.uploadFile(this.file).toPromise();
     } catch (error) {
       this.spinner.hide();
       console.log(error);
@@ -205,7 +210,9 @@ export class AddProductImgComponent implements OnInit {
 
   saveImgProduct = async (body: any) => {
     try {
-      return await this.utilitiesSrv.saveImgProduct(body).toPromise();
+      const res =  await this.utilitiesSrv.saveImgProduct(body)
+      return await lastValueFrom(res)
+      // return await this.utilitiesSrv.saveImgProduct(body).toPromise();
     } catch (error) {
       this.spinner.hide();
       console.log(error);

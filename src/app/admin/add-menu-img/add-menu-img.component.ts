@@ -4,6 +4,7 @@ import { GlobalService } from 'src/app/services/global/global.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 import ValidationEngine from 'devextreme/ui/validation_engine';
 import Swal from 'sweetalert2';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-add-menu-img',
@@ -89,7 +90,9 @@ export class AddMenuImgComponent implements OnInit {
 
   postCategory = async (body: any) => {
     try {
-      return await this.utilitiesSrv.postCategory(body).toPromise();
+       const res =  this.utilitiesSrv.postCategory(body)
+       return await lastValueFrom(res)
+      // return  this.utilitiesSrv.postCategory(body).toPromise();
     } catch (error) {
       this.spinner.hide()
       console.log(error);

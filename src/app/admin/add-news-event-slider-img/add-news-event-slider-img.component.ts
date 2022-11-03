@@ -4,7 +4,7 @@ import { GlobalService } from 'src/app/services/global/global.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 import ValidationEngine from 'devextreme/ui/validation_engine';
 import Swal from 'sweetalert2';
-
+import { lastValueFrom } from 'rxjs';
 @Component({
   selector: 'app-add-news-event-slider-img',
   templateUrl: './add-news-event-slider-img.component.html',
@@ -53,7 +53,9 @@ export class AddNewsEventSliderImgComponent implements OnInit {
  //upload img
   upload = async () => {
     try {
-      return await this.utilitiesSrv.uploadFile(this.file).toPromise()
+      const res =  this.utilitiesSrv.uploadFile(this.file)
+      return await lastValueFrom(res)
+      // return await this.utilitiesSrv.uploadFile(this.file).toPromise()
     }
     catch (error) {
       this.spinner.hide()
@@ -89,7 +91,9 @@ export class AddNewsEventSliderImgComponent implements OnInit {
   //add news, event, slider
   postNewsEventSlider = async (body: any) => {
     try {
-      return await this.utilitiesSrv.postNewsEventSliderImg(body).toPromise()
+      const res =  this.utilitiesSrv.postNewsEventSliderImg(body)
+      return await lastValueFrom(res)
+      // return await this.utilitiesSrv.postNewsEventSliderImg(body).toPromise()
     }
     catch(error) {
        this.spinner.hide()
