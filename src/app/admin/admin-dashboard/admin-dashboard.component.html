@@ -24,7 +24,7 @@
       <mat-nav-list class="nav-list">
         <ul class="nav flex-column">
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a
               [class.activeMenu]="
                 currentRoute === '/admin/home-menu' ||
@@ -35,7 +35,7 @@
             >
               Menu</a
             >
-          </li>
+          </li> -->
        
           <li class="nav-item">
             <a
@@ -73,11 +73,18 @@
               Products</a
             >
           </li>
-          <!-- <li class="nav-item">
-                        
-                        <a class="nav-link btn-selector  button-deselected" >
-                            Help</a>
-                    </li> -->
+          <li class="nav-item">
+            <a
+              [class.activeMenu]="
+                currentRoute === '/admin/img-config' ||
+                currentRoute === '/admin/add-img-config'
+              "
+              [routerLink]="['/admin/img-config']"
+              class="nav-link btn-selector button-deselected"
+            >
+              Image Config</a
+            >
+          </li>
         </ul>
       </mat-nav-list>
     </mat-sidenav>

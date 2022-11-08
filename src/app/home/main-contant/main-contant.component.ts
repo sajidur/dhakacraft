@@ -13,8 +13,12 @@ export class MainContantComponent implements OnInit {
 
   private subscriptions: Array<Subscription> = [];
   newsEventSlideList: any[] = [];
-  newsAndEventList: any[];
-  slidingList: any[];
+  newsAndEventList: any[] = [];
+  slidingList: any[] = [];
+  imgConfigList: any[] = [];
+  socialImpact: any[] = [];
+  memberShip: any[] = [];
+  requestCatalog: any[] = []
 
   constructor(
     public router: Router,
@@ -26,6 +30,7 @@ export class MainContantComponent implements OnInit {
 
   ngOnInit(): void {
    this.currentPushSubscription()
+   this.getAllImageConfig()
   }
 
   ngOnDestroy() {
@@ -53,6 +58,26 @@ export class MainContantComponent implements OnInit {
   goToNewsAndEventDetails = (Id: any) => {
     // this.router.navigateByUrl('news-event?id=' + Id + '&as=' + as + '&cd=' + cd);
     this.router.navigateByUrl('news-event?Id=' + Id);
+  }
+
+  getAllImageConfig = () => {
+    // this.spinner.show();
+    this.utilitiesSrv.getAllImageConfig().subscribe({
+      next: (result) => {
+        // this.spinner.hide();
+        console.log('imgConfigListRes', result);
+        if(result) {
+          this.imgConfigList = result;
+          this.socialImpact = this.imgConfigList.filter(e => e.ImagePosition === 'Social Impact')
+          this.memberShip = this.imgConfigList.filter(e => e.ImagePosition === 'Membership')
+          this.requestCatalog = this.imgConfigList.filter(e => e.ImagePosition === 'Request Catalog')
+        }
+      },
+      error: (err) => {
+        // this.spinner.hide();
+        console.log('imgConfigListErr', err);
+      },
+    });
   }
 
 }

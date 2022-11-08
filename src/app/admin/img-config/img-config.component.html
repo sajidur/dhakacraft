@@ -4,16 +4,16 @@
         <div class="card-body">
           <div class="row mt-2 mb-3">
              <div class="col-sm-6">
-              <h2 class="fw-bold">Home Menu List</h2>
+              <h2 class="fw-bold">Image Config List</h2>
              </div>
              <div class="col-sm-6 text-end">
-                <button routerLink="/admin/add-home-menu" class="btn btn-primary px-4">Add New</button>
+                <button routerLink="/admin/add-img-config" class="btn btn-primary px-4">Add New</button>
              </div>
           </div>
   
           <dx-data-grid
             #gridContainer
-            [dataSource]="newsEventSlideList"
+            [dataSource]="imgConfigList"
             [showBorders]="false"
             [showColumnLines]="false"
             [showRowLines]="false"
@@ -50,15 +50,15 @@
             <dxo-grouping></dxo-grouping>
   
             <!-- <dxi-column caption="#SL" width='60' > </dxi-column> -->
-            <dxi-column caption="Type" dataField="Type"></dxi-column>
-            <dxi-column caption="Headline" dataField="Headline"></dxi-column>
+            <dxi-column caption="Name" dataField="Name"></dxi-column>
+            <dxi-column caption="ImageType" dataField="ImagePosition"></dxi-column>
             <dxi-column caption="Image" dataField="ImageUrl"> </dxi-column>
             <dxi-column caption="Action"></dxi-column>
   
             <tbody class="dx-row" *dxTemplate="let row of 'rowTemplateName'">
               <tr class="custom-row">
-                <td>{{ row?.data?.Type }}</td>
-                <td>{{ row?.data?.Headline }}</td>
+                <td>{{ row?.data?.Name }}</td>
+                <td>{{ row?.data?.ImagePosition }}</td>
                 <td>
                   <img
                     height="50"
@@ -77,4 +77,3 @@
       </div>
     </div>
 </div>
-  

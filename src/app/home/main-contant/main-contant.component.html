@@ -249,7 +249,11 @@
     <h1 class="mb-5 mt-3 text-center">Social Impact</h1>
        <p>Dhaka Handicrafts Ltd. (DH Ltd.), a WFTO GS certified Fair Trade company leads the basket world leveraged by the perfect match between eco freiendly raw material sourcing & artisans sustainable livelihood. Sustainable business operation policy & fair trade practice created DH Ltd. success stories for almost last two decades. DH Ltd. pride is to bring Bangladeshi artisans skill into global market.</p>
     <div class="row py-5">
-      <div class=" col-12 col-sm-4 text-center">
+      <div *ngFor="let item of socialImpact" class=" col-12 col-sm-4 text-center">
+        <img height="150" width="150"  [src]="globalSrv.imageUrlGet(item?.ImageUrl)" alt="">
+       <p class="mt-3">{{item?.Name}}</p>
+       </div>
+      <!-- <div class=" col-12 col-sm-4 text-center">
        <img height="150" width="150"  src="../../../assets/images/DhakaHandiCraft/social-impact/112.png" alt="">
       <p class="mt-3">23 YEARS</p>
       </div>
@@ -260,7 +264,7 @@
       <div class=" col-12 col-sm-4 text-center">
         <img height="150" width="150"  src="../../../assets/images/DhakaHandiCraft/social-impact/114.png" alt="">
       <p class="mt-3">1428 ARTISANS</p>
-      </div>
+      </div> -->
     </div>
   </section>
   <!-- Social impact ended here -->
@@ -269,10 +273,10 @@
   <section class="container mb-5">
     <h1 class="mb-4 mt-3 text-center">Membership</h1>
     <div class="py-3 W-100 membership-container"> 
-      <div class="membership-width">
-        <img class="img-fluid" src="../../../assets/images/DhakaHandiCraft/membership/Banglacraft Logo.jpg" alt="">
+      <div  *ngFor="let item of memberShip" class="membership-width">
+        <img class="img-fluid"  [src]="globalSrv.imageUrlGet(item?.ImageUrl)" alt="">
       </div>
-      <div class="membership-width">
+      <!-- <div class="membership-width">
        <img class="img-fluid" src="../../../assets/images/DhakaHandiCraft/membership/Ecota logo.png" alt="">
       </div>
       <div class="membership-width">
@@ -283,7 +287,7 @@
       </div>
       <div class="membership-width">
         <img class="img-fluid" src="../../../assets/images/DhakaHandiCraft/membership/WFTO Guaranteed Logo.jpg" alt="">
-      </div>
+      </div> -->
     </div>
   </section>
   <!-- Membership ended here -->

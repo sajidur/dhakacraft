@@ -7,6 +7,7 @@ import * as $ from 'jquery';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { ContactFromComponent } from 'src/app/contact-from/contact-from.component';
+import { GlobalService } from 'src/app/services/global/global.service';
 import { MenuControllerService } from 'src/app/services/menu-controller/menu-controller.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 const FileSaver = require('file-saver');
@@ -30,6 +31,9 @@ export class HomeComponent implements OnInit {
   gardenCategory: any[] = [];
   personalCategory: any[] = [];
   christmasCategory: any[] = [];
+  imgConfigList: any[] = [];
+  requestCatalog: any[] = [];
+  requestCatalogObj: any = {};
   
   constructor(
     private formBuilder: FormBuilder,
@@ -38,7 +42,8 @@ export class HomeComponent implements OnInit {
     public dialog: MatDialog,
     private viewportScroller: ViewportScroller,
     public utilitiesSrv: UtilitiesService,
-    public spinner: NgxSpinnerService
+    public spinner: NgxSpinnerService,
+    public globalSrv: GlobalService
     ) { }
 
   ngOnInit() {
@@ -47,6 +52,7 @@ export class HomeComponent implements OnInit {
     this.currentYear = new Date().getFullYear();
     this.getAllNewsEventSlider()
     this.getAllCategory()
+    this.getAllImageConfig()
   }
 
 
@@ -219,6 +225,28 @@ export class HomeComponent implements OnInit {
   openLeaveMessagePopup() {
     $("#float-message-btn").css("display", "none");
     $("#leave-message").css("display", "block");
+  }
+
+
+  getAllImageConfig = () => {
+    // this.spinner.show();
+    this.utilitiesSrv.getAllImageConfig().subscribe({
+      next: (result) => {
+        // this.spinner.hide();
+        console.log('imgConfigListRes', result);
+        if(result.length) {
+          this.imgConfigList = result;
+          this.requestCatalog = this.imgConfigList.filter(e => e.ImagePosition === 'Request Catalog')
+          if(this.requestCatalog.length) {
+            this.requestCatalogObj = this.requestCatalog[this.requestCatalog.length-1]
+          }
+        }
+      },
+      error: (err) => {
+        // this.spinner.hide();
+        console.log('imgConfigListErr', err);
+      },
+    });
   }
 
 

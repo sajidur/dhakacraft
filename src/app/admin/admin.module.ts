@@ -14,6 +14,8 @@ import { ProductImgComponent } from './product-img/product-img.component';
 import { AddProductImgComponent } from './add-product-img/add-product-img.component';
 import { AdminHomeMenuComponent } from './admin-home-menu/admin-home-menu.component';
 import { AddAdminHomeMenuComponent } from './add-admin-home-menu/add-admin-home-menu.component';
+import { ImgConfigComponent } from './img-config/img-config.component';
+import { AddImgConfigComponent } from './add-img-config/add-img-config.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { AddAdminHomeMenuComponent } from './add-admin-home-menu/add-admin-home-
     ProductImgComponent,
     AddProductImgComponent,
     AdminHomeMenuComponent,
-    AddAdminHomeMenuComponent
+    AddAdminHomeMenuComponent,
+    ImgConfigComponent,
+    AddImgConfigComponent
   ],
   imports: [
     CommonModule,
