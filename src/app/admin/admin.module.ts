@@ -12,6 +12,8 @@ import { AddMenuImgComponent } from './add-menu-img/add-menu-img.component';
 import { AddNewsEventSliderImgComponent } from './add-news-event-slider-img/add-news-event-slider-img.component';
 import { ProductImgComponent } from './product-img/product-img.component';
 import { AddProductImgComponent } from './add-product-img/add-product-img.component';
+import { AdminHomeMenuComponent } from './admin-home-menu/admin-home-menu.component';
+import { AddAdminHomeMenuComponent } from './add-admin-home-menu/add-admin-home-menu.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { AddProductImgComponent } from './add-product-img/add-product-img.compon
     AddMenuImgComponent,
     AddNewsEventSliderImgComponent,
     ProductImgComponent,
-    AddProductImgComponent
+    AddProductImgComponent,
+    AdminHomeMenuComponent,
+    AddAdminHomeMenuComponent
   ],
   imports: [
     CommonModule,
