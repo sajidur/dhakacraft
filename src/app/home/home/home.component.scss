@@ -227,3 +227,16 @@ header a {
     font-weight: bold;
     // border-bottom: 2px solid #cdcdcd;
  }
+
+
+ .search-product-text {
+  cursor: pointer;
+ }
+
+ .search-product-list {
+  position: absolute;
+  width: 100%;
+  background: white;
+  z-index: 1;
+  padding: 12px;
+ }

@@ -26,6 +26,7 @@ import {
   DxTabPanelModule,
   DxRadioGroupModule,
   DxListModule,
+ DxAutocompleteModule 
 } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
 
@@ -62,7 +63,8 @@ import { FormsModule } from '@angular/forms';
     DxNumberBoxModule,
     DxTabPanelModule,
     DxRadioGroupModule,
-    DxListModule
+    DxListModule,
+    DxAutocompleteModule
   ],
 })
 export class DevExtremeModule { }

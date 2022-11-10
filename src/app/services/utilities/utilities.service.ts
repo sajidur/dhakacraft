@@ -18,6 +18,8 @@ export class UtilitiesService {
   categoryUrl = `${this.globalSrv.domain}/api/Category`;
   productUrl = `${this.globalSrv.domain}`;
   imgConfigUrl = `${this.globalSrv.domain}/api/ImageConfig`;
+  productSearchUrl = `${this.globalSrv.domain}/Search`;
+
 
   newsEventSliderList = new BehaviorSubject<any>(null);
   newsEventSliderListCast = this.newsEventSliderList
@@ -220,5 +222,15 @@ export class UtilitiesService {
       );
     };
 
+ 
+
+    searchProductByName(name: any): Observable<any> {
+      return this.http.get(`${this.productSearchUrl}?search=${name}`).pipe(
+        map((x: any) => x),
+        catchError((error: Response) => {
+          return throwError(() => error);
+        })
+      );
+    }
 
 }

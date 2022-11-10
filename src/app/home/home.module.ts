@@ -14,6 +14,7 @@ import { NewsEventComponent } from './news-event/news-event.component';
 import { ImagesDetailsComponent } from './images-details/images-details.component';
 import { MaterialModule } from '../shared/modules/material/material.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { DevExtremeModule } from '../shared/modules/dev-extreme/dev-extreme.module';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    DevExtremeModule
   ]
 })
 export class HomeModule { }
