@@ -100,4 +100,8 @@ export class MainContantComponent implements OnInit {
     });
   }
 
+  productDetails = (Id: any) => {
+    this.router.navigateByUrl(`details?productId=${Id}`);
+  };
+
 }

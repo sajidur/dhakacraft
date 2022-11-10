@@ -125,15 +125,15 @@
     <div class="row" > 
       <div class="col-sm-5">
         <div class="col-sm-12">
-           <img loading="lazy" height="250" class="w-100" [src]="globalSrv.imageUrlGet(productList[0]?.Images[0]?.ImageUrl)" alt="">
+           <img (click)="productDetails(productList[0]?.Id)" loading="lazy" height="250" class="w-100" [src]="globalSrv.imageUrlGet(productList[0]?.Images[0]?.ImageUrl)" alt="">
         </div>
         <div class="col-sm-12 mt-2" >
-           <img loading="lazy" height="250" class="w-100" [src]="globalSrv.imageUrlGet(productList[1]?.Images[0]?.ImageUrl)" alt="">
+           <img (click)="productDetails(productList[1]?.Id)" loading="lazy" height="250" class="w-100" [src]="globalSrv.imageUrlGet(productList[1]?.Images[0]?.ImageUrl)" alt="">
         </div>
       </div>
       <div class="col-sm-7">
         <div class="col-sm-12">
-            <img loading="lazy" height="508" class="w-100" [src]="globalSrv.imageUrlGet(productList[2]?.Images[0]?.ImageUrl)" alt="">
+            <img (click)="productDetails(productList[2]?.Id)" loading="lazy" height="508" class="w-100" [src]="globalSrv.imageUrlGet(productList[2]?.Images[0]?.ImageUrl)" alt="">
         </div>
       </div>
     </div>
