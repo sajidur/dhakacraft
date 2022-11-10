@@ -44,10 +44,11 @@
                 <div class="dropdown-content1 p-4 bg-white">
                   <div class="row">
                     <div class="col-sm-5">
-                      <a (click)="ourStoryItem('about-us', false)">About Us</a>
+                      <a (click)="ourStoryItem(item, false)" *ngFor="let item of pageContent" >{{item?.PageName}}</a>
+                      <!-- <a (click)="ourStoryItem('about-us', false)">About Us</a>
                       <a (click)="ourStoryItem('fair-trade', false)"
                         >Fair Trade</a
-                      >
+                      > -->
                       <a
                         target="_blank"
                         href="../../../assets/pdf/AnnualReport.pdf"
@@ -276,10 +277,11 @@
         <a class="d-block">Fair Trade</a>
         <a class="d-block">Annual Report</a>
         <a class="d-block">Contact Us</a> -->
-        <a class="d-block" (click)="ourStoryItem('about-us', true)">About Us</a>
+        <!-- <a class="d-block" (click)="ourStoryItem('about-us', true)">About Us</a>
         <a class="d-block" (click)="ourStoryItem('fair-trade', true)"
           >Fair Trade</a
-        >
+        > -->
+        <a (click)="ourStoryItem(item, true)" *ngFor="let item of pageContent" >{{item?.PageName}}</a>
         <a
           class="d-block"
           target="_blank"
@@ -360,14 +362,14 @@
           Rights Reserved.
         </p>
         <div class="mt-2">
-          <span>Developed by Rex System Bangladesh</span> <br />
-          <a
-            style="color: white"
-            href="https://www.rexsystensbd.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            >https://www.rexsystensbd.com</a
-          >
+          <span>Developed by Rex System Bangladesh</span> &nbsp;| &nbsp;  <a
+          style="color: white"
+          href="https://www.rexsystemsbd.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >https://www.rexsystemsbd.com</a
+        >
+         
         </div>
       </div>
     </div>

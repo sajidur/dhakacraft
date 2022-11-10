@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class AdminHomeMenuComponent implements OnInit {
 
   rowSize =10
-  newsEventSlideList: any[] = [];
+  pageContent: any[] = [];
 
   constructor(
     public utilitiesSrv: UtilitiesService,
@@ -21,41 +21,23 @@ export class AdminHomeMenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.getAllNewsEventSlider()
+     this.getAllPageContent()
   }
 
-  //upload image
-  // upload = () => {
-  //   this.spinner.show();
-  //   this.utilitiesSrv.uploadFile(this.file).subscribe({
-  //     next: (result) => {
-  //       this.spinner.hide();
-  //       console.log('imgUploadRes', result);
-  //       this.model.ImageUrl = result
-  //     },
-  //     error: (err) => {
-  //       this.spinner.hide();
-  //       console.log('imgUploadErr', err);
-  //     },
-  //   });
-  // };
-
-  // typeOptionChange = (e: any) => {};
-
  
-  getAllNewsEventSlider = () => {
+  getAllPageContent = () => {
     this.spinner.show();
-    this.utilitiesSrv.getAllNewsEventSliderImg().subscribe({
+    this.utilitiesSrv.getAllPageContent().subscribe({
       next: (result) => {
         this.spinner.hide();
-        console.log('newsListRes', result);
+        console.log('pageListRes', result);
         if(result) {
-          this.newsEventSlideList = result;
+          this.pageContent = result;
         }
       },
       error: (err) => {
         this.spinner.hide();
-        console.log('newsListErr', err);
+        console.log('pageListErr', err);
       },
     });
   }
@@ -71,18 +53,18 @@ export class AdminHomeMenuComponent implements OnInit {
       cancelButtonText: 'No, Thanks',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.deleteNewsEventSlider(Id);
+        this.deletePageContent(Id);
       }
     });
   }
 
-  deleteNewsEventSlider = (Id: any) => {
-    this.utilitiesSrv.deleteNewsEventSliderById(Id).subscribe({
+  deletePageContent = (Id: any) => {
+    this.utilitiesSrv.deletePageContentById(Id).subscribe({
       next: (result) => {
         this.spinner.hide();
         console.log('deleteRes', result);
         if(result) {
-          this.getAllNewsEventSlider()
+          this.getAllPageContent()
         }
       },
       error: (err) => {
@@ -92,8 +74,5 @@ export class AdminHomeMenuComponent implements OnInit {
     });
   }
 
-  // clearField = () => {
-  //   ValidationEngine.resetGroup('validationGrp');
-  // };
-
+  
 }

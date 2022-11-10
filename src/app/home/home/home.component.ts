@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   requestCatalogObj: any = {};
   searchedProduct: any[] = [];
   searchFieldValue: any;
+  pageContent: any[] = [];
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
@@ -53,6 +54,7 @@ export class HomeComponent implements OnInit {
     this.getAllNewsEventSlider();
     this.getAllCategory();
     this.getAllImageConfig();
+    this.getAllPageContent()
   }
 
   formHandler = () => {
@@ -147,14 +149,20 @@ export class HomeComponent implements OnInit {
     $('.dropdown-content1').css('display', 'none');
     this.menuControllerSrv.ourStoryMenuItem = item;
     //  this.router.navigate(['our-story']);
-    this.router.navigate(['our-story']).then(() => {
+    // this.router.navigate(['our-story']).then(() => {
+    //   if (scrollToRequiredId) {
+    //     setTimeout(() => {
+    //       this.viewportScroller.scrollToAnchor('our-story');
+    //     }, 1000);
+    //   }
+    // });
+    // ('');
+    this.router.navigateByUrl(`our-story?Id=${item?.Id}`);
       if (scrollToRequiredId) {
         setTimeout(() => {
           this.viewportScroller.scrollToAnchor('our-story');
-        }, 1000);
+        }, 2000);
       }
-    });
-    ('');
   };
 
   homeMenuItem = (categoryId: any) => {
@@ -307,5 +315,24 @@ export class HomeComponent implements OnInit {
     this.searchFieldValue = '';
     this.router.navigateByUrl(`details?productId=${Id}`);
   };
+
+
+
+ getAllPageContent = () => {
+   this.spinner.show();
+   this.utilitiesSrv.getAllPageContent().subscribe({
+     next: (result) => {
+       this.spinner.hide();
+       console.log('pageListRes', result);
+       if(result) {
+         this.pageContent = result.filter((e:any) => e.PageName !== 'Who We Are');
+       }
+     },
+     error: (err) => {
+       this.spinner.hide();
+       console.log('pageListErr', err);
+     },
+   });
+ }
 
 }

@@ -20,6 +20,7 @@ export class MainContantComponent implements OnInit {
   memberShip: any[] = [];
   requestCatalog: any[] = []
   productList: any[] = [];
+  pageContent: any[] = [];
 
   constructor(
     public router: Router,
@@ -30,9 +31,10 @@ export class MainContantComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.currentPushSubscription()
-   this.getAllImageConfig()
-   this.getProductByCategoryId()
+   this.currentPushSubscription();
+   this.getAllImageConfig();
+   this.getProductByCategoryId();
+   this.getAllPageContent();
   }
 
   ngOnDestroy() {
@@ -103,5 +105,22 @@ export class MainContantComponent implements OnInit {
   productDetails = (Id: any) => {
     this.router.navigateByUrl(`details?productId=${Id}`);
   };
+
+  getAllPageContent = () => {
+    // this.spinner.show();
+    this.utilitiesSrv.getAllPageContent().subscribe({
+      next: (result) => {
+        // this.spinner.hide();
+        console.log('pageListRes', result);
+        if(result.length) {
+          this.pageContent = result.filter((e: any) => e.PageName === 'Who We Are');
+        }
+      },
+      error: (err) => {
+        // this.spinner.hide();
+        console.log('pageListErr', err);
+      },
+    });
+  }
 
 }

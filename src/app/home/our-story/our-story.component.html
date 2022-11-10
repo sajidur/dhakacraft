@@ -1,11 +1,19 @@
 <section id="our-story">
   <!-- About us started here -->
-<div *ngIf="menuControllerSrv?.ourStoryMenuItem === 'about-us' " class="container pt-3">
-  <h2 class="fw-bold mb-4">About Us</h2>
-  <div class="my-5 p-3">
-    <img loading="lazy" class="img-fluid" src="../../../assets/images/DhakaHandiCraft/aboutus.jpg" alt="">
-  </div>
- <p>
+  <div class="container pt-3">
+    <h2 class="fw-bold mb-4">{{ homeMenu?.PageName }}</h2>
+    <div class="my-5 p-3">
+      <img
+        loading="lazy"
+        class="img-fluid"
+        [src]="globalSrv.imageUrlGet(homeMenu?.ImageUrl)"
+        alt=""
+      />
+    </div>
+
+    <p style="white-space: pre-wrap;">{{ homeMenu?.DetailText }}</p>
+
+    <!-- <p>
     Dhaka Handicrafts Limited (DH Ltd.) is in the business of production and
     export of handicrafts with the commitment of advancing indigenous and
     impoverished artisans. DH Ltd. is a non-profit handicrafts manufacturing and
@@ -58,45 +66,7 @@
   <p>
     Collaborate with the impoverished artisans in production of natural resource
     and recycled material based handicrafts
-  </p>
-</div>
-<!-- About us ended here -->
-
-<!-- Fair trade started here -->
-<div *ngIf="menuControllerSrv?.ourStoryMenuItem === 'fair-trade' " class="container pt-3">
-    <h2 class="fw-bold mb-4">Fair Trade</h2>
-    <div class="my-5 p-3">
-      <img loading="lazy" class="img-fluid" src="../../../assets/images/DhakaHandiCraft/trade.jpg" alt="">
-    </div>
-    <p>
-        DH  Ltd.  is  a  Fair  Trade  Organization.  It practices fair trade in its business operation.  It maintains  an  active  role  in  promotion  of  fair  trade  among the  producers,  suppliers  and relevant stakeholders irrespective of religion, creed, ethnicity, gender, and origin.
-    </p>
-    <p>
-        However, compliance to FT principles by DH Ltd.  shall  be  subject  to  approval  of Executive  Board;  and  as  well  as  financial  strength,  availability  or  affordability  of physical facilities, capacity of staff or ability of building capacity of staff, and free choice of partners who are associated with production of DH Ltd. goods and providing services.
-    </p>
-    <p>
-        DH  Ltd.  shall  continually  put  effort  for  gradual  upgrading  itself  towards  acquiring  the ability to full compliance of FT Principles.
-    </p>
-
-    <p>The  ten  principals  of  WFTO  Guarantee  System  that  DH  Ltd.  intends  to  adopt  are  as  of February 2014</p>
-    <h4 class="fw-bold">How do we practice Fair-trade</h4>
-    <ul>
-      <li>Support equal rights for women and prevent child exploitation</li>
-      <li>Build long-term, dependable relationships with our artisan and buying partners.</li>
-      <li>Ensure care for the environment.</li>
-      <li>Guide sustainable development</li>
-      <li>Provide prepayments for orders & raw materials</li>
-      <li>And of course, pay a fair price for working force</li>
-    </ul>
-</div>
-<!-- Fair trade ended here -->
-
-<!-- Annual report started here -->
-<!-- <section *ngIf="menuControllerSrv?.ourStoryMenuItem === 'annual-report' " class="container pt-3">
-    <h2 class="fw-bold mb-4">Annual Report</h2>
-
-    <h3>2020-21 Annual Report</h3>
-  
-</section> -->
-<!-- Annual report ended here -->
+  </p> -->
+  </div>
+  <!-- About us ended here -->
 </section>

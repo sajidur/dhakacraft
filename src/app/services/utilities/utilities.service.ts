@@ -19,7 +19,7 @@ export class UtilitiesService {
   productUrl = `${this.globalSrv.domain}`;
   imgConfigUrl = `${this.globalSrv.domain}/api/ImageConfig`;
   productSearchUrl = `${this.globalSrv.domain}/Search`;
-
+  pageContentUrl = `${this.globalSrv.domain}/api/PageContent`
 
   newsEventSliderList = new BehaviorSubject<any>(null);
   newsEventSliderListCast = this.newsEventSliderList
@@ -232,5 +232,35 @@ export class UtilitiesService {
         })
       );
     }
+
+    // Get All
+   getAllPageContent(): Observable<any> {
+    return this.http.get(`${this.pageContentUrl}`).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  }
+
+    //Delete By Id
+    deletePageContentById = (Id: any): Observable<any> => {
+      return this.http.post(`${this.pageContentUrl}/Delete?id=${Id}`,{}).pipe(
+        map((x: any) => x),
+        catchError((error: Response) => {
+          return throwError(() => error);
+        })
+      );
+    };
+
+    postPageContent = (body: any): Observable<any> => {
+      return this.http.post(`${this.pageContentUrl}`, body).pipe(
+        map((x: any) => x),
+        catchError((error: Response) => {
+          return throwError(() => error);
+        })
+      );
+    };
+
 
 }
