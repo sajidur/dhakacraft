@@ -19,6 +19,7 @@ export class MainContantComponent implements OnInit {
   socialImpact: any[] = [];
   memberShip: any[] = [];
   requestCatalog: any[] = []
+  productList: any[] = [];
 
   constructor(
     public router: Router,
@@ -31,6 +32,7 @@ export class MainContantComponent implements OnInit {
   ngOnInit(): void {
    this.currentPushSubscription()
    this.getAllImageConfig()
+   this.getProductByCategoryId()
   }
 
   ngOnDestroy() {
@@ -59,6 +61,24 @@ export class MainContantComponent implements OnInit {
     // this.router.navigateByUrl('news-event?id=' + Id + '&as=' + as + '&cd=' + cd);
     this.router.navigateByUrl('news-event?Id=' + Id);
   }
+
+  getProductByCategoryId = () => {
+    // this.spinner.show();
+    this.productList = [];
+    this.utilitiesSrv.getProductByCategoryId(1).subscribe({
+      next: (result) => {
+        // this.spinner.hide();
+        console.log('ProductListRes', result);
+        if (result && result?.length) {
+          this.productList = result.slice(0,3);
+        }
+      },
+      error: (err) => {
+        // this.spinner.hide();
+        console.log('ProductListErr', err);
+      },
+    });
+  };
 
   getAllImageConfig = () => {
     // this.spinner.show();

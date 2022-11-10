@@ -182,7 +182,7 @@
         <div style="height:25px">
         <span *ngIf="img?.IsDefault">Default</span>
         </div>
-        <img class="w-100"
+        <img loading="lazy" class="w-100"
           height="70"
           [src]="globalSrv.imageUrlGet(img?.ImageUrl)"
           alt=""

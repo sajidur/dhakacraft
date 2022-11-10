@@ -4,7 +4,7 @@ import { ImgConfigComponent } from './img-config.component';
 
 describe('ImgConfigComponent', () => {
   let component: ImgConfigComponent;
-  let fixture: ComponentFixture<ImgConfigComponent>;
+  let fixture: ComponentFixture<img loading="lazy"ConfigComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

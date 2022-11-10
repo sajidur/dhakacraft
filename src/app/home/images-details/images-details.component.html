@@ -14,16 +14,16 @@
                 (click)="imageChange($event)"
                 class="img-slide"
               >
-                <img [src]="globalSrv.imageUrlGet(item?.ImageUrl)" />
+                <img loading="lazy" [src]="globalSrv.imageUrlGet(item?.ImageUrl)" />
               </div>
               <!-- <div (click)="imageChange($event)" class="img-slide">
-                <img
+                <img loading="lazy"
                   src="../../../assets/images/DhakaHandiCraft/9.jpg"
                   alt="img2"
                 />
               </div>
               <div (click)="imageChange($event)" class="img-slide">
-                <img
+                <img loading="lazy"
                   src="../../../assets/images/DhakaHandiCraft/7.jpg"
                   alt="img3"
                 />
@@ -32,7 +32,7 @@
           </div>
           <div class="col-sm-9">
             <div>
-              <img
+              <img loading="lazy"
                 *ngIf="productDetail?.Images?.length"
                 style="height: 320px; width: 340px"
                 id="preview"

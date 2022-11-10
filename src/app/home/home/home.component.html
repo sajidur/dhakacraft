@@ -8,7 +8,7 @@
     <nav class="navbar navbar-expand-md p-0">
       <div class="container-fluid">
         <a class="navbar-brand">
-          <img 
+          <img loading="lazy" 
             routerLink=""
             class="logo-img slide-in-left"
             src="../../../assets/images/logo.jpg"
@@ -42,7 +42,7 @@
                       <a (click)="handleContactForm('Request from contact us')">Contact Us</a>
                     </div>
                     <div class="col-sm-7">
-                      <img
+                      <img loading="lazy"
                       width="220"
                       height="300"
                         src="../../../assets/images/DhakaHandiCraft/trade.jpg"
@@ -70,7 +70,7 @@
                       <a (click)="homeMenuItem(item?.Id)" *ngFor="let item of homeCategory">{{item?.Name}}</a>
                     </div>
                     <div class="col-sm-7">
-                      <img
+                      <img loading="lazy"
                       width="220"
                       height="300"
                         src="../../../assets/images/DhakaHandiCraft/home.jpg"
@@ -94,7 +94,7 @@
                       <a (click)="homeMenuItem(item?.Id)" *ngFor="let item of gardenCategory">{{item?.Name}}</a>
                     </div>
                     <div class="col-sm-7">
-                      <img
+                      <img loading="lazy"
                       width="200"
                       height="300"
                         src="../../../assets/images/DhakaHandiCraft/garden.jpg"
@@ -119,7 +119,7 @@
                       <a (click)="homeMenuItem(item?.Id)" *ngFor="let item of personalCategory">{{item?.Name}}</a>
                     </div>
                     <div class="col-sm-7">
-                      <img
+                      <img loading="lazy"
                       width="220"
                       height="300"
                         src="../../../assets/images/DhakaHandiCraft/lamp2.JPG"
@@ -144,7 +144,7 @@
                       <a (click)="homeMenuItem(item?.Id)" *ngFor="let item of christmasCategory">{{item?.Name}}</a>
                     </div>
                     <div class="col-sm-7">
-                      <img
+                      <img loading="lazy"
                       width="220"
                       height="300"
                         src="../../../assets/images/DhakaHandiCraft/card1.jpg"
@@ -186,10 +186,10 @@
       <div style="width: 22%;">
         <div class="d-flex align-items-center">
           <!-- <div class="col-sm-6 text-right"> -->
-            <img  width="120"  src="../../../assets/images/logo-tranparent.png" alt=""> &nbsp;
+            <img loading="lazy"  width="120"  src="../../../assets/images/logo-tranparent.png" alt=""> &nbsp;
           <!-- </div> -->
           <!-- <div class="col-sm-6 text-left"> -->
-            <img  height="100" src="../../../assets/images/dh-transparent.png" alt="">
+            <img loading="lazy"  height="100" src="../../../assets/images/dh-transparent.png" alt="">
           <!-- </div> -->
         </div>
       
@@ -244,7 +244,7 @@
           <a class="cursor_pointer" (click)="handleContactForm('Request Catalog')">Request Catalog</a>
 
           <div class="my-3" style="padding-right: 2.5rem;">
-            <img class="img-fluid" [src]="globalSrv.imageUrlGet(requestCatalogObj?.ImageUrl)" alt="">
+            <img loading="lazy" class="img-fluid" [src]="globalSrv.imageUrlGet(requestCatalogObj?.ImageUrl)" alt="">
           </div>
         </div>
       </div>
