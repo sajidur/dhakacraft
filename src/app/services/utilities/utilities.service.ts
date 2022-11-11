@@ -19,7 +19,7 @@ export class UtilitiesService {
   productUrl = `${this.globalSrv.domain}`;
   imgConfigUrl = `${this.globalSrv.domain}/api/ImageConfig`;
   productSearchUrl = `${this.globalSrv.domain}/Search`;
-  pageContentUrl = `${this.globalSrv.domain}/api/PageContent`
+  pageContentUrl = `${this.globalSrv.domain}`
 
   newsEventSliderList = new BehaviorSubject<any>(null);
   newsEventSliderListCast = this.newsEventSliderList
@@ -235,7 +235,7 @@ export class UtilitiesService {
 
     // Get All
    getAllPageContent(): Observable<any> {
-    return this.http.get(`${this.pageContentUrl}`).pipe(
+    return this.http.get(`${this.pageContentUrl}/GetAll`).pipe(
       map((x: any) => x),
       catchError((error: Response) => {
         return throwError(() => error);
@@ -254,7 +254,7 @@ export class UtilitiesService {
     };
 
     postPageContent = (body: any): Observable<any> => {
-      return this.http.post(`${this.pageContentUrl}`, body).pipe(
+      return this.http.post(`${this.pageContentUrl}/Post`, body).pipe(
         map((x: any) => x),
         catchError((error: Response) => {
           return throwError(() => error);
@@ -264,7 +264,7 @@ export class UtilitiesService {
 
     editPageContent = (body: any, Id: any): Observable<any> => {
       body.Id = Id
-      return this.http.post(`${this.pageContentUrl}`, body).pipe(
+      return this.http.post(`${this.pageContentUrl}/Edit`, body).pipe(
         map((x: any) => x),
         catchError((error: Response) => {
           return throwError(() => error);

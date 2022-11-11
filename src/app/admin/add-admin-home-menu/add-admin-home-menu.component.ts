@@ -5,7 +5,7 @@ import { GlobalService } from 'src/app/services/global/global.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 import Swal from 'sweetalert2';
 import ValidationEngine from 'devextreme/ui/validation_engine';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-admin-home-menu',
@@ -35,7 +35,8 @@ export class AddAdminHomeMenuComponent implements OnInit {
     public utilitiesSrv: UtilitiesService,
     public spinner: NgxSpinnerService,
     public globalSrv: GlobalService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -134,12 +135,18 @@ export class AddAdminHomeMenuComponent implements OnInit {
           console.log('menuEditRes',result)
           Swal.fire({
             icon: 'success',
-            title: 'Updated successfully!',
+            title: 'Edited successfully!',
             confirmButtonText: 'Ok',
-          });       
+          });  
+          this.router.navigateByUrl('admin/home-menu')     
         },
         error: (err) => {
           this.spinner.hide();
+          Swal.fire({
+            icon: 'error',
+            title: 'Failed to update!',
+            confirmButtonText: 'Please try again later',
+          })
           console.log('menuEditErr', err);
         },
       });
