@@ -10,7 +10,7 @@ import { GlobalService } from '../global/global.service';
 export class UtilitiesService {
   allCategory: any[] = [];
   constructor(private http: HttpClient, public globalSrv: GlobalService) {}
-
+  editHomeMenu: any;
   contactUsUrl = `${this.globalSrv.domain}/api/contactus/contact`;
   imgUploadUrl = `${this.globalSrv.domain}/api/Upload`;
   newsEventSliderUrl = `${this.globalSrv.domain}/api/NewsContent`;
@@ -261,6 +261,16 @@ export class UtilitiesService {
         })
       );
     };
+
+    editPageContent = (body: any, Id: any): Observable<any> => {
+      body.Id = Id
+      return this.http.post(`${this.pageContentUrl}`, body).pipe(
+        map((x: any) => x),
+        catchError((error: Response) => {
+          return throwError(() => error);
+        })
+      );
+    }
 
 
 }

@@ -5,6 +5,7 @@ import { GlobalService } from 'src/app/services/global/global.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 import Swal from 'sweetalert2';
 import ValidationEngine from 'devextreme/ui/validation_engine';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-admin-home-menu',
@@ -20,20 +21,46 @@ export class AddAdminHomeMenuComponent implements OnInit {
   ];
 
   model: any = {
-    Type: null,
+    PageName: null,
     Headline: null,
     ImageUrl: null,
     MainText: null,
     DetailText: null,
   };
+  menuObj: any;
+  Id: number;
+  editMode: boolean = false;
 
   constructor(
     public utilitiesSrv: UtilitiesService,
     public spinner: NgxSpinnerService,
-    public globalSrv: GlobalService
+    public globalSrv: GlobalService,
+    public route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+   this.getQueryParams();
+  }
+
+  getQueryParams = () => {
+    this.route.queryParams.subscribe((params) => {
+      if (params['Id']) {
+        this.editMode = true;
+        this.Id = Number(params['Id']);
+        this.menuObj = this.utilitiesSrv.editHomeMenu;
+        const { PageName, Headline, MainText, DetailText, ImageUrl} = this.menuObj;
+
+        this.model = {
+          PageName,
+          Headline,
+          MainText,
+          DetailText,
+          ImageUrl
+        }
+      }
+    });
+  }
+
 
   //get file from storage
   getFiles = async (e: any) => {
@@ -96,4 +123,27 @@ export class AddAdminHomeMenuComponent implements OnInit {
       console.log(error);
     }
   };
+
+    //Product edit
+    editPageContent = () => {
+      this.spinner.show();
+      console.log(this.model)
+      this.utilitiesSrv.editPageContent(this.model,this.Id).subscribe({
+        next: (result) => {
+          this.spinner.hide();
+          console.log('menuEditRes',result)
+          Swal.fire({
+            icon: 'success',
+            title: 'Updated successfully!',
+            confirmButtonText: 'Ok',
+          });       
+        },
+        error: (err) => {
+          this.spinner.hide();
+          console.log('menuEditErr', err);
+        },
+      });
+  
+    }
+
 }

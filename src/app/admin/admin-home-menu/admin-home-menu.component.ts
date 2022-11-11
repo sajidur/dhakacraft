@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { GlobalService } from 'src/app/services/global/global.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
@@ -17,7 +18,8 @@ export class AdminHomeMenuComponent implements OnInit {
   constructor(
     public utilitiesSrv: UtilitiesService,
     public spinner: NgxSpinnerService,
-    public globalSrv: GlobalService
+    public globalSrv: GlobalService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -74,5 +76,9 @@ export class AdminHomeMenuComponent implements OnInit {
     });
   }
 
-  
+  editHomeMenu = (Id: any, data: any) => {
+    this.utilitiesSrv.editHomeMenu = data
+    this.router.navigateByUrl(`/admin/add-home-menu?Id=${Id}`)
+  }
+
 }
