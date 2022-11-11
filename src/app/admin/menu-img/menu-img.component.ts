@@ -42,36 +42,6 @@ export class MenuImgComponent implements OnInit {
     });
   }
 
-  delete = (Id: any) => {
-    Swal.fire({
-      icon: 'warning',
-      html: `Are you sure do you want to delete it?`,
-      showCancelButton: true,
-      cancelButtonColor: '#d33',
-      confirmButtonColor: '#28a745',
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No, Thanks',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // this.deleteNewsEventSlider(Id);
-      }
-    });
-  }
 
-  deleteNewsEventSlider = (Id: any) => {
-    this.utilitiesSrv.deleteNewsEventSliderById(Id).subscribe({
-      next: (result) => {
-        this.spinner.hide();
-        console.log('deleteRes', result);
-        if(result) {
-          this.getAllCategory()
-        }
-      },
-      error: (err) => {
-        this.spinner.hide();
-        console.log('deleteErr', err);
-      },
-    });
-  }
 
 }

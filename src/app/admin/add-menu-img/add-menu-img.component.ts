@@ -18,6 +18,7 @@ export class AddMenuImgComponent implements OnInit {
     { id: 2, name: 'Garden' },
     { id: 3, name: 'Personal Accessories' },
     { id: 4, name: 'Christmas' },
+    { id: 5, name: 'Toplist' }
   ];
 
   model: any = {

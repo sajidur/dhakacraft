@@ -54,7 +54,7 @@
           <dxi-column caption="Name" dataField="Name"></dxi-column>
           <dxi-column caption="TitleText" dataField="TitleText"></dxi-column>
           <!-- <dxi-column caption="Image" dataField="ImageUrl"> </dxi-column> -->
-          <dxi-column caption="Action"></dxi-column>
+          <!-- <dxi-column caption="Action"></dxi-column> -->
 
           <tbody class="dx-row" *dxTemplate="let row of 'rowTemplateName'">
             <tr class="custom-row">
@@ -68,9 +68,9 @@
                   alt=""
                 />
               </td> -->
-              <td>
+              <!-- <td>
                 <dx-button matTooltip="Delete"  matTooltipPosition="above" (onClick)="delete(row?.data?.Id)" icon="trash"> </dx-button>
-              </td>
+              </td> -->
             </tr>
           </tbody>
         </dx-data-grid>

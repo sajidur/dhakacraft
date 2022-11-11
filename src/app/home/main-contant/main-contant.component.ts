@@ -33,8 +33,9 @@ export class MainContantComponent implements OnInit {
   ngOnInit(): void {
    this.currentPushSubscription();
    this.getAllImageConfig();
-   this.getProductByCategoryId();
+  //  this.getProductByCategoryId();
    this.getAllPageContent();
+   this.getAllCategory()
   }
 
   ngOnDestroy() {
@@ -59,20 +60,41 @@ export class MainContantComponent implements OnInit {
     );
   }
 
+  getAllCategory = () => {
+    // this.spinner.show();
+    this.utilitiesSrv.getAllCategory().subscribe({
+      next: (result) => {
+        // this.spinner.hide();
+        console.log('categoryListRes', result);
+        if(result) {
+          // this.categoryList = result;
+          const categoryObj = result.find((e: any) => e.MenuId === 5)
+          if(categoryObj) {
+            this.getProductByCategoryId(categoryObj?.Id)
+          }
+        }
+      },
+      error: (err) => {
+        // this.spinner.hide();
+        console.log('categoryListErr', err);
+      },
+    });
+  }
+
   goToNewsAndEventDetails = (Id: any) => {
     // this.router.navigateByUrl('news-event?id=' + Id + '&as=' + as + '&cd=' + cd);
     this.router.navigateByUrl('news-event?Id=' + Id);
   }
 
-  getProductByCategoryId = () => {
+  getProductByCategoryId = (Id: any) => {
     // this.spinner.show();
     this.productList = [];
-    this.utilitiesSrv.getProductByCategoryId(1).subscribe({
+    this.utilitiesSrv.getProductByCategoryId(Id).subscribe({
       next: (result) => {
         // this.spinner.hide();
-        console.log('ProductListRes', result);
-        if (result && result?.length) {
-          this.productList = result.slice(0,3);
+        console.log('ProductListRessss', result);
+        if (result) {
+          this.productList = result;
         }
       },
       error: (err) => {
