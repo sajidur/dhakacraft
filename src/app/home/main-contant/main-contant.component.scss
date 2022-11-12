@@ -26,7 +26,7 @@
 .membership-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-column-gap: 3rem;
+  grid-column-gap: 2.5rem;
   align-items: center;
 }
 
@@ -63,3 +63,9 @@
 //   grid-column: 1 / span 2;
 //   grid-row: 1;
 // }
+
+@media screen and (max-width: 600px) {
+  .membership-container {
+      grid-column-gap: 8px;
+  }
+}
