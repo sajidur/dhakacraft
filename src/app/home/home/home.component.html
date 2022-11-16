@@ -49,11 +49,10 @@
                         >Fair Trade</a
                       > -->
                       <a
-                        target="_blank"
-                        href="../../../assets/pdf/AnnualReport.pdf"
+                      (click)="handleContactForm('Request from Annual Report')"
                         >Annual Report</a
                       >
-                      <a (click)="handleContactForm('Request from contact us')"
+                      <a (click)="handleContactForm('Request from Contact Us')"
                         >Contact Us</a
                       >
                     </div>
@@ -282,13 +281,12 @@
         <a (click)="ourStoryItem(item, true)" *ngFor="let item of pageContent" >{{item?.PageName}}</a>
         <a
           class="d-block"
-          target="_blank"
-          href="../../../assets/pdf/AnnualReport.pdf"
+          (click)="handleContactForm('Request from Annual Report')"
           >Annual Report</a
         >
         <a
           class="d-block"
-          (click)="handleContactForm('Request from contact us')"
+          (click)="handleContactForm('Request from Contact Us')"
           >Contact Us</a
         >
       </div>

@@ -1,5 +1,34 @@
+// img {
+//     // width: 500px;
+//     height: 500px;
+// }
+.height-container {
+  height: 500px;
+}
 
-img {
-    // width: 500px;
-    height: 500px;
+.img-container {
+  height: 490px;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 100%;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .height-container {
+    height: 300px;
+  }
+
+  .img-container {
+    height: 290px;
+  }
 }

@@ -143,7 +143,7 @@ export class MainContantComponent implements OnInit {
             if(this.pageContentObj.MainText) {
               let videoUrl: any= this.globalSrv.getEmbedYoutubeUrl(this.pageContentObj.MainText)
               this.safeYoutubeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
-              console.log(this.safeYoutubeSrc)
+              // console.log(this.safeYoutubeSrc)
             }
             
            

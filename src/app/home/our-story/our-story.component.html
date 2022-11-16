@@ -2,71 +2,38 @@
   <!-- About us started here -->
   <div class="container pt-3">
     <h2 class="fw-bold mb-4">{{ homeMenu?.PageName }}</h2>
-    <div class="my-5 p-3">
+    <!-- <div class="my-5 p-3">
       <img *ngIf="homeMenu?.ImageUrl"
         loading="lazy"
         class="img-fluid"
         [src]="globalSrv.imageUrlGet(homeMenu?.ImageUrl)"
         alt=""
       />
+    </div> -->
+
+   <div class="row">
+    <div class="col-12 col-sm-8 col-md-7 height-container">
+      <div *ngIf="homeMenu?.MainText" class="video-container">
+        <iframe
+          class="who-we-are-iframe"
+          allow="autoplay; encrypted-media"
+          allowfullscreen="allowfullscreen"
+          height="500"
+          [src]="safeYoutubeSrc"
+        >
+        </iframe>
+      </div>
+
+      <!-- <div class="w-100" *ngIf="!homeMenu?.MainText"> -->
+        <img class="img-container"
+          *ngIf="homeMenu?.ImageUrl"
+          [src]="globalSrv.imageUrlGet(homeMenu?.ImageUrl)"
+        />
+      <!-- </div> -->
     </div>
+   </div>
 
     <p style="white-space: pre-wrap;">{{ homeMenu?.DetailText }}</p>
-
-    <!-- <p>
-    Dhaka Handicrafts Limited (DH Ltd.) is in the business of production and
-    export of handicrafts with the commitment of advancing indigenous and
-    impoverished artisans. DH Ltd. is a non-profit handicrafts manufacturing and
-    trading concern. It is a hundred percent export oriented crafts producing
-    business entity registered under the Joint Stock Company Act 1994 as Limited
-    Company by Guarantee. The registration number is C- 38459(417)/99 Dated 29
-    August 1999.
-  </p>
-  <p>
-    The motivation for business of DH Ltd. is to serve the traditional crafts
-    producers. Along with business as the prime focus, its slogan is “producers
-    first”. The organizational philosophy and culture as well as the business
-    practices of DH Ltd. were founded on welfare of vulnerable and impoverished
-    artisans in rural and remote areas of Bangladesh. Thus, DH Ltd. extends
-    number of welfare services to the traditional artisans – the producers. DH
-    Ltd. is committed to ensure women economic empowerment and social dignity.
-  </p>
-  <p>
-    Ever since the inception and in the phases of its progressive changes, DH
-    Ltd. has been a producer-welfare oriented organization. It shall encourage
-    independence and self-reliance for both the organization and its
-    beneficiaries. The organization and the people involved shall foster human
-    rights, gender equity; and value the cultural and tradition of the relevant
-    people on their historical context and future prospects.
-  </p>
-  <h4 class="fw-bold">Organizational Construct</h4>
-  <p>
-    In the mission to assist people improve their living conditions, the
-    business of DH Ltd. has been based on the active participation of all
-    relevant stakeholders in the design, production and quality control of the
-    produce and services to the extent deemed relevant to DH Ltd. management. DH
-    Ltd. is a non-profit and non political organization, operating as far as
-    possible in a self-reliant manner, with the motivation to serve the
-    producers who are prominently traditional artisans and underprivileged
-    communities in a mode of partnership with least financial stake from
-    producers’ side. The functioning of DH Ltd. abides within the realms of
-    values that establish it as pro-producer business entity.
-  </p>
-  <p>The core values, as far as business operation is concerned, are:</p>
-  <ul>
-    <li>Welfare of Artisans</li>
-    <li>Assurance of quality</li>
-    <li>Fairness</li>
-    <li>Transparency</li>
-    <li>Accountability</li>
-  </ul>
-  <h4 class="fw-bold">Vision of DH Ltd.</h4>
-  <p>To be the leading handicrafts exporter of the country</p>
-  <h4 class="fw-bold">Mission of DH Ltd.</h4>
-  <p>
-    Collaborate with the impoverished artisans in production of natural resource
-    and recycled material based handicrafts
-  </p> -->
   </div>
   <!-- About us ended here -->
 </section>

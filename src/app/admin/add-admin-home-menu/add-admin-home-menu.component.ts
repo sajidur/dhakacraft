@@ -18,6 +18,7 @@ export class AddAdminHomeMenuComponent implements OnInit {
     { id: 1, name: 'Who We Are' },
     { id: 2, name: 'About Us' },
     { id: 3, name: 'Fair Trade' },
+    // { id: 4, name: 'Annual Report'},
   ];
 
   model: any = {

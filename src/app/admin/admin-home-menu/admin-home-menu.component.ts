@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class AdminHomeMenuComponent implements OnInit {
 
-  rowSize =10
+  rowSize = 10
   pageContent: any[] = [];
 
   constructor(

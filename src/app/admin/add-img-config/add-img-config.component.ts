@@ -5,6 +5,7 @@ import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { GlobalService } from 'src/app/services/global/global.service';
 import Swal from 'sweetalert2';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-img-config',
@@ -24,14 +25,39 @@ export class AddImgConfigComponent implements OnInit {
     ImageUrl: null,
     DetailsText: null,
   };
+  editMode: boolean = false;
+  Id: number;
+  imgConfigObj: any;
 
   constructor(
     public utilitiesSrv: UtilitiesService,
     public spinner: NgxSpinnerService,
-    public globalSrv: GlobalService
+    public globalSrv: GlobalService,
+    public route: ActivatedRoute,
+    public router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getQueryParams()
+  }
+  getQueryParams = () => {
+    this.route.queryParams.subscribe((params) => {
+      if (params['Id']) {
+        this.editMode = true;
+        this.Id = Number(params['Id']);
+        this.imgConfigObj = this.utilitiesSrv.editImgConfig;
+        const { Name, ImagePosition, DetailsText, ImageUrl } =
+        this.imgConfigObj;
+
+        this.model = {
+          Name,
+          ImagePosition,
+          DetailsText,
+          ImageUrl,
+        };
+      }
+    });
+  };
 
   //get file from storage
   getFiles = async (e: any) => {
@@ -66,7 +92,6 @@ export class AddImgConfigComponent implements OnInit {
       console.log(this.model);
 
       try {
-    
         if (!this.file) {
           Swal.fire({
             icon: 'warning',
@@ -82,7 +107,7 @@ export class AddImgConfigComponent implements OnInit {
         }
         const imgConfigRes = await this.postImgConfig(this.model);
         this.model = {};
-        this.spinner.hide()
+        this.spinner.hide();
         Swal.fire({
           icon: 'success',
           title: 'Data added successfully!',
@@ -105,6 +130,38 @@ export class AddImgConfigComponent implements OnInit {
       const res = this.utilitiesSrv.postImgConfig(body);
       return await lastValueFrom(res);
       // return await this.utilitiesSrv.postNewsEventSliderImg(body).toPromise()
+    } catch (error) {
+      this.spinner.hide();
+      console.log(error);
+    }
+  };
+
+   //Home menu edit
+   editPageContent = async () => {
+    this.spinner.show()
+    let uploadRes = null;
+    if (this.file) {
+      uploadRes = await this.upload();
+    }
+    if (!!uploadRes) {
+      this.model.ImageUrl = uploadRes;
+    }
+    const editImgConfigRes = await this.editImgConfig(this.model);
+    this.spinner.hide()
+    if (editImgConfigRes) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Edited successfully!',
+        confirmButtonText: 'Ok',
+      });
+      this.router.navigateByUrl('admin/img-config');
+    }
+  };
+
+  editImgConfig = async (body: any) => {
+    try {
+      const res = this.utilitiesSrv.editImageConfig(this.model, this.Id);
+      return await lastValueFrom(res);
     } catch (error) {
       this.spinner.hide();
       console.log(error);

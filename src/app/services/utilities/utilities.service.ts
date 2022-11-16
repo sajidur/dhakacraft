@@ -10,16 +10,24 @@ import { GlobalService } from '../global/global.service';
 export class UtilitiesService {
   allCategory: any[] = [];
   constructor(private http: HttpClient, public globalSrv: GlobalService) {}
+
   editHomeMenu: any;
-  contactUsUrl = `${this.globalSrv.domain}/api/contactus/contact`;
-  imgUploadUrl = `${this.globalSrv.domain}/api/Upload`;
-  newsEventSliderUrl = `${this.globalSrv.domain}/api/NewsContent`;
-  loginUrl = `${this.globalSrv.domain}/api/User`;
+  editImgConfig: any;
+
   categoryUrl = `${this.globalSrv.domain}/api/Category`;
-  productUrl = `${this.globalSrv.domain}`;
+  contactUsUrl = `${this.globalSrv.domain}/api/ContactUs`;
   imgConfigUrl = `${this.globalSrv.domain}/api/ImageConfig`;
-  productSearchUrl = `${this.globalSrv.domain}/Search`;
-  pageContentUrl = `${this.globalSrv.domain}`
+  pageContentUrl = `${this.globalSrv.domain}/api/PageContent`;
+  newsEventSliderUrl = `${this.globalSrv.domain}/api/NewsContent`;
+  productUrl = `${this.globalSrv.domain}/api/Product`;
+
+  loginUrl = `${this.globalSrv.domain}/api/User`;
+
+ 
+
+  productSearchUrl = `${this.globalSrv.domain}/api/Product/Search`;
+
+  imgUploadUrl = `${this.globalSrv.domain}/api/Upload`;
 
   newsEventSliderList = new BehaviorSubject<any>(null);
   newsEventSliderListCast = this.newsEventSliderList
@@ -52,7 +60,7 @@ export class UtilitiesService {
 
   // Post all news, event, slider img
   postNewsEventSliderImg(body: any): Observable<any> {
-    return this.http.post(`${this.newsEventSliderUrl}/Post`, body).pipe(
+    return this.http.post(`${this.newsEventSliderUrl}`, body).pipe(
       map((x: any) => x),
       catchError((error: Response) => {
         return throwError(() => error);
@@ -62,7 +70,7 @@ export class UtilitiesService {
 
   // Get all news, event, slider img
   getAllNewsEventSliderImg(): Observable<any> {
-    return this.http.get(`${this.newsEventSliderUrl}/GetAll`).pipe(
+    return this.http.get(`${this.newsEventSliderUrl}`).pipe(
       map((x: any) => {
         this.newsEventSliderList.next(x);
         return x;
@@ -165,7 +173,7 @@ export class UtilitiesService {
     // const body = {
     //   ProductId: Id,
     // };
-    return this.http.post(`${this.productUrl}/ProductDelete?Id=${Id}`,{}).pipe(
+    return this.http.post(`${this.productUrl}/ProductDelete?Id=${Id}`, {}).pipe(
       map((x: any) => x),
       catchError((error: Response) => {
         return throwError(() => error);
@@ -173,29 +181,31 @@ export class UtilitiesService {
     );
   };
 
-    //Delete product By Product Id
-  deleteProductImg = (Id: any): Observable<any> => { 
-      return this.http.post(`${this.productUrl}/ProductImageDelete?Id=${Id}`, {}).pipe(
+  //Delete product By Product Id
+  deleteProductImg = (Id: any): Observable<any> => {
+    return this.http
+      .post(`${this.productUrl}/ProductImageDelete?Id=${Id}`, {})
+      .pipe(
         map((x: any) => x),
         catchError((error: Response) => {
           return throwError(() => error);
         })
       );
-  }
+  };
 
   editProduct = (body: any, Id: any) => {
-     body.Id = Id
+    body.Id = Id;
     return this.http.post(`${this.productUrl}/ProductEdit`, body).pipe(
       map((x: any) => x),
       catchError((error: Response) => {
         return throwError(() => error);
       })
     );
-  }
+  };
 
-   // Get Image Config
-   getAllImageConfig(): Observable<any> {
-    return this.http.get(`${this.imgConfigUrl}`).pipe(
+  // Get Image Config
+  getAllImageConfig(): Observable<any> {
+    return this.http.get(`${this.imgConfigUrl}/GetAll`).pipe(
       map((x: any) => x),
       catchError((error: Response) => {
         return throwError(() => error);
@@ -203,38 +213,46 @@ export class UtilitiesService {
     );
   }
 
-    //Delete product By Product Id
-    deleteImgConfigById = (Id: any): Observable<any> => {
-      return this.http.post(`${this.imgConfigUrl}/Delete?id=${Id}`,{}).pipe(
-        map((x: any) => x),
-        catchError((error: Response) => {
-          return throwError(() => error);
-        })
-      );
-    };
+  //Delete product By Product Id
+  deleteImgConfigById = (Id: any): Observable<any> => {
+    return this.http.post(`${this.imgConfigUrl}/Delete?id=${Id}`, {}).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  };
 
-    postImgConfig = (body: any): Observable<any> => {
-      return this.http.post(`${this.imgConfigUrl}`, body).pipe(
-        map((x: any) => x),
-        catchError((error: Response) => {
-          return throwError(() => error);
-        })
-      );
-    };
+  postImgConfig = (body: any): Observable<any> => {
+    return this.http.post(`${this.imgConfigUrl}/Post`, body).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  };
 
- 
+  editImageConfig = (body: any, Id: any): Observable<any> => {
+    body.Id = Id;
+    return this.http.post(`${this.imgConfigUrl}/Edit`, body).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  };
 
-    searchProductByName(name: any): Observable<any> {
-      return this.http.get(`${this.productSearchUrl}?search=${name}`).pipe(
-        map((x: any) => x),
-        catchError((error: Response) => {
-          return throwError(() => error);
-        })
-      );
-    }
+  searchProductByName(name: any): Observable<any> {
+    return this.http.get(`${this.productSearchUrl}?search=${name}`).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  }
 
-    // Get All
-   getAllPageContent(): Observable<any> {
+  // Get All
+  getAllPageContent(): Observable<any> {
     // const httpOptions = {
     //   headers: new HttpHeaders({
     //     "Content-Type": "application/json"
@@ -248,34 +266,32 @@ export class UtilitiesService {
     );
   }
 
-    //Delete By Id
-    deletePageContentById = (Id: any): Observable<any> => {
-      return this.http.post(`${this.pageContentUrl}/Delete?id=${Id}`,{}).pipe(
-        map((x: any) => x),
-        catchError((error: Response) => {
-          return throwError(() => error);
-        })
-      );
-    };
+  //Delete By Id
+  deletePageContentById = (Id: any): Observable<any> => {
+    return this.http.post(`${this.pageContentUrl}/Delete?id=${Id}`, {}).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  };
 
-    postPageContent = (body: any): Observable<any> => {
-      return this.http.post(`${this.pageContentUrl}/Post`, body).pipe(
-        map((x: any) => x),
-        catchError((error: Response) => {
-          return throwError(() => error);
-        })
-      );
-    };
+  postPageContent = (body: any): Observable<any> => {
+    return this.http.post(`${this.pageContentUrl}/Post`, body).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  };
 
-    editPageContent = (body: any, Id: any): Observable<any> => {
-      body.Id = Id
-      return this.http.post(`${this.pageContentUrl}/Edit`, body).pipe(
-        map((x: any) => x),
-        catchError((error: Response) => {
-          return throwError(() => error);
-        })
-      );
-    }
-
-
+  editPageContent = (body: any, Id: any): Observable<any> => {
+    body.Id = Id;
+    return this.http.post(`${this.pageContentUrl}/Edit`, body).pipe(
+      map((x: any) => x),
+      catchError((error: Response) => {
+        return throwError(() => error);
+      })
+    );
+  };
 }
