@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { GlobalService } from 'src/app/services/global/global.service';
@@ -20,14 +21,16 @@ export class MainContantComponent implements OnInit {
   memberShip: any[] = [];
   requestCatalog: any[] = []
   productList: any[] = [];
-  pageContent: any[] = [];
+  pageContentObj: any;
+  safeYoutubeSrc: SafeResourceUrl;
 
   constructor(
     public router: Router,
     public utilitiesSrv: UtilitiesService,
-    public globalSrv: GlobalService
+    public globalSrv: GlobalService,
+    public sanitizer: DomSanitizer
   ) { 
-
+    
   }
 
   ngOnInit(): void {
@@ -129,20 +132,36 @@ export class MainContantComponent implements OnInit {
   };
 
   getAllPageContent = () => {
-    // this.spinner.show();
-    this.utilitiesSrv.getAllPageContent().subscribe({
-      next: (result) => {
-        // this.spinner.hide();
-        console.log('pageListRes', result);
-        if(result.length) {
-          this.pageContent = result.filter((e: any) => e.PageName === 'Who We Are');
-        }
-      },
-      error: (err) => {
-        // this.spinner.hide();
-        console.log('pageListErr', err);
-      },
-    });
+    // this.utilitiesSrv.getAllPageContent().subscribe({
+    //   next: (result) => {
+    //     console.log('pageListRes', result);
+    //     if(result.length) {
+    //       const pContent: any[] = result.filter((e: any) => e.PageName === 'Who We Are');
+    const pContent: any[] = [{MainText:'https://www.youtube.com/watch?v=OII0JpbyAkM', DetailText:'this is details text',ImageUrl: 'a30e06b6-9351-4647-b569-725536002bc5home-office2.jpg'}]
+          if(pContent.length) {
+            this.pageContentObj = pContent[pContent.length - 1];
+            if(this.pageContentObj.MainText) {
+              let videoUrl: any= this.globalSrv.getEmbedYoutubeUrl(this.pageContentObj.MainText)
+              this.safeYoutubeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
+              console.log(this.safeYoutubeSrc)
+            }
+            
+           
+          }
+    //     }
+    //   },
+    //   error: (err) => {
+    //     console.log('pageListErr', err);
+    //   },
+    // });
   }
+
+//  getVideoSafeUrl(url: any) {
+//   console.log(url)
+//   if(url.includes('watch?v=')) {
+//     url.replace('watch?v=', "embed/");
+//   }
+//    return url
+//   }
 
 }

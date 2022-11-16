@@ -40,7 +40,7 @@ export class AddAdminHomeMenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   this.getQueryParams();
+    this.getQueryParams();
   }
 
   getQueryParams = () => {
@@ -49,19 +49,19 @@ export class AddAdminHomeMenuComponent implements OnInit {
         this.editMode = true;
         this.Id = Number(params['Id']);
         this.menuObj = this.utilitiesSrv.editHomeMenu;
-        const { PageName, Headline, MainText, DetailText, ImageUrl} = this.menuObj;
+        const { PageName, Headline, MainText, DetailText, ImageUrl } =
+          this.menuObj;
 
         this.model = {
           PageName,
           Headline,
           MainText,
           DetailText,
-          ImageUrl
-        }
+          ImageUrl,
+        };
       }
     });
-  }
-
+  };
 
   //get file from storage
   getFiles = async (e: any) => {
@@ -125,32 +125,33 @@ export class AddAdminHomeMenuComponent implements OnInit {
     }
   };
 
-    //Product edit
-    editPageContent = () => {
-      this.spinner.show();
-      console.log(this.model)
-      this.utilitiesSrv.editPageContent(this.model,this.Id).subscribe({
-        next: (result) => {
-          this.spinner.hide();
-          console.log('menuEditRes',result)
-          Swal.fire({
-            icon: 'success',
-            title: 'Edited successfully!',
-            confirmButtonText: 'Ok',
-          });  
-          this.router.navigateByUrl('admin/home-menu')     
-        },
-        error: (err) => {
-          this.spinner.hide();
-          Swal.fire({
-            icon: 'error',
-            title: 'Failed to update!',
-            confirmButtonText: 'Please try again later',
-          })
-          console.log('menuEditErr', err);
-        },
-      });
-  
+  //Home menu edit
+  editPageContent = async () => {
+    let uploadRes = null;
+    if (this.file) {
+      uploadRes = await this.upload();
     }
+    if (!!uploadRes) {
+      this.model.ImageUrl = uploadRes;
+    }
+    const pageRes = await this.editPage(this.model);
+    if (pageRes) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Edited successfully!',
+        confirmButtonText: 'Ok',
+      });
+      this.router.navigateByUrl('admin/home-menu');
+    }
+  };
 
+  editPage = async (body: any) => {
+    try {
+      const res = this.utilitiesSrv.editPageContent(this.model, this.Id);
+      return await lastValueFrom(res);
+    } catch (error) {
+      this.spinner.hide();
+      console.log(error);
+    }
+  };
 }

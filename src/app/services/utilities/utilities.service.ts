@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, filter, map } from 'rxjs/operators';
 import { GlobalService } from '../global/global.service';
@@ -235,6 +235,11 @@ export class UtilitiesService {
 
     // Get All
    getAllPageContent(): Observable<any> {
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     "Content-Type": "application/json"
+    //     }),
+    //   }
     return this.http.get(`${this.pageContentUrl}/GetAll`).pipe(
       map((x: any) => x),
       catchError((error: Response) => {

@@ -35,7 +35,7 @@
         <div class="col-sm-6">
           <label class="col-form-label">Upload Image</label>
           <div class="w-100">
-            <input [disabled]="editMode"
+            <input 
               accept="image/*"
               type="file"
               id="file"
@@ -61,7 +61,7 @@
           </dx-text-box>
         </div>
         <div class="col-sm-6">
-          <label class="col-form-label">Main Text</label>
+          <label class="col-form-label">Video Link</label>
           <dx-text-box
             class="w-100"
             [(ngModel)]="model.MainText"

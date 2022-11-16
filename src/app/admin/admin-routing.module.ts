@@ -19,7 +19,7 @@ const routes: Routes = [
 
     children: [
       {
-        path: '', redirectTo: 'news-event-slider', pathMatch: 'full'
+        path: '', redirectTo: 'home-menu', pathMatch: 'full'
       },
       {
         path: 'menu',
