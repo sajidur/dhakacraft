@@ -132,12 +132,12 @@ export class MainContantComponent implements OnInit {
   };
 
   getAllPageContent = () => {
-    // this.utilitiesSrv.getAllPageContent().subscribe({
-    //   next: (result) => {
-    //     console.log('pageListRes', result);
-    //     if(result.length) {
-    //       const pContent: any[] = result.filter((e: any) => e.PageName === 'Who We Are');
-    const pContent: any[] = [{MainText:'https://www.youtube.com/watch?v=OII0JpbyAkM', DetailText:'this is details text',ImageUrl: 'a30e06b6-9351-4647-b569-725536002bc5home-office2.jpg'}]
+    this.utilitiesSrv.getAllPageContent().subscribe({
+      next: (result) => {
+        console.log('pageListRes', result);
+        if(result.length) {
+          const pContent: any[] = result.filter((e: any) => e.PageName === 'Who We Are');
+    // const pContent: any[] = [{MainText:'https://www.youtube.com/watch?v=OII0JpbyAkM', DetailText:'this is details text',ImageUrl: 'a30e06b6-9351-4647-b569-725536002bc5home-office2.jpg'}]
           if(pContent.length) {
             this.pageContentObj = pContent[pContent.length - 1];
             if(this.pageContentObj.MainText) {
@@ -148,12 +148,12 @@ export class MainContantComponent implements OnInit {
             
            
           }
-    //     }
-    //   },
-    //   error: (err) => {
-    //     console.log('pageListErr', err);
-    //   },
-    // });
+        }
+      },
+      error: (err) => {
+        console.log('pageListErr', err);
+      },
+    });
   }
 
 //  getVideoSafeUrl(url: any) {

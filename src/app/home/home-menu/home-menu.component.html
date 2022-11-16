@@ -11,7 +11,7 @@
       <div class="card">
         <span *ngFor="let img of item.Images">
           <img loading="lazy"
-            *ngIf="img?.IsDefault"
+            *ngIf="img?.IsDefault && img?.ImageUrl"
             [src]="globalSrv.imageUrlGet(img?.ImageUrl)"
             class="card-img-top"
             alt=""

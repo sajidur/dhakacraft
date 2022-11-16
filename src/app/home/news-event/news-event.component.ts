@@ -57,9 +57,9 @@ export class NewsEventComponent implements OnInit {
     });
    }
 
-   imageUrlGet = (url: any) => {
-    console.log(this.globalSrv.imageUrlGet(url))
-    return this.globalSrv.imageUrlGet(url)
-   }
+  //  imageUrlGet = (url: any) => {
+  //   // console.log(this.globalSrv.imageUrlGet(url))
+  //   return this.globalSrv.imageUrlGet(url)
+  //  }
 
 }

@@ -60,7 +60,7 @@
                 <td>{{ row?.data?.Name }}</td>
                 <td>{{ row?.data?.ImagePosition }}</td>
                 <td>
-                  <img loading="lazy"
+                  <img *ngIf="row?.data?.ImageUrl" loading="lazy"
                     height="50"
                     width="70"
                     src="{{ globalSrv.imageUrlGet(row?.data?.ImageUrl) }}"

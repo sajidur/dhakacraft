@@ -3,7 +3,7 @@
   <div class="container pt-3">
     <h2 class="fw-bold mb-4">{{ homeMenu?.PageName }}</h2>
     <div class="my-5 p-3">
-      <img
+      <img *ngIf="homeMenu?.ImageUrl"
         loading="lazy"
         class="img-fluid"
         [src]="globalSrv.imageUrlGet(homeMenu?.ImageUrl)"

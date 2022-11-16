@@ -338,7 +338,7 @@
           >
 
           <div class="my-3" style="padding-right: 2.5rem">
-            <img height="170"
+            <img *ngIf="requestCatalogObj?.ImageUrl" height="170"
               loading="lazy"
               class="w-100"
               [src]="globalSrv.imageUrlGet(requestCatalogObj?.ImageUrl)"
