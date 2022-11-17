@@ -47,7 +47,7 @@ export class ContactFromComponent implements OnInit {
   };
 
   formValueSet = () => {
-    this.registerForm.patchValue({ subject: this.data });
+    this.registerForm.patchValue({ Subject: this.data });
   };
 
   get f() {

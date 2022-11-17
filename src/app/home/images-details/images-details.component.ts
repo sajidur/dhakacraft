@@ -124,7 +124,7 @@ export class ImagesDetailsComponent implements OnInit {
       width: '50%',
       height: '85%',
       maxWidth: '90vw',
-      data: '',
+      data: `Request details for ${this.productDetail?.Name}`,
     });
   }
 
