@@ -16,13 +16,13 @@ export class GlobalService {
   }
 
   getEmbedYoutubeUrl = (url: any) => {
-    console.log(url)
-    let updateUrl = ''
+    // console.log(url)
     if(url.includes('watch?v=')) {
-      updateUrl = url.replace('watch?v=', "embed/");
+      const updateUrl = url.replace('watch?v=', "embed/");
+      return updateUrl;
     }
   //  let updateUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-     return updateUrl
+     return url
   }
   
 }
