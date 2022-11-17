@@ -32,8 +32,8 @@ export class ContactFromComponent implements OnInit {
 
   formHandler = () => {
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: [
+      Name: ['', Validators.required],
+      Email: [
         '',
         [
           Validators.required,
@@ -41,8 +41,8 @@ export class ContactFromComponent implements OnInit {
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
         ],
       ],
-      subject: ['', Validators.required],
-      message: ['', Validators.required],
+      Subject: ['', Validators.required],
+      Message: ['', Validators.required],
     });
   };
 
@@ -55,8 +55,8 @@ export class ContactFromComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.registerForm.value);
-    console.log(this.registerForm.value);
+    // console.log(this.registerForm.value);
+    // console.log(this.registerForm.value);
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {

@@ -17,6 +17,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { DevExtremeModule } from '../shared/modules/dev-extreme/dev-extreme.module';
 
 
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -36,7 +37,7 @@ import { DevExtremeModule } from '../shared/modules/dev-extreme/dev-extreme.modu
     ReactiveFormsModule,
     MaterialModule,
     NgxSpinnerModule,
-    DevExtremeModule
+    DevExtremeModule,
   ]
 })
 export class HomeModule { }

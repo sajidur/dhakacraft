@@ -9,7 +9,7 @@
   </p>
 </div>
 <header style="border-bottom: 1px solid #cdcdcd">
-  <div class="container">
+  <div class="container mb-1">
     <nav class="navbar navbar-expand-md p-0">
         <a class="navbar-brand">
           <img
@@ -87,7 +87,7 @@
                       <a (click)="homeMenuItem('wall-hanging')">Wall Hanging</a>
                       <a (click)="homeMenuItem('lamp-shade')">Lamp Shade</a> -->
                       <a
-                        (click)="homeMenuItem(item?.Id)"
+                        (click)="homeMenuItem(item?.Id, 'dropdown-content2')"
                         *ngFor="let item of homeCategory"
                         >{{ item?.Name }}</a
                       >
@@ -119,7 +119,7 @@
                       <!-- <a (click)="gardenMenu('planters')">Planters</a>
                       <a (click)="gardenMenu('birdhouse')">Birdhouse</a> -->
                       <a
-                        (click)="homeMenuItem(item?.Id)"
+                        (click)="homeMenuItem(item?.Id, 'dropdown-content3')"
                         *ngFor="let item of gardenCategory"
                         >{{ item?.Name }}</a
                       >
@@ -152,7 +152,7 @@
                       <a (click)="personalItem('jewelry')">Jewelry</a>
                       <a (click)="personalItem('purses')">Purses</a> -->
                       <a
-                        (click)="homeMenuItem(item?.Id)"
+                        (click)="homeMenuItem(item?.Id, 'dropdown-content4')"
                         *ngFor="let item of personalCategory"
                         >{{ item?.Name }}</a
                       >
@@ -185,7 +185,7 @@
                       <a (click)="christmasItem('tree-hanging')">Tree Hanging</a>
                       <a (click)="christmasItem('home-decoration')">Home Decoration</a> -->
                       <a
-                        (click)="homeMenuItem(item?.Id)"
+                        (click)="homeMenuItem(item?.Id, 'dropdown-content5')"
                         *ngFor="let item of christmasCategory"
                         >{{ item?.Name }}</a
                       >
@@ -231,8 +231,10 @@
               </div>
             </div>
           
-          </form> &nbsp;
-          <button (click)="handleSearchBtn()" class="btn btn-success mt-sm- mt-md-0 " type="submit">Search</button>
+          </form> <span class="d-sm-none d-md-block">&nbsp;</span>
+          <button (click)="handleSearchBtn()" class="btn btn-success mt-1 mt-md-0 " type="submit">Search</button>
+        
+          <!-- <button routerLink="/login">login</button> -->
         </div>
     </nav>
   </div>
@@ -253,7 +255,7 @@
           <img
             loading="lazy"
             width="120"
-            src="../../../assets/images/log-t.jpg"
+            src="../../../assets/images/logo_transparent.jpg"
             alt=""
           />
           &nbsp;
@@ -278,7 +280,7 @@
         <a class="d-block" (click)="ourStoryItem('fair-trade', true)"
           >Fair Trade</a
         > -->
-        <a (click)="ourStoryItem(item, true)" *ngFor="let item of pageContent" >{{item?.PageName}}</a>
+        <a class="d-block" (click)="ourStoryItem(item, true)" *ngFor="let item of pageContent" >{{item?.PageName}}</a>
         <a
           class="d-block"
           (click)="handleContactForm('Request from Annual Report')"
@@ -335,10 +337,9 @@
             >Request Catalog</a
           >
 
-          <div class="my-3" style="padding-right: 2.5rem">
+          <div class="my-3">
             <img *ngIf="requestCatalogObj?.ImageUrl" height="170"
               loading="lazy"
-              class="w-100"
               [src]="globalSrv.imageUrlGet(requestCatalogObj?.ImageUrl)"
               alt=""
             />
@@ -387,18 +388,18 @@
   <form
     class="w-100 px-4 py-2"
     [formGroup]="registerForm"
-    (ngSubmit)="onSubmit()"
+    (ngSubmit)="onSubmitLeaveMessage()"
   >
     <div class="form-group">
       <label>Name:*</label>
       <input
         type="text"
-        formControlName="name"
+        formControlName="Name"
         class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+        [ngClass]="{ 'is-invalid': submitted && f['Name'].errors }"
       />
-      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-        <div *ngIf="f['name'].errors['required']">Name is required</div>
+      <div *ngIf="submitted && f['Name'].errors" class="invalid-feedback">
+        <div *ngIf="f['Name'].errors['required']">Name is required</div>
       </div>
     </div>
 
@@ -406,13 +407,13 @@
       <label>Email:*</label>
       <input
         type="text"
-        formControlName="email"
+        formControlName="Email"
         class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+        [ngClass]="{ 'is-invalid': submitted && f['Email'].errors }"
       />
-      <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-        <div *ngIf="f['email'].errors['required']">Email is required</div>
-        <div *ngIf="f['email'].errors['email']">
+      <div *ngIf="submitted && f['Email'].errors" class="invalid-feedback">
+        <div *ngIf="f['Email'].errors['required']">Email is required</div>
+        <div *ngIf="f['Email'].errors['Email']">
           Email must be a valid email address
         </div>
       </div>
@@ -421,23 +422,23 @@
       <label>Subject:*</label>
       <input
         type="text"
-        formControlName="subject"
+        formControlName="Subject"
         class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['subject'].errors }"
+        [ngClass]="{ 'is-invalid': submitted && f['Subject'].errors }"
       />
-      <div *ngIf="submitted && f['subject'].errors" class="invalid-feedback">
-        <div *ngIf="f['subject'].errors['required']">Subject is required</div>
+      <div *ngIf="submitted && f['Subject'].errors" class="invalid-feedback">
+        <div *ngIf="f['Subject'].errors['required']">Subject is required</div>
       </div>
     </div>
     <div class="form-group">
       <label>Message:*</label>
       <textarea
-        formControlName="message"
+        formControlName="Message"
         class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['message'].errors }"
+        [ngClass]="{ 'is-invalid': submitted && f['Message'].errors }"
       ></textarea>
-      <div *ngIf="submitted && f['message'].errors" class="invalid-feedback">
-        <div *ngIf="f['message'].errors['required']">Message is required</div>
+      <div *ngIf="submitted && f['Message'].errors" class="invalid-feedback">
+        <div *ngIf="f['Message'].errors['required']">Message is required</div>
       </div>
     </div>
     <div class="form-group mt-2">

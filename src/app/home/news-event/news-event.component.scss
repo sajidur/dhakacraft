@@ -1,0 +1,11 @@
+.news-event-img {
+    height: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+    .news-event-img {
+        height: 300px;
+        width: 100%;
+    }
+    
+}

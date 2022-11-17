@@ -13,42 +13,50 @@ import { PersonalAccessoriesComponent } from './personal-accessories/personal-ac
 const routes: Routes = [
 { 
     path: '', component: HomeComponent,
+    pathMatch: 'prefix',
     children: [
       {
         path:'',
-        component: MainContantComponent
+        component: MainContantComponent,
+        pathMatch : 'full'
       },
       {
         path: 'our-story',
-        component:OurStoryComponent
+        component:OurStoryComponent,
+        pathMatch : 'full'
       },
       {
         path: 'personal-accessories',
-        component:PersonalAccessoriesComponent
+        component:PersonalAccessoriesComponent,
+        pathMatch : 'full'
       },
       {
         path: 'home',
-        component: HomeMenuComponent
+        component: HomeMenuComponent,
+        pathMatch : 'full'
       },
       {
         path: 'garden',
-        component: GardenMenuComponent
+        component: GardenMenuComponent,
+        pathMatch : 'full'
       },
       {
         path: 'christmas',
-        component: ChristmasMenuComponent
+        component: ChristmasMenuComponent,
+        pathMatch : 'full'
       },
       {
         path: 'news-event',
-        component: NewsEventComponent
+        component: NewsEventComponent,
+        pathMatch : 'full'
       },
       {
         path: 'details',
-        component: ImagesDetailsComponent
+        component: ImagesDetailsComponent,
+        pathMatch : 'full'
       }
      
     ]
-  
 },
 
 

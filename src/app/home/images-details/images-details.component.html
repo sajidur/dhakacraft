@@ -1,9 +1,9 @@
 <section class="container gallery pt-3">
   <div class="img-container">
     <div class="row">
-      <div class="col-sm-6">
-        <div class="row align-items-center">
-          <div class="col-sm-3">
+      <div class="col-lg-6 mt-3">
+        <div class="d-flex product-details-container align-items-center">
+          <div class="w-100 w-sm-25">
             <div class="img-prev">
               <div
                 [class.active]="indexOfElement === 0"
@@ -30,11 +30,10 @@
               </div> -->
             </div>
           </div>
-          <div class="col-sm-9">
+          <div class=" w-100 w-sm-75">
             <div>
               <img loading="lazy"
-                *ngIf="productDetail?.Images?.length"
-                style="height: 320px; width: 340px"
+                *ngIf="productDetail?.Images?.length && productDetail?.Images[0]?.ImageUrl"
                 id="preview"
                 [src]="
                   globalSrv.imageUrlGet(productDetail?.Images[0]?.ImageUrl)
@@ -45,7 +44,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-lg-6 mt-3">
         <div class="bg-white p-3">
           <h1>{{ productDetail?.Name }}</h1>
           <p>{{ productDetail?.TitleText }}</p>
@@ -66,7 +65,7 @@
           </p>
         </div>
       </div>
-      <div class="col-sm-12 py-4">
+      <div class="col-md-12 py-4">
         {{ productDetail?.DetailText }}
       </div>
     </div>

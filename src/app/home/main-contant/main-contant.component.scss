@@ -8,8 +8,8 @@
 
 .carousel-text-description {
   position: absolute;
-  right: 8rem;
-  left: 8rem;
+  right: 5rem;
+  left: 5rem;
   color: #fff;
   text-align: center;
   top: 0;
@@ -77,8 +77,113 @@
   height: 100%;
 }
 
-@media screen and (max-width: 600px) {
-  .membership-container {
-      grid-column-gap: 8px;
+.product-browse-img-left {
+  height: 250px;
+}
+.product-browse-img-right {
+  height: 508px;
+}
+
+
+@media screen and (max-width: 991px) {
+  #carouselExampleControls .carousel-item img {
+    height: 500px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height:500px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  #carouselExampleControls .carousel-item img {
+    height: 480px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height:480px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #carouselExampleControls .carousel-item img {
+    height: 380px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height: 380px;
+  }
+  .product-browse-img-left {
+    height: 200px;
+  }
+  .product-browse-img-right {
+    height: 402px;
+  }
+  .carousel-text-description {
+    right: 3rem;
+    left: 3rem;
+  }
+}
+@media screen and (max-width: 574px) {
+ 
+  .product-browse-img-left {
+    height: 300px;
+  }
+  .product-browse-img-right {
+    height: 300px;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 520px) {
+  #carouselExampleControls .carousel-item img {
+    height: 290px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height: 290px;
+  }
+  .product-browse-img-left{
+    height: 180px;
+  }
+  .product-browse-img-right  {
+    height: 180px;
+    margin-top:10px;
+  }
+  .membership-container {
+    grid-column-gap: 12px;
+
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #carouselExampleControls .carousel-item img {
+    height: 280px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #carouselExampleControls .carousel-item img {
+    height: 275px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height: 275px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #carouselExampleControls .carousel-item img {
+    height: 265px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height: 265px;
+  }
+  .carousel-text-description {
+    right: 2rem;
+    left: 2rem;
+  }
+}
+
+
+
+
+
+

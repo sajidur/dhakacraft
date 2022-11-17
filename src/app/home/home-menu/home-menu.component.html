@@ -1,267 +1,57 @@
 <!-- Baskets started here -->
-<section class="container pt-4">
-  <h3 *ngIf="!productList.length">No product found</h3>
-
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-    <div
-      (click)="productDetails(item?.Id)"
-      *ngFor="let item of productList"
-      class="col cursor_pointer"
-    >
-      <div class="card">
-        <span *ngFor="let img of item.Images">
-          <img loading="lazy"
-            *ngIf="img?.IsDefault && img?.ImageUrl"
-            [src]="globalSrv.imageUrlGet(img?.ImageUrl)"
-            class="card-img-top"
-            alt=""
-          />
-        </span>
-
-        <div class="m-3">
-          <h3 class="card-title">{{ item?.Name }}</h3>
-          <p class="card-text">{{ item?.TitleText }}</p>
+<div class="container-fluid">
+  <section class="container pt-4">
+    <h3 *ngIf="!productList.length">No product found</h3>
+  
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
+      <div
+        (click)="productDetails(item?.Id)"
+        *ngFor="let item of productList"
+        class="col cursor_pointer"
+      >
+        <div class="card">
+          <span *ngFor="let img of item.Images">
+            <img loading="lazy"
+              *ngIf="img?.IsDefault && img?.ImageUrl"
+              [src]="globalSrv.imageUrlGet(img?.ImageUrl)"
+              class="card-img-top"
+              alt=""
+            />
+          </span>
+  
+          <div class="m-3">
+            <h3 class="card-title">{{ item?.Name }}</h3>
+            <p class="card-text">{{ item?.TitleText }}</p>
+          </div>
         </div>
       </div>
+      <!-- <div (click)="basketDetails()" class="col">
+              <div class="card">
+                <img loading="lazy"
+                src="../../../assets/images/DhakaHandiCraft/basket2.JPG"
+                  class="card-img-top"
+                  alt="student2"
+                />
+                <div class="m-3">
+                  <h3 class="card-title">Basket2</h3>
+                  <p class="card-text">Basket2 description</p>
+                </div>
+              </div>
+            </div>
+            <div (click)="basketDetails()" class="col">
+              <div class="card">
+                <img loading="lazy"
+                src="../../../assets/images/DhakaHandiCraft/basket3.jpg"
+                  class="card-img-top"
+                  alt="student3"
+                />
+                <div class="m-3">
+                  <h3 class="card-title">Basket3</h3>
+                  <p class="card-text">Basket3 description</p>
+                </div>
+              </div>
+            </div> -->
     </div>
-    <!-- <div (click)="basketDetails()" class="col">
-            <div class="card">
-              <img loading="lazy"
-              src="../../../assets/images/DhakaHandiCraft/basket2.JPG"
-                class="card-img-top"
-                alt="student2"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Basket2</h3>
-                <p class="card-text">Basket2 description</p>
-              </div>
-            </div>
-          </div>
-          <div (click)="basketDetails()" class="col">
-            <div class="card">
-              <img loading="lazy"
-              src="../../../assets/images/DhakaHandiCraft/basket3.jpg"
-                class="card-img-top"
-                alt="student3"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Basket3</h3>
-                <p class="card-text">Basket3 description</p>
-              </div>
-            </div>
-          </div> -->
-  </div>
-</section>
+  </section>
+</div>
 <!-- Baskets ended here -->
-
-<!-- Home office started here -->
-<!-- <section *ngIf="menuControllerSrv?.homeMenuItem === 'home-office' " class="container pt-3">
-    <h1>Home Office</h1>
-    <p class="mb-4">
-        Work From Home Essentials That'll Boost Productivity.
-    </p>
-  
-   
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-                src="../../../assets/images/DhakaHandiCraft/home-office1.jpg"
-                class="card-img-top"
-                alt=""
-              />
-              <div class="m-3">
-                <h3 class="card-title">Home Office Title</h3>
-                <p class="card-text">Home Office description</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-              src="../../../assets/images/DhakaHandiCraft/home-office2.jpg"
-                class="card-img-top"
-                alt="student2"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Home Office Title</h3>
-                <p class="card-text">Home Office description</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-              src="../../../assets/images/DhakaHandiCraft/home-office3.jpg"
-                class="card-img-top"
-                alt="student3"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Home Office Title</h3>
-                <p class="card-text">Home Office description</p>
-              </div>
-            </div>
-          </div>
-      </div>
-  
-</section> -->
-<!-- Home office ended here -->
-
-<!-- Flower started here -->
-<!-- <section *ngIf="menuControllerSrv?.homeMenuItem === 'flower-vases' " class="container pt-3">
-    <h1>Flower Vases</h1>
-    <p class="mb-4">
-        Vases are often decorated, and they are often used to hold cut flowers.
-    </p>
-  
-   
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-                src="../../../assets/images/DhakaHandiCraft/flower1.JPG"
-                class="card-img-top"
-                alt=""
-              />
-              <div class="m-3">
-                <h3 class="card-title">Flower Vases Title</h3>
-                <p class="card-text">Flower Vases description</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-              src="../../../assets/images/DhakaHandiCraft/flower2.JPG"
-                class="card-img-top"
-                alt="student2"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Flower Vases Title</h3>
-                <p class="card-text">Flower Vases description</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-              src="../../../assets/images/DhakaHandiCraft/flower3.jpg"
-                class="card-img-top"
-                alt="student3"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Flower Vases Title</h3>
-                <p class="card-text">Flower Vases description</p>
-              </div>
-            </div>
-          </div>
-      </div>
-  
-</section> -->
-<!-- Flower ended here -->
-
-<!-- Wall hanging started here -->
-<!-- <section *ngIf="menuControllerSrv?.homeMenuItem === 'wall-hanging' " class="container pt-3">
-    <h1>Wall Hanging</h1>
-    <p class="mb-4">
-        A wall hanging craft is a decoration, an amulet, a religious or a symbolic object that is hung from the ceiling or another structure.
-    </p>
-  
-   
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-                src="../../../assets/images/DhakaHandiCraft/7.jpg"
-                class="card-img-top"
-                alt=""
-              />
-              <div class="m-3">
-                <h3 class="card-title">Wall Hanging Title</h3>
-                <p class="card-text">Wall Hanging description</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-              src="../../../assets/images/DhakaHandiCraft/8.JPG"
-                class="card-img-top"
-                alt="student2"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Wall Hanging Title</h3>
-                <p class="card-text">Wall Hanging description</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-              src="../../../assets/images/DhakaHandiCraft/9.jpg"
-                class="card-img-top"
-                alt="student3"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Wall Hanging Title</h3>
-                <p class="card-text">Wall Hanging description</p>
-              </div>
-            </div>
-          </div>
-      </div>
-  
-</section> -->
-<!-- Wall hanging ended here -->
-
-<!-- Flower started here -->
-<!-- <section *ngIf="menuControllerSrv?.homeMenuItem === 'lamp-shade' " class="container">
-    <h1>Lamp Shade</h1>
-    <p class="mb-4">
-        A lampshade is a fixture that covers the lightbulb on a lamp to diffuse the light it emits 
-    </p>
-  
-   
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-                src="../../../assets/images/DhakaHandiCraft/lamp1.JPG"
-                class="card-img-top"
-                alt=""
-              />
-              <div class="m-3">
-                <h3 class="card-title">Lamp Shade Title</h3>
-                <p class="card-text">Lamp Shade description</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-              src="../../../assets/images/DhakaHandiCraft/lamp2.JPG"
-                class="card-img-top"
-                alt="student2"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Lamp Shade Title</h3>
-                <p class="card-text">Lamp Shade description</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img loading="lazy"
-              src="../../../assets/images/DhakaHandiCraft/lamp3.JPG"
-                class="card-img-top"
-                alt="student3"
-              />
-              <div class="m-3">
-                <h3 class="card-title">Lamp Shade Title</h3>
-                <p class="card-text">Lamp Shade description</p>
-              </div>
-            </div>
-          </div>
-      </div>
-  
-</section> -->
-<!-- Flower ended here -->

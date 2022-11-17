@@ -10,6 +10,7 @@ const routes: Routes = [
       import('./home/home.module').then(
         (m) => m.HomeModule
       ),
+      pathMatch : 'full'
   },
   {
     path: 'login',
@@ -17,14 +18,17 @@ const routes: Routes = [
       import('./auth/auth.module').then(
         (m) => m.AuthModule
       ),
+      pathMatch : 'full'
   },
   {
     path: 'admin',
     loadChildren: () => 
     import('./admin/admin.module').then(
       (m) => m.AdminModule
-    )
-  }
+    ),
+    pathMatch : 'full'
+  },
+
 ];
 
 @NgModule({

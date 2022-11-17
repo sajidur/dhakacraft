@@ -56,7 +56,7 @@
 <!-- Who we are start here -->
 <section class="container mb-5 who-we-are">
   <div class="row">
-    <div class="col-12 col-sm-7">
+    <div class="col-12 col-md-7">
       <div *ngIf="pageContentObj?.MainText" class="video-container">
         <iframe
           class="who-we-are-iframe"
@@ -77,8 +77,8 @@
         />
       </div>
     </div>
-    <div class="col-12 col-sm-5">
-      <h1 class="text-center mb-3">Who We Are</h1>
+    <div class="col-12 col-md-5">
+      <h1 class="text-center mb-3 mt-3 mt-md-0">Who We Are</h1>
       <p style="white-space: pre-wrap">{{ pageContentObj?.DetailText }}</p>
       <!-- <p>
           Dhaka Handicrafts Limited (DH Ltd.) is in the business of the production and export of handicrafts with a commitment to advancing indigenous and impoverished artisans. The motivation for the business of DH Ltd. is to serve traditional crafts producers. Along with business as the prime focus, its slogan is “producers first”. The organizational philosophy and culture as well as the business practices of DH Ltd. were founded on the welfare of vulnerable and impoverished artisans in rural and remote areas of Bangladesh.
@@ -99,8 +99,7 @@
           *ngIf="productList[0]?.Images[0]?.ImageUrl"
           (click)="productDetails(productList[0]?.Id)"
           loading="lazy"
-          height="250"
-          class="w-100"
+          class="w-100 product-browse-img-left"
           [src]="globalSrv.imageUrlGet(productList[0]?.Images[0]?.ImageUrl)"
           alt=""
         />
@@ -110,8 +109,7 @@
           *ngIf="productList[0]?.Images[1]?.ImageUrl"
           (click)="productDetails(productList[0]?.Id)"
           loading="lazy"
-          height="250"
-          class="w-100"
+          class="w-100 product-browse-img-left"
           [src]="globalSrv.imageUrlGet(productList[0]?.Images[1]?.ImageUrl)"
           alt=""
         />
@@ -123,8 +121,7 @@
           *ngIf="productList[0]?.Images[2]?.ImageUrl"
           (click)="productDetails(productList[0]?.Id)"
           loading="lazy"
-          height="508"
-          class="w-100"
+          class="w-100 product-browse-img-right"
           [src]="globalSrv.imageUrlGet(productList[0]?.Images[2]?.ImageUrl)"
           alt=""
         />

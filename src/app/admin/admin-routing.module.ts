@@ -16,50 +16,61 @@ const routes: Routes = [
   {
     path: '',
     component: AdminDashboardComponent,
-
+    pathMatch : 'prefix',
     children: [
       {
-        path: '', redirectTo: 'home-menu', pathMatch: 'full'
+        path: '', redirectTo: 'home-menu',
+        pathMatch : 'full', 
       },
       {
         path: 'menu',
-        component: MenuImgComponent
+        component: MenuImgComponent,
+        pathMatch : 'full'
       },
       {
         path: 'add-menu',
-        component: AddMenuImgComponent
+        component: AddMenuImgComponent,
+        pathMatch : 'full'
       },
       {
         path: 'news-event-slider',
-        component: NewsEventSliderImgComponent
+        component: NewsEventSliderImgComponent,
+        pathMatch : 'full'
       },
       {
         path: 'add-news-event-slider',
-        component: AddNewsEventSliderImgComponent
+        component: AddNewsEventSliderImgComponent,
+        pathMatch : 'full'
       },
       {
         path: 'product',
-        component: ProductImgComponent
+        component: ProductImgComponent,
+        pathMatch : 'full'
       },
       {
         path: 'add-product',
-        component: AddProductImgComponent
+        component: AddProductImgComponent,
+        pathMatch : 'full'
       },
       {
         path: 'home-menu',
-        component: AdminHomeMenuComponent
+        component: AdminHomeMenuComponent,
+        pathMatch : 'full'
       },
       {
         path: 'add-home-menu',
-        component: AddAdminHomeMenuComponent
+        component: AddAdminHomeMenuComponent,
+        pathMatch : 'full'
       },
       {
         path: 'img-config',
-        component: ImgConfigComponent
+        component: ImgConfigComponent,
+        pathMatch : 'full'
       },
       {
         path: 'add-img-config',
-        component: AddImgConfigComponent
+        component: AddImgConfigComponent,
+        pathMatch : 'full'
       }
  
     ],

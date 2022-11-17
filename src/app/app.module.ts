@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactFromComponent } from './contact-from/contact-from.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     ReactiveFormsModule,
     NgxSpinnerModule
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

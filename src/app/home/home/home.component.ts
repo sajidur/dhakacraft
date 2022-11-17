@@ -10,6 +10,7 @@ import { ContactFromComponent } from 'src/app/contact-from/contact-from.componen
 import { GlobalService } from 'src/app/services/global/global.service';
 import { MenuControllerService } from 'src/app/services/menu-controller/menu-controller.service';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
+import Swal from 'sweetalert2';
 const FileSaver = require('file-saver');
 
 @Component({
@@ -59,8 +60,8 @@ export class HomeComponent implements OnInit {
 
   formHandler = () => {
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: [
+      Name: ['', Validators.required],
+      Email: [
         '',
         [
           Validators.required,
@@ -68,8 +69,8 @@ export class HomeComponent implements OnInit {
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
         ],
       ],
-      subject: ['', Validators.required],
-      message: ['', Validators.required],
+      Subject: ['', Validators.required],
+      Message: ['', Validators.required],
     });
   };
 
@@ -127,12 +128,31 @@ export class HomeComponent implements OnInit {
     });
   };
 
-  onSubmit() {
+  onSubmitLeaveMessage() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
+    this.spinner.show()
+    this.utilitiesSrv.postContactUs(this.registerForm.value).subscribe({
+      next: (result) => {
+        this.spinner.hide()
+        console.log('contactUsFormRes', result);
+        this.closeLeaveMessage()
+        if (result) {
+          Swal.fire({
+            icon:'success',
+            text:'Your data has been submitted successfully!',
+            confirmButtonText: 'Ok'
+        })
+        }
+      },
+      error: (err) => {
+        this.spinner.hide()
+        console.log('contactUsFormErr', err);
+      },
+    });
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 
@@ -165,29 +185,12 @@ export class HomeComponent implements OnInit {
       }
   };
 
-  homeMenuItem = (categoryId: any) => {
-    $('.dropdown-content2').css('display', 'none');
+  homeMenuItem = (categoryId: any, dropdownContent: any) => {
+    $(`.${dropdownContent}`).css('display', 'none');
     // this.menuControllerSrv.homeMenuItem = item
     this.router.navigateByUrl(`home?categoryId=${categoryId}`);
   };
 
-  gardenMenu = (item: any) => {
-    $('.dropdown-content3').css('display', 'none');
-    this.menuControllerSrv.gardenMenuItem = item;
-    this.router.navigate(['garden']);
-  };
-
-  personalItem = (item: any) => {
-    $('.dropdown-content4').css('display', 'none');
-    this.menuControllerSrv.personalMenuItem = item;
-    this.router.navigate(['personal-accessories']);
-  };
-
-  christmasItem = (item: any) => {
-    $('.dropdown-content5').css('display', 'none');
-    this.menuControllerSrv.christmasMenuItem = item;
-    this.router.navigate(['christmas']);
-  };
 
   downloadAnnualReportPdf = () => {
     const pdfUrl = '../../../assets/pdf/AnnualReport.pdf';
@@ -223,9 +226,9 @@ export class HomeComponent implements OnInit {
   handleContactForm = (data: any) => {
     const dialogRef = this.dialog.open(ContactFromComponent, {
       disableClose: true,
-      width: '50%',
+      width: window.innerWidth < 768 ? '95%' : '50%',
       height: '85%',
-      maxWidth: '90vw',
+      maxWidth: '95%',
       data: data,
     });
   };

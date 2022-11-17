@@ -1,7 +1,8 @@
 
-
 .img-prev {
     margin-top: 10px;
+    overflow: auto;
+    max-height: 320px;
 }
 .img-slide img {
     width: 100%;
@@ -12,12 +13,29 @@
     width: 90px;
     height: 110px;
     margin: 3px;
-
 }
-
-
-
-
 .active {
     border: 2px solid #222;
+}
+
+#preview {
+    height: 320px;
+    width: 340px;
+}
+
+@media only screen and (max-width:575px) {
+    .img-prev {
+        height: none !important;
+        display: flex;
+    }
+    .product-details-container {
+        flex-direction: column-reverse;
+    }
+    #preview {
+        height: 185px;
+        width: 100%;
+    }
+    .img-slide  {
+        height: 66px;  
+    }
 }
