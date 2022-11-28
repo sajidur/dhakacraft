@@ -11,18 +11,18 @@
         class="carousel-item"
         *ngFor="let item of slidingList; let elementOfIndex = index"
       >
-        <img
+        <img  
           *ngIf="item?.ImageUrl"
           loading="lazy"
           src="{{ globalSrv.imageUrlGet(item?.ImageUrl) }}"
           class="d-block w-100"
           alt="image1"
         />
-        <div
-          (click)="goToNewsAndEventDetails(item?.Id)"
+        <div (click)="goToNewsAndEventDetails(item?.Id)" 
+         
           class="d-flex justify-content-center align-items-center carousel-text-description h-100 cursor_pointer"
         >
-          <div class="carousel-text p-2">
+          <div *ngIf="item?.Headline || item?.MainText" class="carousel-text p-2">
             <h2>{{ item?.Headline }}</h2>
             <p>
               {{ item?.MainText }}
@@ -156,7 +156,7 @@
           (click)="goToNewsAndEventDetails(item?.Id)"
           class="d-flex justify-content-center align-items-center carousel-text-description h-100 cursor_pointer"
         >
-          <div class="carousel-text p-2">
+          <div  *ngIf="item?.Headline || item?.MainText" class="carousel-text p-2">
             <h2>{{ item?.Headline }}</h2>
             <p>
               {{ item?.MainText }}

@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
   searchedProduct: any[] = [];
   searchFieldValue: any;
   pageContent: any[] = [];
+  activitiesObj: any;
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
@@ -259,10 +260,19 @@ export class HomeComponent implements OnInit {
           this.requestCatalog = this.imgConfigList.filter(
             (e) => e.ImagePosition === 'Request Catalog'
           );
+        
           if (this.requestCatalog.length) {
             this.requestCatalogObj =
               this.requestCatalog[this.requestCatalog.length - 1];
           }
+          const activities = this.imgConfigList.filter(
+            (e) => e.ImagePosition === 'Activities'
+          );
+          if(activities?.length) {
+            this.activitiesObj =
+            activities[activities?.length - 1];
+          }
+
         }
       },
       error: (err) => {

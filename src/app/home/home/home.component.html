@@ -11,231 +11,241 @@
 <header style="border-bottom: 1px solid #cdcdcd">
   <div class="container mb-1">
     <nav class="navbar navbar-expand-md p-0">
-        <a class="navbar-brand">
-          <img
-            loading="lazy"
-            routerLink=""
-            class="logo-img slide-in-left"
-            src="../../../assets/images/logo.jpg"
-            alt="logo"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li
-              class="nav-item dropdown1"
-              (mouseover)="mouseOver('dropdown-content1')"
-              (mouseout)="mouseOut('dropdown-content1')"
-            >
-              <a class="nav-link">Our Story</a>
-              <div>
-                <div class="dropdown-content1 p-4 bg-white">
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <a (click)="ourStoryItem(item, false)" *ngFor="let item of pageContent" >{{item?.PageName}}</a>
-                      <!-- <a (click)="ourStoryItem('about-us', false)">About Us</a>
+      <a class="navbar-brand">
+        <img
+          loading="lazy"
+          routerLink=""
+          class="logo-img slide-in-left"
+          src="../../../assets/images/logo.jpg"
+          alt="logo"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li
+            class="nav-item dropdown1"
+            (mouseover)="mouseOver('dropdown-content1')"
+            (mouseout)="mouseOut('dropdown-content1')"
+          >
+            <a class="nav-link">Our Story</a>
+            <div>
+              <div class="dropdown-content1 p-4 bg-white">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <a
+                      (click)="ourStoryItem(item, false)"
+                      *ngFor="let item of pageContent"
+                      >{{ item?.PageName }}</a
+                    >
+                    <!-- <a (click)="ourStoryItem('about-us', false)">About Us</a>
                       <a (click)="ourStoryItem('fair-trade', false)"
                         >Fair Trade</a
                       > -->
-                      <a
-                      (click)="handleContactForm('Request from Annual Report')"
-                        >Annual Report</a
-                      >
-                      <a (click)="handleContactForm('Request from Contact Us')"
-                        >Contact Us</a
-                      >
-                    </div>
-                    <div class="col-sm-7">
-                      <img
-                        loading="lazy"
-                        width="220"
-                        height="300"
-                        src="../../../assets/images/DhakaHandiCraft/trade.jpg"
-                        alt=""
-                      />
-                    </div>
+                    <a (click)="handleContactForm('Request from Annual Report')"
+                      >Annual Report</a
+                    >
+                    <a (click)="handleContactForm('Request from Contact Us')"
+                      >Contact Us</a
+                    >
+                  </div>
+                  <div class="col-sm-7">
+                    <img
+                      loading="lazy"
+                      width="220"
+                      height="300"
+                      src="../../../assets/images/DhakaHandiCraft/trade.jpg"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
-            </li>
+            </div>
+          </li>
 
-            <li
-              class="nav-item dropdown2"
-              (mouseover)="mouseOver('dropdown-content2')"
-              (mouseout)="mouseOut('dropdown-content2')"
-            >
-              <a class="nav-link">Home</a>
-              <div>
-                <div class="dropdown-content2 p-4 bg-white">
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <!-- <a (click)="homeMenuItem('baskets')">Baskets</a>
+          <li
+            class="nav-item dropdown2"
+            (mouseover)="mouseOver('dropdown-content2')"
+            (mouseout)="mouseOut('dropdown-content2')"
+          >
+            <a class="nav-link">Home</a>
+            <div>
+              <div class="dropdown-content2 p-4 bg-white">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <!-- <a (click)="homeMenuItem('baskets')">Baskets</a>
                       <a (click)="homeMenuItem('home-office')">Home Office</a>
                       <a (click)="homeMenuItem('flower-vases')">Flower Vases</a>
                       <a (click)="homeMenuItem('home-textiles')">Home Textiles</a>
                       <a (click)="homeMenuItem('wall-hanging')">Wall Hanging</a>
                       <a (click)="homeMenuItem('lamp-shade')">Lamp Shade</a> -->
-                      <a
-                        (click)="homeMenuItem(item?.Id, 'dropdown-content2')"
-                        *ngFor="let item of homeCategory"
-                        >{{ item?.Name }}</a
-                      >
-                    </div>
-                    <div class="col-sm-7">
-                      <img
-                        loading="lazy"
-                        width="220"
-                        height="300"
-                        src="../../../assets/images/DhakaHandiCraft/home.jpg"
-                        alt=""
-                      />
-                    </div>
+                    <a
+                      (click)="homeMenuItem(item?.Id, 'dropdown-content2')"
+                      *ngFor="let item of homeCategory"
+                      >{{ item?.Name }}</a
+                    >
+                  </div>
+                  <div class="col-sm-7">
+                    <img
+                      loading="lazy"
+                      width="220"
+                      height="300"
+                      src="../../../assets/images/DhakaHandiCraft/home.jpg"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
-            </li>
+            </div>
+          </li>
 
-            <li
-              class="nav-item dropdown3"
-              (mouseover)="mouseOver('dropdown-content3')"
-              (mouseout)="mouseOut('dropdown-content3')"
-            >
-              <a class="nav-link">Garden</a>
-              <div>
-                <div class="dropdown-content3 p-4 bg-white">
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <!-- <a (click)="gardenMenu('planters')">Planters</a>
+          <li
+            class="nav-item dropdown3"
+            (mouseover)="mouseOver('dropdown-content3')"
+            (mouseout)="mouseOut('dropdown-content3')"
+          >
+            <a class="nav-link">Garden</a>
+            <div>
+              <div class="dropdown-content3 p-4 bg-white">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <!-- <a (click)="gardenMenu('planters')">Planters</a>
                       <a (click)="gardenMenu('birdhouse')">Birdhouse</a> -->
-                      <a
-                        (click)="homeMenuItem(item?.Id, 'dropdown-content3')"
-                        *ngFor="let item of gardenCategory"
-                        >{{ item?.Name }}</a
-                      >
-                    </div>
-                    <div class="col-sm-7">
-                      <img
-                        loading="lazy"
-                        width="200"
-                        height="300"
-                        src="../../../assets/images/DhakaHandiCraft/garden.jpg"
-                        alt=""
-                      />
-                    </div>
+                    <a
+                      (click)="homeMenuItem(item?.Id, 'dropdown-content3')"
+                      *ngFor="let item of gardenCategory"
+                      >{{ item?.Name }}</a
+                    >
+                  </div>
+                  <div class="col-sm-7">
+                    <img
+                      loading="lazy"
+                      width="200"
+                      height="300"
+                      src="../../../assets/images/DhakaHandiCraft/garden.jpg"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
-            </li>
+            </div>
+          </li>
 
-            <li
-              class="nav-item dropdown4"
-              (mouseover)="mouseOver('dropdown-content4')"
-              (mouseout)="mouseOut('dropdown-content4')"
-            >
-              <a class="nav-link">Personal Accessories</a>
-              <div>
-                <div class="dropdown-content4 p-4 bg-white">
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <!-- <a (click)="personalItem('bags')">Bag's</a>
+          <li
+            class="nav-item dropdown4"
+            (mouseover)="mouseOver('dropdown-content4')"
+            (mouseout)="mouseOut('dropdown-content4')"
+          >
+            <a class="nav-link">Personal Accessories</a>
+            <div>
+              <div class="dropdown-content4 p-4 bg-white">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <!-- <a (click)="personalItem('bags')">Bag's</a>
                       <a (click)="personalItem('jewelry')">Jewelry</a>
                       <a (click)="personalItem('purses')">Purses</a> -->
-                      <a
-                        (click)="homeMenuItem(item?.Id, 'dropdown-content4')"
-                        *ngFor="let item of personalCategory"
-                        >{{ item?.Name }}</a
-                      >
-                    </div>
-                    <div class="col-sm-7">
-                      <img
-                        loading="lazy"
-                        width="220"
-                        height="300"
-                        src="../../../assets/images/DhakaHandiCraft/lamp2.JPG"
-                        alt=""
-                      />
-                    </div>
+                    <a
+                      (click)="homeMenuItem(item?.Id, 'dropdown-content4')"
+                      *ngFor="let item of personalCategory"
+                      >{{ item?.Name }}</a
+                    >
+                  </div>
+                  <div class="col-sm-7">
+                    <img
+                      loading="lazy"
+                      width="220"
+                      height="300"
+                      src="../../../assets/images/DhakaHandiCraft/lamp2.JPG"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
-            </li>
+            </div>
+          </li>
 
-            <li
-              class="nav-item dropdown5"
-              (mouseover)="mouseOver('dropdown-content5')"
-              (mouseout)="mouseOut('dropdown-content5')"
-            >
-              <a class="nav-link">Christmas</a>
-              <div>
-                <div class="dropdown-content5 p-4 bg-white">
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <!-- <a (click)="christmasItem('card-and-wrap')">Card’s & Wrap</a>
+          <li
+            class="nav-item dropdown5"
+            (mouseover)="mouseOver('dropdown-content5')"
+            (mouseout)="mouseOut('dropdown-content5')"
+          >
+            <a class="nav-link">Christmas</a>
+            <div>
+              <div class="dropdown-content5 p-4 bg-white">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <!-- <a (click)="christmasItem('card-and-wrap')">Card’s & Wrap</a>
                       <a (click)="christmasItem('tree-hanging')">Tree Hanging</a>
                       <a (click)="christmasItem('home-decoration')">Home Decoration</a> -->
-                      <a
-                        (click)="homeMenuItem(item?.Id, 'dropdown-content5')"
-                        *ngFor="let item of christmasCategory"
-                        >{{ item?.Name }}</a
-                      >
-                    </div>
-                    <div class="col-sm-7">
-                      <img
-                        loading="lazy"
-                        width="220"
-                        height="300"
-                        src="../../../assets/images/DhakaHandiCraft/card1.jpg"
-                        alt=""
-                      />
-                    </div>
+                    <a
+                      (click)="homeMenuItem(item?.Id, 'dropdown-content5')"
+                      *ngFor="let item of christmasCategory"
+                      >{{ item?.Name }}</a
+                    >
+                  </div>
+                  <div class="col-sm-7">
+                    <img
+                      loading="lazy"
+                      width="220"
+                      height="300"
+                      src="../../../assets/images/DhakaHandiCraft/card1.jpg"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
-            </li>
-          </ul>
-          <form role="search" style="position: relative">
-            <input
-              [(ngModel)]="searchFieldValue"
-              [ngModelOptions]="{ standalone: true }" 
-              style="padding-right: 20px !important"
-              (keyup)="searchBoxChanged($event)"
-              class="form-control me-2"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <div
-              *ngIf="searchFieldValue?.length"
-              style="position: absolute; right: 4px; top: 6px; cursor: pointer;"
-            >
-              <mat-icon (click)="clearSearchField()">close</mat-icon>
             </div>
-            <div style="position: relative" id="searched-product">
-              <div class="search-product-list" *ngIf="searchedProduct?.length">
-                <p (click)="productDetails(item?.Id)"
-                  class="search-product-text"
-                  *ngFor="let item of searchedProduct"
-                >
-                  {{ item?.Name }}
-                </p>
-              </div>
+          </li>
+        </ul>
+        <form role="search" style="position: relative">
+          <input
+            [(ngModel)]="searchFieldValue"
+            [ngModelOptions]="{ standalone: true }"
+            style="padding-right: 20px !important"
+            (keyup)="searchBoxChanged($event)"
+            class="form-control me-2"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <div
+            *ngIf="searchFieldValue?.length"
+            style="position: absolute; right: 4px; top: 6px; cursor: pointer"
+          >
+            <mat-icon (click)="clearSearchField()">close</mat-icon>
+          </div>
+          <div style="position: relative" id="searched-product">
+            <div class="search-product-list" *ngIf="searchedProduct?.length">
+              <p
+                (click)="productDetails(item?.Id)"
+                class="search-product-text"
+                *ngFor="let item of searchedProduct"
+              >
+                {{ item?.Name }}
+              </p>
             </div>
-          
-          </form> <span class="d-sm-none d-md-block">&nbsp;</span>
-          <button (click)="handleSearchBtn()" class="btn btn-success mt-1 mt-md-0 " type="submit">Search</button>
-        
-          <!-- <button routerLink="/login">login</button> -->
-        </div>
+          </div>
+        </form>
+        <span class="d-sm-none d-md-block">&nbsp;</span>
+        <button
+          (click)="handleSearchBtn()"
+          class="btn btn-success mt-1 mt-md-0"
+          type="submit"
+        >
+          Search
+        </button>
+
+        <!-- <button routerLink="/login">login</button> -->
+      </div>
     </nav>
   </div>
 </header>
@@ -255,7 +265,7 @@
           <img
             loading="lazy"
             width="120"
-            src="../../../assets/images/logo_transparent.jpg"
+            src="../../../assets/images/logo_transparent.png"
             alt=""
           />
           &nbsp;
@@ -280,7 +290,12 @@
         <a class="d-block" (click)="ourStoryItem('fair-trade', true)"
           >Fair Trade</a
         > -->
-        <a class="d-block" (click)="ourStoryItem(item, true)" *ngFor="let item of pageContent" >{{item?.PageName}}</a>
+        <a
+          class="d-block"
+          (click)="ourStoryItem(item, true)"
+          *ngFor="let item of pageContent"
+          >{{ item?.PageName }}</a
+        >
         <a
           class="d-block"
           (click)="handleContactForm('Request from Annual Report')"
@@ -294,7 +309,7 @@
       </div>
       <div class="footer-div">
         <h2>Contact with us</h2>
-        <span style="font-weight: 500;font-size: 15px;">Head Office: </span>
+        <span style="font-weight: 500; font-size: 15px">Head Office: </span>
         <div>House#562, Road#08</div>
         <div>Section-12, Mirpur-DOHS</div>
         <div>Dhaka-1216, Bangladesh</div>
@@ -302,7 +317,10 @@
       </div>
       <div class="footer-div">
         <h2 style="height: 32px"></h2>
-        <span style="font-weight: 500;font-size: 15px">Registered address:</span> <br />
+        <span style="font-weight: 500; font-size: 15px"
+          >Registered address:</span
+        >
+        <br />
         <div>Holding No. 430, Nanduain</div>
         <div>Bhawal Mirzapur, Gazipur-1703</div>
       </div>
@@ -329,24 +347,53 @@
             class="fa fa-youtube"
           ></a>
         </div>
-        <div class="footer-story py-3">
-          <!-- <a target="_blank" href="../../../assets/pdf/AnnualReport.pdf">View Catalog</a> | -->
-          <a
-            class="cursor_pointer"
-            (click)="handleContactForm('Request Catalog')"
-            >Request Catalog</a
-          >
+  
+      </div>
+    </div>
 
-          <div class="my-3">
-            <img *ngIf="requestCatalogObj?.ImageUrl" height="170"
-              loading="lazy"
-              [src]="globalSrv.imageUrlGet(requestCatalogObj?.ImageUrl)"
-              alt=""
-            />
-          </div>
+    <div class="d-flex flex-column flex-md-row justify-content-end">
+      <div class="footer-story">
+        <!-- <a target="_blank" href="../../../assets/pdf/AnnualReport.pdf">View Catalog</a> | -->
+        <a
+          class="cursor_pointer"
+          (click)="handleContactForm('Activities')"
+          >Activities</a
+        >
+
+        <div class="my-3">
+          <img
+            *ngIf="activitiesObj?.ImageUrl"
+            height="170"
+            loading="lazy"
+            [src]="globalSrv.imageUrlGet(activitiesObj?.ImageUrl)"
+            alt=""
+          />
+        </div>
+      </div>
+
+
+      <div class="footer-story">
+        <!-- <a target="_blank" href="../../../assets/pdf/AnnualReport.pdf">View Catalog</a> | -->
+        <a
+          class="cursor_pointer"
+          (click)="handleContactForm('Request Catalog')"
+          >Request Catalog</a
+        >
+
+        <div class="my-3">
+          <img
+            *ngIf="requestCatalogObj?.ImageUrl"
+            height="170"
+            loading="lazy"
+            [src]="globalSrv.imageUrlGet(requestCatalogObj?.ImageUrl)"
+            alt=""
+          />
         </div>
       </div>
     </div>
+
+
+
     <div class="row">
       <div class="col-sm-12 my-5 text-center">
         <p>
@@ -354,14 +401,13 @@
           Rights Reserved.
         </p>
         <div class="mt-2">
-           <a
-          style="color: white"
-          href="https://www.rexsystemsbd.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Developed by Rex System Bangladesh</a
-        >
-         
+          <a
+            style="color: white"
+            href="https://www.rexsystemsbd.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Developed by Rex System Bangladesh</a
+          >
         </div>
       </div>
     </div>

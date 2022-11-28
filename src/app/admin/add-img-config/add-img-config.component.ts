@@ -18,6 +18,7 @@ export class AddImgConfigComponent implements OnInit {
     { id: 1, name: 'Social Impact' },
     { id: 2, name: 'Membership' },
     { id: 3, name: 'Request Catalog' },
+    { id: 4, name: 'Activities' },
   ];
   model: any = {
     Name: null,
