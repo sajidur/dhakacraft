@@ -36,18 +36,18 @@ export class HomeMenuComponent implements OnInit {
   };
 
   getProductById = (Id: any) => {
-    this.spinner.show();
+    // this.spinner.show();
     this.productList = [];
     this.utilitiesSrv.getProductByCategoryId(Id).subscribe({
       next: (result) => {
-        this.spinner.hide();
+        // this.spinner.hide();
         console.log('ProductListRes', result);
         if (result && result?.length) {
           this.productList = result;
         }
       },
       error: (err) => {
-        this.spinner.hide();
+        // this.spinner.hide();
         console.log('ProductListErr', err);
       },
     });

@@ -77,11 +77,11 @@ export class HomeComponent implements OnInit {
 
   // Get all news, event, slider list
   getAllNewsEventSlider = () => {
-    this.spinner.show();
+    // this.spinner.show();
     this.utilitiesSrv.getAllNewsEventSliderImg().subscribe({
       next: (result) => {
-        this.spinner.hide();
-        console.log('newsEventSliderListRes', result);
+        // this.spinner.hide();
+        // console.log('newsEventSliderListRes', result);
         this.newsEventSlideList = result;
         if (this.newsEventSlideList?.length) {
           this.topBarList = this.newsEventSlideList.filter(
@@ -93,8 +93,8 @@ export class HomeComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.spinner.hide();
-        console.log('newsEventSliderListErr', err);
+        // this.spinner.hide();
+        // console.log('newsEventSliderListErr', err);
       },
     });
   };
@@ -135,10 +135,10 @@ export class HomeComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    this.spinner.show()
+    // this.spinner.show()
     this.utilitiesSrv.postContactUs(this.registerForm.value).subscribe({
       next: (result) => {
-        this.spinner.hide()
+        // this.spinner.hide()
         console.log('contactUsFormRes', result);
         this.closeLeaveMessage()
         if (result) {
@@ -150,7 +150,7 @@ export class HomeComponent implements OnInit {
         }
       },
       error: (err) => {
-        this.spinner.hide()
+        // this.spinner.hide()
         console.log('contactUsFormErr', err);
       },
     });
@@ -332,17 +332,17 @@ export class HomeComponent implements OnInit {
 
 
  getAllPageContent = () => {
-   this.spinner.show();
+  //  this.spinner.show();
    this.utilitiesSrv.getAllPageContent().subscribe({
      next: (result) => {
-       this.spinner.hide();
+      //  this.spinner.hide();
        console.log('pageListRes', result);
        if(result) {
          this.pageContent = result.filter((e:any) => e.PageName !== 'Who We Are');
        }
      },
      error: (err) => {
-       this.spinner.hide();
+      //  this.spinner.hide();
        console.log('pageListErr', err);
      },
    });

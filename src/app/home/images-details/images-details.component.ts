@@ -87,17 +87,17 @@ export class ImagesDetailsComponent implements OnInit {
     };
   
     getProductByProductId = (Id: any) => {
-      this.spinner.show();
+      // this.spinner.show();
       // this.productList = [];
       this.utilitiesSrv.getProductByProductId(Id).subscribe({
         next: (result) => {
-          this.spinner.hide();
+          // this.spinner.hide();
           console.log('getProductById', result);
           this.productDetail = result
          
         },
         error: (err) => {
-          this.spinner.hide();
+          // this.spinner.hide();
           console.log('getProductByIdErr', err);
         },
       });
