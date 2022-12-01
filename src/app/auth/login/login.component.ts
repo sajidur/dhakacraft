@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
       this.spinner.show()
       this.utilitiesSrv.login(this.loginForm.value).subscribe({
         next: (result) => {
-          this.spinner.hide()
+          this.spinner.hide();
           console.log('loginRes', result);
           if (!result) {
             Swal.fire({
@@ -69,8 +69,8 @@ export class LoginComponent implements OnInit {
             })
             return
           }
-
-            this.router.navigateByUrl('admin')
+          localStorage.setItem('isLoggedIn', "true");
+          this.router.navigateByUrl('admin')
           
         },
         error: (err) => {

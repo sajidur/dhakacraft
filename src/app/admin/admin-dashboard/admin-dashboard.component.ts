@@ -36,6 +36,14 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.location.path())
     // this.currentRoute = this.location.path()
+    this.userLoginCheck()
+  }
+
+  userLoginCheck = () => {
+    const isUserLoggedIn = localStorage.getItem('isLoggedIn');
+    if(!isUserLoggedIn) {
+       this.router.navigateByUrl('/login')
+    }
   }
 
   ngOnDestroy(): void {
@@ -53,6 +61,7 @@ export class AdminDashboardComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.router.navigateByUrl('/');
+        localStorage.clear();
       }
     })
   }
