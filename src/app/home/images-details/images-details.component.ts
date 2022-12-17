@@ -115,7 +115,7 @@ export class ImagesDetailsComponent implements OnInit {
       item.classList.remove('active')
     }
 
-     e.target.parentElement.classList.add('active')
+     e.target.classList.add('active')
   }
 
   handleContactForm = () => {

@@ -6,15 +6,15 @@
           <div class="w-100 w-sm-25">
             <div class="img-prev">
               <div
-                [class.active]="indexOfElement === 0"
+              
                 *ngFor="
                   let item of productDetail?.Images;
                   let indexOfElement = index
                 "
                 (click)="imageChange($event)"
-                class="img-slide"
+               
               >
-                <img *ngIf="item?.ImageUrl" loading="lazy" [src]="globalSrv.imageUrlGet(item?.ImageUrl)" />
+                <img  class="img-slide"  [class.active]="indexOfElement === 0" *ngIf="item?.ImageUrl" loading="lazy" [src]="globalSrv.imageUrlGet(item?.ImageUrl)" />
               </div>
               <!-- <div (click)="imageChange($event)" class="img-slide">
                 <img loading="lazy"

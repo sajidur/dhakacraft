@@ -180,9 +180,9 @@ export class HomeComponent implements OnInit {
     // ('');
     this.router.navigateByUrl(`our-story?Id=${item?.Id}`);
       if (scrollToRequiredId) {
-        setTimeout(() => {
-          this.viewportScroller.scrollToAnchor('our-story');
-        }, 2000);
+        // setTimeout(() => {
+          window.scrollTo(0, 0);
+        // }, 2000);
       }
   };
 
@@ -200,13 +200,14 @@ export class HomeComponent implements OnInit {
   };
 
   goToContactUs = (id: any) => {
-    let scrollHere: any;
-    scrollHere = document.getElementById(id);
-    let rect = scrollHere.getBoundingClientRect().top;
-    window.scrollTo({
-      top: rect,
-      behavior: 'smooth',
-    });
+    // let scrollHere: any;
+    // scrollHere = document.getElementById(id);
+    // let rect = scrollHere.getBoundingClientRect().top;
+    // window.scrollTo({
+    //   top: rect,
+    //   behavior: 'smooth',
+    // });
+    window.scrollTo(0, 0);
   };
 
   stickyChatButton = () => {

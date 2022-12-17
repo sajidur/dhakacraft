@@ -87,6 +87,7 @@ export class MainContantComponent implements OnInit {
   goToNewsAndEventDetails = (Id: any) => {
     // this.router.navigateByUrl('news-event?id=' + Id + '&as=' + as + '&cd=' + cd);
     this.router.navigateByUrl('news-event?Id=' + Id);
+    window.scrollTo(0, 0);
   }
 
   getProductByCategoryId = (Id: any) => {
@@ -95,7 +96,7 @@ export class MainContantComponent implements OnInit {
     this.utilitiesSrv.getProductByCategoryId(Id).subscribe({
       next: (result) => {
         // this.spinner.hide();
-        console.log('ProductListRessss', result);
+        console.log('ProductListRes', result);
         if (result) {
           this.productList = result;
         }
@@ -129,6 +130,7 @@ export class MainContantComponent implements OnInit {
 
   productDetails = (Id: any) => {
     this.router.navigateByUrl(`details?productId=${Id}`);
+    window.scrollTo(0, 0);
   };
 
   getAllPageContent = () => {
