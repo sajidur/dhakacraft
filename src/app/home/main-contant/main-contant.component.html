@@ -94,34 +94,34 @@
   <h1 class="mb-5 mt-3 text-center">Browse Through Product Range</h1>
   <div class="row">
     <div class="col-sm-5">
-      <div class="col-sm-12">
+      <div class="product-browse-img-left">
         <img
           *ngIf="productList[0]?.Images[0]?.ImageUrl"
           (click)="productDetails(productList[0]?.Id)"
           loading="lazy"
-          class="w-100 product-browse-img-left"
+          class="w-100 h-100"
           [src]="globalSrv.imageUrlGet(productList[0]?.Images[0]?.ImageUrl)"
           alt=""
         />
       </div>
-      <div class="col-sm-12 mt-2">
+      <div class="mt-2 product-browse-img-left">
         <img
           *ngIf="productList[0]?.Images[1]?.ImageUrl"
           (click)="productDetails(productList[0]?.Id)"
           loading="lazy"
-          class="w-100 product-browse-img-left"
+          class="w-100 h-100"
           [src]="globalSrv.imageUrlGet(productList[0]?.Images[1]?.ImageUrl)"
           alt=""
         />
       </div>
     </div>
     <div class="col-sm-7">
-      <div class="col-sm-12">
+      <div class="product-browse-img-right">
         <img
           *ngIf="productList[0]?.Images[2]?.ImageUrl"
           (click)="productDetails(productList[0]?.Id)"
           loading="lazy"
-          class="w-100 product-browse-img-right"
+          class="w-100 h-100"
           [src]="globalSrv.imageUrlGet(productList[0]?.Images[2]?.ImageUrl)"
           alt=""
         />
