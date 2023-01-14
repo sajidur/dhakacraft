@@ -1,0 +1,85 @@
+<div class="container-fluid">
+
+    <div class="row mt-2 mb-3">
+        <div class="col-sm-6">
+         <h2 class="fw-bold">Add New Category</h2>
+        </div>
+        <div class="col-sm-6 text-end">
+           <button routerLink="../menu" class="btn btn-primary px-4">Back To List</button>
+        </div>
+     </div>
+
+  <div class="row">
+    
+    <div class="col-sm-12">
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <label class="col-form-label">Select Menu</label>
+          <dx-select-box
+            class="w-100"
+            [dataSource]="menuList"
+            valueExpr="id"
+            displayExpr="name"
+            [searchEnabled]="true"
+            [searchExpr]="['name']"
+            [(ngModel)]="model.MenuId"
+          >
+            <dx-validator validationGroup="validationGrp">
+              <dxi-validation-rule
+                type="required"
+                message="Menu is required"
+              ></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
+        </div>
+        <div class="col-sm-6">
+            <label class="col-form-label">Name</label>
+            <dx-text-box
+              class="w-100"
+              [(ngModel)]="model.Name"
+              (onChange)="model.Name = model.Name.trim()"
+            >
+              <dx-validator validationGroup="validationGrp">
+               <dxi-validation-rule type="required" message="Name Required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-text-box>
+          </div>
+        <!-- <div class="col-sm-6">
+          <label class="col-form-label">Upload Image</label>
+          <div class="w-100">
+            <input
+              accept="image/*"
+              type="file"
+              id="file"
+              multiple
+              ngModel
+              (change)="getFiles($event)"
+            />
+          </div>
+        </div> -->
+      </div>
+
+      <div class="form-group row">
+     
+        <div class="col-sm-12">
+          <label class="col-form-label">Title Text</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.TitleText"
+            (onChange)="model.TitleText = model.TitleText.trim()"
+          >
+            <dx-validator validationGroup="validationGrp">
+                   <dxi-validation-rule type="required" message="Title Required"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <button (click)="onDataSubmit()" class="btn btn-primary px-5">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

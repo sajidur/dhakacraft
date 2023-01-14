@@ -1,0 +1,116 @@
+<div class="container-fluid">
+    <div class="row py-2">
+      <div class="col-sm-12">
+        <div class="card-body">
+          <div class="row mt-2 mb-3">
+             <div class="col-sm-6">
+              <h2 class="fw-bold">Product List</h2>
+             </div>
+             <div class="col-sm-6 text-end">
+                <button routerLink="/admin/add-product" class="btn btn-primary px-4">Add New</button>
+             </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 py-3">
+                <div class="col-sm-6">
+                    <label class="col-form-label">Select Category</label>
+                    <dx-select-box
+                      class="w-100"
+                      [dataSource]="categoryList"
+                      valueExpr="Id"
+                      displayExpr="Name"
+                      [searchEnabled]="true"
+                      [searchExpr]="['Name']"
+                      [(ngModel)]="categoryId"
+                      (onSelectionChanged)="categoryOptionChange($event)" 
+                    >
+                      <!-- <dx-validator validationGroup="validationGrp">
+                        <dxi-validation-rule
+                          type="required"
+                          message="Type is required"
+                        ></dxi-validation-rule>
+                      </dx-validator> -->
+                    </dx-select-box>
+                  </div>
+            </div>
+          </div>
+  
+          <dx-data-grid
+            #gridContainer
+            [dataSource]="productList"
+            [showBorders]="false"
+            [showColumnLines]="false"
+            [showRowLines]="false"
+            [allowColumnResizing]="true"
+            columnResizingMode="widget"
+            [focusedRowEnabled]="false"
+            rowTemplate="rowTemplateName"
+            [rowAlternationEnabled]="true"
+            keyExpr=""
+            [wordWrapEnabled]="true"
+          >
+            <dxo-sorting mode="multiple"></dxo-sorting>
+            <dxo-export
+              [enabled]="true"
+              fileName="ProductList"
+              [printingEnabled]="false"
+            ></dxo-export>
+            <dxo-paging [pageSize]="rowSize"></dxo-paging>
+            <dxo-search-panel
+              [visible]="true"
+              [width]="240"
+              placeholder="Search..."
+            >
+            </dxo-search-panel>
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-pager
+              [showPageSizeSelector]="true"
+              [allowedPageSizes]="[10, 20, 50, 100, 250, 500, 1000]"
+              [showInfo]="true"
+            >
+            </dxo-pager>
+            <!-- <dxo-column-chooser [enabled]="true" mode="dragAndDrop">
+            </dxo-column-chooser> -->
+            <dxo-grouping></dxo-grouping>
+  
+            <!-- <dxi-column caption="#SL" width='60' > </dxi-column> -->
+            <dxi-column caption="Name" dataField="Name"></dxi-column>
+            <!-- <dxi-column caption="TitleText" dataField="TitleText"></dxi-column> -->
+            <dxi-column caption="Price" dataField="Price" alignment="left"></dxi-column>
+            <dxi-column caption="InStockText" dataField="InStockText"></dxi-column>
+            <dxi-column caption="Images" dataField="Images"></dxi-column>
+            <dxi-column caption="Action"></dxi-column>
+  
+            <tbody class="dx-row" *dxTemplate="let row of 'rowTemplateName'">
+              <tr class="custom-row">
+                <td>{{ row?.data?.Name}}</td>
+                <!-- <td>{{ row?.data?.TitleText }}</td> -->
+                <td>{{ row?.data?.Price }}</td>
+                <td>{{ row?.data?.InStockText }}</td>
+                <td>
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2">
+                      <div  *ngFor="
+                      let item of row?.data?.Images;
+                      let indexOfElement = index
+                    " class="col">
+                         <img *ngIf="item?.ImageUrl"  loading="lazy" height="40"
+                         width="60" [src]="globalSrv.imageUrlGet(item?.ImageUrl)" />
+                      </div>
+                    </div>
+                </td>
+                <td>
+                  <dx-button matTooltip="Delete"  matTooltipPosition="above"  (onClick)="delete(row?.data?.Id, row?.rowIndex)" icon="trash"> </dx-button> &nbsp;
+                  <dx-button matTooltip="Edit"  matTooltipPosition="above"  (onClick)="editProduct(row?.data?.Id)" icon="edit"> </dx-button>
+                </td>
+              </tr>
+            </tbody>
+          </dx-data-grid>
+
+    
+
+        </div>
+      </div>
+    </div>
+  </div>
+  

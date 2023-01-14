@@ -8,8 +8,8 @@
 
 .carousel-text-description {
   position: absolute;
-  right: 8rem;
-  left: 8rem;
+  right: 5rem;
+  left: 5rem;
   color: #fff;
   text-align: center;
   top: 0;
@@ -26,7 +26,7 @@
 .membership-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-column-gap: 3rem;
+  grid-column-gap: 2.5rem;
   align-items: center;
 }
 
@@ -39,3 +39,151 @@
    width: 100%;
    height: 100%;
 }
+
+.grid-container {
+  display: grid;
+  gap: 10px;
+  // background-color: #2196F3;
+  padding: 10px;
+  height:500px
+}
+
+
+
+.item1 {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.item2 {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+// item3 {
+//   grid-column: 1 / span 2;
+//   grid-row: 1;
+// }
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 100%;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.product-browse-img-left {
+  height: 300px;
+}
+.product-browse-img-right {
+  height: 608px;
+}
+
+
+@media screen and (max-width: 991px) {
+  #carouselExampleControls .carousel-item img {
+    height: 500px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height:500px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #carouselExampleControls .carousel-item img {
+    height: 480px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height:480px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #carouselExampleControls .carousel-item img {
+    height: 380px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height: 380px;
+  }
+  .product-browse-img-left {
+    height: 200px;
+  }
+  .product-browse-img-right {
+    height: 402px;
+  }
+  .carousel-text-description {
+    right: 3rem;
+    left: 3rem;
+  }
+}
+@media screen and (max-width: 574px) {
+ 
+  .product-browse-img-left {
+    height: 300px;
+  }
+  .product-browse-img-right {
+    height: 300px;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 520px) {
+  #carouselExampleControls .carousel-item img {
+    height: 290px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height: 290px;
+  }
+  .product-browse-img-left{
+    height: 180px;
+  }
+  .product-browse-img-right  {
+    height: 180px;
+    margin-top:10px;
+  }
+  .membership-container {
+    grid-column-gap: 12px;
+
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #carouselExampleControls .carousel-item img {
+    height: 280px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #carouselExampleControls .carousel-item img {
+    height: 275px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height: 275px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #carouselExampleControls .carousel-item img {
+    height: 265px;
+  }
+  #carouselExampleControls2 .carousel-item img {
+    height: 265px;
+  }
+  .carousel-text-description {
+    right: 2rem;
+    left: 2rem;
+  }
+}
+
+
+
+
+
+

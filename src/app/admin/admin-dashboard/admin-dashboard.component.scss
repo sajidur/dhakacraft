@@ -1,0 +1,78 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .header-toolbar img {
+    width: 10%;
+    margin-left: 2rem;
+  }
+  
+  .is-mobile .header-toolbar {
+    position: fixed;
+    z-index: 2;
+  }
+  
+  .sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+  }
+  
+  .is-mobile .sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+  }
+  
+  .toggle-icon {
+      margin-left: 2rem;
+  }
+
+  .header-right {
+      margin-left: auto;
+      font-size: 14px;
+  }
+
+  .left-sidebar {
+    background: #FFFFFF;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 0px 0px 10px 0px;
+    width: 260px;
+  }
+  
+  .nav-list .nav-item {
+    margin-bottom: 8px;
+  } 
+
+
+  
+  .button-deselected {
+    font-size: 13px;
+    border: 1px solid #ffffff;
+    background-color: #cdcdcd;
+    color: #000000;
+  
+  }
+
+  .btn-selector {
+    margin: 0 1rem;
+    border-radius: 5px;
+    padding: .7rem;
+    font-size: 16px;
+    color: #000000;
+    cursor: pointer;
+  }
+
+  .activeMenu {
+    background-color: #6b9c9f;
+    color: #000000;
+  }
+  
+  
+  

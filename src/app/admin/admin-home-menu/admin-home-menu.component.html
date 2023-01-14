@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row py-2">
+      <div class="col-sm-12">
+        <div class="card-body">
+          <div class="row mt-2 mb-3">
+             <div class="col-sm-6">
+              <h2 class="fw-bold">Home Menu List</h2>
+             </div>
+             <div class="col-sm-6 text-end">
+                <button routerLink="/admin/add-home-menu" class="btn btn-primary px-4">Add New</button>
+             </div>
+          </div>
+  
+          <dx-data-grid
+            #gridContainer
+            [dataSource]="pageContent"
+            [showBorders]="false"
+            [showColumnLines]="false"
+            [showRowLines]="false"
+            [allowColumnResizing]="true"
+            columnResizingMode="widget"
+            [focusedRowEnabled]="false"
+            rowTemplate="rowTemplateName"
+            [rowAlternationEnabled]="true"
+            keyExpr="Id"
+            [wordWrapEnabled]="true"
+          >
+            <dxo-sorting mode="multiple"></dxo-sorting>
+            <dxo-export
+              [enabled]="true"
+              fileName="newsEventSliderList"
+              [printingEnabled]="false"
+            ></dxo-export>
+            <dxo-paging [pageSize]="rowSize"></dxo-paging>
+            <dxo-search-panel
+              [visible]="true"
+              [width]="240"
+              placeholder="Search..."
+            >
+            </dxo-search-panel>
+            <dxo-header-filter [visible]="true"></dxo-header-filter>
+            <dxo-pager
+              [showPageSizeSelector]="true"
+              [allowedPageSizes]="[10, 20, 50, 100, 250, 500, 1000]"
+              [showInfo]="true"
+            >
+            </dxo-pager>
+            <!-- <dxo-column-chooser [enabled]="true" mode="dragAndDrop">
+            </dxo-column-chooser> -->
+            <dxo-grouping></dxo-grouping>
+  
+            <!-- <dxi-column caption="#SL" width='60' > </dxi-column> -->
+            <dxi-column caption="PageName" dataField="PageName"></dxi-column>
+            <dxi-column caption="Headline" dataField="Headline"></dxi-column>
+            <dxi-column caption="Image" dataField="ImageUrl"> </dxi-column>
+            <dxi-column caption="Action"></dxi-column>
+  
+            <tbody class="dx-row" *dxTemplate="let row of 'rowTemplateName'">
+              <tr class="custom-row">
+                <td>{{ row?.data?.PageName }}</td>
+                <td>{{ row?.data?.Headline }}</td>
+                <td>
+                  <img *ngIf="row?.data?.ImageUrl" loading="lazy"
+                    height="50"
+                    width="70"
+                    src="{{ globalSrv.imageUrlGet(row?.data?.ImageUrl) }}"
+                    alt=""
+                  />
+                </td>
+                <td>
+                  <dx-button matTooltip="Delete"  matTooltipPosition="above"  (onClick)="delete(row?.data?.Id)" icon="trash"> </dx-button> &nbsp;
+                  <dx-button matTooltip="Edit"  matTooltipPosition="above"  (onClick)="editHomeMenu(row?.data?.Id, row?.data)" icon="edit"> </dx-button>
+                </td>
+              </tr>
+            </tbody>
+          </dx-data-grid>
+        </div>
+      </div>
+    </div>
+</div>
+  

@@ -13,6 +13,9 @@ import { ChristmasMenuComponent } from './christmas-menu/christmas-menu.componen
 import { NewsEventComponent } from './news-event/news-event.component';
 import { ImagesDetailsComponent } from './images-details/images-details.component';
 import { MaterialModule } from '../shared/modules/material/material.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { DevExtremeModule } from '../shared/modules/dev-extreme/dev-extreme.module';
+
 
 
 @NgModule({
@@ -32,7 +35,9 @@ import { MaterialModule } from '../shared/modules/material/material.module';
     HomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    NgxSpinnerModule,
+    DevExtremeModule,
   ]
 })
 export class HomeModule { }

@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="main-container">
+        <div class="form-container">
+            <h3>Login Here</h3>
+       
+            <form class="form"  [formGroup]="loginForm"
+            (ngSubmit)="onSubmit()">
+                <div class="input-container">
+                    <!-- <i class="far fa-envelope"></i> -->
+                    <!-- <input type="email" name="email" class="input-box" placeholder="Email"> -->
+                    <i class="fa-solid fa-user"></i>
+                    <input formControlName="UserName"  type="text" class="input-box" placeholder="Enter your user name"  [ngClass]="{ 'is-invalid': submitted && f['UserName'].errors }">
+                </div>
+                <div *ngIf="submitted && f['UserName'].errors" class="error-class-text">
+                    <div *ngIf="f['UserName'].errors['required']">Name is required</div>
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-unlock-alt"></i>
+                    <input formControlName="Password"  type="password"  class="input-box" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f['Password'].errors }">
+                </div>
+                <div *ngIf="submitted && f['Password'].errors" class="error-class-text">
+                    <div *ngIf="f['Password'].errors['required']"> Password is required</div>
+                </div>
+                <button type="submit" class="form-btn">Log In</button>
+            </form>
+       
+            <a class="text-color forgot-text cursor_pointer">Forgot Password?</a>
+        </div>
+    </div>
+</div>

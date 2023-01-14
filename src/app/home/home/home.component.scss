@@ -1,7 +1,7 @@
 
 .promo-header {
   background: rgb(107 156 159);
-  padding: 6px;
+  padding: .4rem;
   text-align: center;
   color: #ffffff;
 }
@@ -14,9 +14,6 @@ header a {
  cursor: pointer;
 }
 
-// .nav-link:hover {
-//   color: #000000;
-// }
 
 .footer-bg {
   background: #4f868e;
@@ -65,6 +62,10 @@ header a {
 .fa-instagram {
   background: #ffffff;
   color:#8a3ab9;
+}
+
+.footer-story {
+  margin: 8px 18px;
 }
 
 .footer-story a {
@@ -222,8 +223,37 @@ header a {
 .nav-link {
   padding: 3px 0px;
 }
- .dropdown1:hover,.dropdown2:hover,.dropdown3:hover,.dropdown4:hover,.dropdown5:hover .nav-link {
+ .dropdown1:hover .nav-link,.dropdown2:hover .nav-link,.dropdown3:hover .nav-link,.dropdown4:hover .nav-link,.dropdown5:hover .nav-link {
     // text-decoration: underline;
     font-weight: bold;
     // border-bottom: 2px solid #cdcdcd;
+ }
+
+
+ .search-product-text {
+  cursor: pointer;
+ }
+
+ .search-product-list {
+  position: absolute;
+  width: 100%;
+  background: white;
+  z-index: 1;
+  padding: 12px;
+ }
+
+ .footer-div {
+  margin:8px
+ }
+
+ @media only screen and (max-width: 1000px ) {
+  .leave-message-popup {
+    width: 80%;
+  }
+ }
+
+ @media only screen and (max-width: 768px) {
+  .leave-message-popup {
+    width: 90%;
+  }
  }

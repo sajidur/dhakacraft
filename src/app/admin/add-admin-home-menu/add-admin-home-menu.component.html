@@ -1,0 +1,101 @@
+<div class="container-fluid">
+
+    <div class="row mt-2 mb-3">
+        <div class="col-sm-6">
+         <h2 class="fw-bold">Add New Home Menu</h2>
+        </div>
+        <div class="col-sm-6 text-end">
+           <button routerLink="../home-menu" class="btn btn-primary px-4">Back To List</button>
+        </div>
+     </div>
+
+  <div class="row">
+    
+    <div class="col-sm-12">
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <label class="col-form-label">Select Type</label>
+          <dx-select-box
+            class="w-100"
+            [dataSource]="typeList"
+            valueExpr="name"
+            displayExpr="name"
+            [searchEnabled]="true"
+            [searchExpr]="['name']"
+            [(ngModel)]="model.PageName"
+          >
+            <dx-validator validationGroup="validationGrp">
+              <dxi-validation-rule
+                type="required"
+                message="Type is required"
+              ></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
+        </div>
+        <div class="col-sm-6">
+          <label class="col-form-label">Upload Image</label>
+          <div class="w-100">
+            <input 
+              accept="image/*"
+              type="file"
+              id="file"
+              multiple
+              ngModel
+              (change)="getFiles($event)"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <label class="col-form-label">Headline</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.Headline"
+            (onChange)="model.Headline = model.Headline.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                                <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
+                              </dx-validator> -->
+          </dx-text-box>
+        </div>
+        <div class="col-sm-6">
+          <label class="col-form-label">Video Link</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.MainText"
+            (onChange)="model.MainText = model.MainText.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                                <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
+                              </dx-validator> -->
+          </dx-text-box>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <label class="col-form-label">Details Text</label>
+
+          <dx-text-area
+            class="w-100"
+            [maxHeight]="140"
+            height="120px"
+            [(ngModel)]="model.DetailText"
+            (onChange)="model.DetailText = model.DetailText.trim()"
+          ></dx-text-area>
+          <!-- <dx-validator validationGroup="validationGrp">
+                                <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
+                              </dx-validator> -->
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <button (click)="editMode ? editPageContent() :onDataSubmit()" class="btn btn-primary px-5">
+         {{ editMode ? 'Edit' : 'Submit' }} 
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

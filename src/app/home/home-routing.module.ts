@@ -16,39 +16,46 @@ const routes: Routes = [
     children: [
       {
         path:'',
-        component: MainContantComponent
+        component: MainContantComponent,
+        
       },
       {
         path: 'our-story',
-        component:OurStoryComponent
+        component:OurStoryComponent,
+        
       },
       {
         path: 'personal-accessories',
-        component:PersonalAccessoriesComponent
+        component:PersonalAccessoriesComponent,
+        
       },
       {
         path: 'home',
-        component: HomeMenuComponent
+        component: HomeMenuComponent,
+        
       },
       {
         path: 'garden',
-        component: GardenMenuComponent
+        component: GardenMenuComponent,
+        
       },
       {
         path: 'christmas',
-        component: ChristmasMenuComponent
+        component: ChristmasMenuComponent,
+        
       },
       {
         path: 'news-event',
-        component: NewsEventComponent
+        component: NewsEventComponent,
+        
       },
       {
         path: 'details',
-        component: ImagesDetailsComponent
+        component: ImagesDetailsComponent,
+        
       }
      
     ]
-  
 },
 
 
