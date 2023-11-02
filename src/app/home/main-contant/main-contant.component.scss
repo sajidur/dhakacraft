@@ -1,9 +1,9 @@
 #carouselExampleControls2 .carousel-item img {
-  height: 500px;
+  height: 100%;
 }
 
 #carouselExampleControls .carousel-item img {
-  height: 580px;
+  height: 100%;
 }
 
 .carousel-text-description {
@@ -87,10 +87,10 @@
 
 @media screen and (max-width: 991px) {
   #carouselExampleControls .carousel-item img {
-    height: 500px;
+    height: 100%;
   }
   #carouselExampleControls2 .carousel-item img {
-    height:500px;
+    height:100%;
   }
 }
 
