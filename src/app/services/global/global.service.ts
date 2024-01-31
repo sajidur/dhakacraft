@@ -8,7 +8,7 @@ export class GlobalService {
 
   constructor(private sanitizer: DomSanitizer) { }
 
-  public domain = 'https://dhakacraftapi.rexsystemsbd.com';
+  public domain = 'http://dusdkushtia.rexsystemsbd.com/';
 
   imageUrlGet = (imageName: any) => {
     const url = `${this.domain}/Upload/${imageName}`

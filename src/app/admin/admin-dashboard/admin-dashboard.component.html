@@ -52,14 +52,14 @@
           <li class="nav-item">
             <a
               [class.activeMenu]="
-                currentRoute == '/admin/menu' ||
-                currentRoute == '/admin/add-menu'
+                currentRoute === '/admin/menu' ||
+                currentRoute === '/admin/add-home-menu'
               "
               [routerLink]="['/admin/menu']"
-              class="nav-link button-deselected btn-selector"
+              class="nav-link btn-selector button-deselected"
             >
-              Category
-            </a>
+              Category</a
+            >
           </li>
           <li class="nav-item">
             <a
@@ -70,7 +70,7 @@
               [routerLink]="['/admin/product']"
               class="nav-link btn-selector button-deselected"
             >
-              Products</a
+              Members</a
             >
           </li>
           <li class="nav-item">
@@ -83,6 +83,18 @@
               class="nav-link btn-selector button-deselected"
             >
               Image Config</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              [class.activeMenu]="
+                currentRoute === '/admin/menu' ||
+                currentRoute === '/admin/add-home-menu'
+              "
+              [routerLink]="['/admin/menu']"
+              class="nav-link btn-selector button-deselected"
+            >
+              SMS</a
             >
           </li>
         </ul>

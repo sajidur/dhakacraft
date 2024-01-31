@@ -16,7 +16,7 @@
           loading="lazy"
           routerLink=""
           class="logo-img slide-in-left"
-          src="../../../assets/images/logo.jpg"
+          src="../../../assets/images/logo.png"
           alt="logo"
         />
       </a>
@@ -31,33 +31,38 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="col-md-4">
+        <h1>দৌলতপুর উপজেলা সমিতি ঢাকা (কুষ্টিয়া)</h1>
+      </div>
+      <div class="col-md-6">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li
             class="nav-item dropdown1"
             (mouseover)="mouseOver('dropdown-content1')"
             (mouseout)="mouseOut('dropdown-content1')"
           >
-            <a class="nav-link">Our Story</a>
+            <a class="nav-link">প্রচ্ছদ</a>
             <div>
               <div class="dropdown-content1 p-4 bg-white">
                 <div class="row">
                   <div class="col-sm-5">
-                    <a
-                      (click)="ourStoryItem(item, false)"
-                      *ngFor="let item of pageContent"
-                      >{{ item?.PageName }}</a
-                    >
+                    <a (click)="homeMenuItem(1, 'dropdown-content2')"
+                    >সমিতির ইতিকথা</a>
                     <!-- <a (click)="ourStoryItem('about-us', false)">About Us</a>
                       <a (click)="ourStoryItem('fair-trade', false)"
                         >Fair Trade</a
                       > -->
-                    <a (click)="handleContactForm('Request for Annual Report')"
-                      >Annual Report</a
-                    >
                     <a (click)="handleContactForm('Request from Contact Us')"
-                      >Contact Us</a
-                    >
+                      >যোগাযোগ করুন
+                      </a>
+                      <a (click)="handleContactForm('Request from Contact Us')"
+                      >উদ্দেশ্য ও লক্ষ্য
+                      </a>
+                       <a (click)="handleContactForm('Request from Contact Us')"
+                      >সদস্য হবার নিয়মাবলী
+                      </a>
                   </div>
                   <div class="col-sm-7">
                     <img
@@ -78,22 +83,23 @@
             (mouseover)="mouseOver('dropdown-content2')"
             (mouseout)="mouseOut('dropdown-content2')"
           >
-            <a class="nav-link">Home</a>
+            <a class="nav-link">সমিতির গঠন</a>
             <div>
               <div class="dropdown-content2 p-4 bg-white">
                 <div class="row">
                   <div class="col-sm-5">
-                    <!-- <a (click)="homeMenuItem('baskets')">Baskets</a>
-                      <a (click)="homeMenuItem('home-office')">Home Office</a>
-                      <a (click)="homeMenuItem('flower-vases')">Flower Vases</a>
-                      <a (click)="homeMenuItem('home-textiles')">Home Textiles</a>
-                      <a (click)="homeMenuItem('wall-hanging')">Wall Hanging</a>
-                      <a (click)="homeMenuItem('lamp-shade')">Lamp Shade</a> -->
-                    <a
-                      (click)="homeMenuItem(item?.Id, 'dropdown-content2')"
-                      *ngFor="let item of homeCategory"
-                      >{{ item?.Name }}</a
-                    >
+                      <a (click)="handleContactForm('Request from Contact Us')"
+                      >সভাপতি
+                      </a>
+                      <a (click)="handleContactForm('Request from Contact Us')"
+                      >সাধারণ সম্পাদক
+                      </a>
+                      <a (click)="handleContactForm('Request from Contact Us')"
+                      >উপদেষ্টা পরিষদ
+                      </a>
+                      <a (click)="handleContactForm('Request from Contact Us')"
+                      >নির্বাহী পরিষদ
+                      </a>
                   </div>
                   <div class="col-sm-7">
                     <img
@@ -114,18 +120,19 @@
             (mouseover)="mouseOver('dropdown-content3')"
             (mouseout)="mouseOut('dropdown-content3')"
           >
-            <a class="nav-link">Garden</a>
+            <a class="nav-link">দৌলতপুর উপজেলা</a>
             <div>
               <div class="dropdown-content3 p-4 bg-white">
                 <div class="row">
                   <div class="col-sm-5">
                     <!-- <a (click)="gardenMenu('planters')">Planters</a>
                       <a (click)="gardenMenu('birdhouse')">Birdhouse</a> -->
-                    <a
-                      (click)="homeMenuItem(item?.Id, 'dropdown-content3')"
-                      *ngFor="let item of gardenCategory"
-                      >{{ item?.Name }}</a
-                    >
+                      <a (click)="handleContactForm('Request from Contact Us')"
+                      >এক নজরে দৌলতপুর উপজেলা </a>
+                      <a (click)="handleContactForm('Request from Contact Us')"
+                      >প্রখ্যাত ব্যক্তি </a>
+                      <a (click)="handleContactForm('Request from Contact Us')"
+                      >ঐতিহ্য </a>
                   </div>
                   <div class="col-sm-7">
                     <img
@@ -146,7 +153,7 @@
             (mouseover)="mouseOver('dropdown-content4')"
             (mouseout)="mouseOut('dropdown-content4')"
           >
-            <a class="nav-link">Personal Accessories</a>
+            <a class="nav-link">সমিতির সদস্য</a>
             <div>
               <div class="dropdown-content4 p-4 bg-white">
                 <div class="row">
@@ -154,11 +161,10 @@
                     <!-- <a (click)="personalItem('bags')">Bag's</a>
                       <a (click)="personalItem('jewelry')">Jewelry</a>
                       <a (click)="personalItem('purses')">Purses</a> -->
-                    <a
-                      (click)="homeMenuItem(item?.Id, 'dropdown-content4')"
-                      *ngFor="let item of personalCategory"
-                      >{{ item?.Name }}</a
-                    >
+                      <a (click)="homeMenuItem(1, 'dropdown-content2')"
+                    >সদস্য যাদের হারিয়েছি</a>
+                    <a (click)="homeMenuItem(1, 'dropdown-content2')"
+                    >স্থায়ী সদস্য</a>
                   </div>
                   <div class="col-sm-7">
                     <img
@@ -179,7 +185,7 @@
             (mouseover)="mouseOver('dropdown-content5')"
             (mouseout)="mouseOut('dropdown-content5')"
           >
-            <a class="nav-link">Christmas</a>
+            <a class="nav-link">সংবাদ ও আলোকচিত্র</a>
             <div>
               <div class="dropdown-content5 p-4 bg-white">
                 <div class="row">
@@ -187,11 +193,12 @@
                     <!-- <a (click)="christmasItem('card-and-wrap')">Card’s & Wrap</a>
                       <a (click)="christmasItem('tree-hanging')">Tree Hanging</a>
                       <a (click)="christmasItem('home-decoration')">Home Decoration</a> -->
-                    <a
-                      (click)="homeMenuItem(item?.Id, 'dropdown-content5')"
-                      *ngFor="let item of christmasCategory"
-                      >{{ item?.Name }}</a
-                    >
+                      <a (click)="homeMenuItem(1, 'dropdown-content2')"
+                      >নোটিশ</a>
+                      <a (click)="homeMenuItem(1, 'dropdown-content2')"
+                      >সংবাদ</a>
+                      <a (click)="homeMenuItem(1, 'dropdown-content2')"
+                      >গ্যালারী</a>
                   </div>
                   <div class="col-sm-7">
                     <img
@@ -207,45 +214,9 @@
             </div>
           </li>
         </ul>
-        <form role="search" style="position: relative">
-          <input
-            [(ngModel)]="searchFieldValue"
-            [ngModelOptions]="{ standalone: true }"
-            style="padding-right: 20px !important"
-            (keyup)="searchBoxChanged($event)"
-            class="form-control me-2"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <div
-            *ngIf="searchFieldValue?.length"
-            style="position: absolute; right: 4px; top: 6px; cursor: pointer"
-          >
-            <mat-icon (click)="clearSearchField()">close</mat-icon>
-          </div>
-          <div style="position: relative" id="searched-product">
-            <div class="search-product-list" *ngIf="searchedProduct?.length">
-              <p
-                (click)="productDetails(item?.Id)"
-                class="search-product-text"
-                *ngFor="let item of searchedProduct"
-              >
-                {{ item?.Name }}
-              </p>
-            </div>
-          </div>
-        </form>
-        <span class="d-sm-none d-md-block">&nbsp;</span>
-        <button
-          (click)="handleSearchBtn()"
-          class="btn btn-success mt-1 mt-md-0"
-          type="submit"
-        >
-          Search
-        </button>
-
         <!-- <button routerLink="/login">login</button> -->
-      </div>
+      </div>    
+    </div>
     </nav>
   </div>
 </header>
@@ -265,19 +236,16 @@
           <img
             loading="lazy"
             width="120"
-            src="../../../assets/images/logo_transparent.png"
+            src="../../../assets/images/logo.png"
             alt=""
           />
-          &nbsp;
-          <!-- </div> -->
-          <!-- <div class="col-sm-6 text-left"> -->
-          <img
+          <!-- <img
             loading="lazy"
             height="100"
             src="../../../assets/images/dh-transparent.png"
             alt=""
-          />
-          <!-- </div> -->
+          /> -->
+
         </div>
       </div>
       <div class="footer-div footer-story">
@@ -302,41 +270,41 @@
       </div>
       <div class="footer-div">
         <h2>Contact with us</h2>
-        <span style="font-weight: 500; font-size: 15px">Head Office: </span>
-        <div>House#562, Road#08</div>
-        <div>Section-12, Mirpur-DOHS</div>
-        <div>Dhaka-1216, Bangladesh</div>
+        <span style="font-weight: 500; font-size: 15px">Please contact with below</span>
+        <div>Contact Person: </div>
+        <div>Phone:</div>
+        <div></div>
         <div>Email: info@dhakahandicrafts.com</div>
       </div>
       <div class="footer-div">
         <h2 style="height: 32px"></h2>
         <span style="font-weight: 500; font-size: 15px"
-          >Registered address:</span
+          >Registered address: রেজিস্টার নং : ঢ-০৯৯৬৩ </span
         >
         <br />
-        <div>Holding No. 430, Nanduain</div>
-        <div>Bhawal Mirzapur, Gazipur-1703</div>
+        <div>Manjuri Bhaban, 8 DIT Avenue (extension), Dilkhusa</div>
+        <div>Motijheel , Dhaka-1000</div>
       </div>
       <div class="footer-div">
         <div>
           <a
             target="_blank"
-            href="https://www.facebook.com/dhakahandicraftsltd/"
+            href="https://www.facebook.com/dusdkushtia/"
             class="fa fa-facebook"
           ></a>
           <a
             target="_blank"
-            href="https://www.instagram.com/dhakahandicrafts.hdht/"
+            href="https://www.instagram.com/dusdkushtia/"
             class="fa fa-instagram"
           ></a>
           <a
             target="_blank"
-            href="https://twitter.com/dhakahandicraf1"
+            href="https://twitter.com/dusdkushtia"
             class="fa fa-twitter"
           ></a>
           <a
             target="_blank"
-            href="https://www.youtube.com/watch?v=OII0JpbyAkM"
+            href="https://www.youtube.com/channel/UCbUwPm5zmpprJh_awwej1TA"
             class="fa fa-youtube"
           ></a>
         </div>
@@ -344,53 +312,10 @@
       </div>
     </div>
 
-    <div class="d-flex flex-column flex-md-row justify-content-end">
-      <div class="footer-story">
-        <!-- <a target="_blank" href="../../../assets/pdf/AnnualReport.pdf">View Catalog</a> | -->
-        <a
-          class="cursor_pointer"
-          (click)="handleContactForm('Request CSR Report')"
-          >Request CSR Report</a
-        >
-
-        <div class="my-3">
-          <img
-            *ngIf="activitiesObj?.ImageUrl"
-            height="170"
-            loading="lazy"
-            [src]="globalSrv.imageUrlGet(activitiesObj?.ImageUrl)"
-            alt=""
-          />
-        </div>
-      </div>
-
-
-      <div class="footer-story">
-        <!-- <a target="_blank" href="../../../assets/pdf/AnnualReport.pdf">View Catalog</a> | -->
-        <a
-          class="cursor_pointer"
-          (click)="handleContactForm('Request Catalogue')"
-          >Request Catalogue</a
-        >
-
-        <div class="my-3">
-          <img
-            *ngIf="requestCatalogObj?.ImageUrl"
-            height="170"
-            loading="lazy"
-            [src]="globalSrv.imageUrlGet(requestCatalogObj?.ImageUrl)"
-            alt=""
-          />
-        </div>
-      </div>
-    </div>
-
-
-
     <div class="row">
       <div class="col-sm-12 my-5 text-center">
         <p>
-          &copy; Copyright {{ currentYear }} Dhaka Handicrafts Limited. All
+          &copy; Copyright {{ currentYear }} দৌলতপুর উপজেলা সমিতি ঢাকা (কুষ্টিয়া). All
           Rights Reserved.
         </p>
         <div class="mt-2">

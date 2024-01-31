@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row mt-2 mb-3">
     <div class="col-sm-6">
-      <h2 class="fw-bold">{{ editMode ? "Edit " : "Add New " }} Product</h2>
+      <h2 class="fw-bold">{{ editMode ? "Edit " : "Add New " }} Members</h2>
     </div>
     <div class="col-sm-6 text-end">
       <button routerLink="../product" class="btn btn-primary px-4">
@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="form-group row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <label class="col-form-label">Select Category</label>
           <dx-select-box
             class="w-100"
@@ -35,7 +35,36 @@
         </div>
 
         <div class="col-sm-6">
-          <label class="col-form-label">Name</label>
+          <label class="col-form-label">Primary Member Id (সহযোগী  সদস্য এর জন্য )</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.ShortText"
+            (onChange)="model.ShortText = model.ShortText.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                                <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
+            </dx-validator> -->
+          </dx-text-box>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <label class="col-form-label">Name in Bangla</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.Name"
+            (onChange)="model.Name = model.Name.trim()"
+          >
+            <dx-validator validationGroup="validationGrp">
+              <dxi-validation-rule
+                type="required"
+                message="Name Required"
+              ></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+        <div class="col-sm-4">
+          <label class="col-form-label">Name in English</label>
           <dx-text-box
             class="w-100"
             [(ngModel)]="model.Name"
@@ -53,7 +82,7 @@
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <label class="col-form-label">Title Text</label>
+          <label class="col-form-label">Father Name</label>
           <dx-text-box
             class="w-100"
             [(ngModel)]="model.TitleText"
@@ -68,7 +97,7 @@
           </dx-text-box>
         </div>
         <div class="col-sm-6">
-          <label class="col-form-label">Short Text</label>
+          <label class="col-form-label">Mother Name</label>
           <dx-text-box
             class="w-100"
             [(ngModel)]="model.ShortText"
@@ -82,8 +111,20 @@
       </div>
 
       <div class="form-group row">
-        <div class="col-sm-6">
-          <label class="col-form-label">In Stock</label>
+        <div class="col-sm-4">
+          <label class="col-form-label">Husband/Wife Name</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.InStockText"
+            (onChange)="model.InStockText = model.InStockText.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                     <dxi-validation-rule type="required" message="InStockText Required"></dxi-validation-rule>
+              </dx-validator> -->
+          </dx-text-box>
+        </div>
+        <div class="col-sm-2">
+          <label class="col-form-label">Date of Birth</label>
           <dx-text-box
             class="w-100"
             [(ngModel)]="model.InStockText"
@@ -95,33 +136,128 @@
           </dx-text-box>
         </div>
         <div class="col-sm-6">
-          <label class="col-form-label">Price</label>
-          <dx-number-box class="w-100" [(ngModel)]="model.Price">
+          <label class="col-form-label">Phone Number</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.InStockText"
+            (onChange)="model.InStockText = model.InStockText.trim()"
+          >
             <!-- <dx-validator validationGroup="validationGrp">
-                  <dxi-validation-rule type="required" message="Number of Installment Required">
-                  </dxi-validation-rule>
-                </dx-validator> -->
-          </dx-number-box>
+                     <dxi-validation-rule type="required" message="InStockText Required"></dxi-validation-rule>
+              </dx-validator> -->
+          </dx-text-box>
         </div>
+
       </div>
 
       <div class="form-group row">
-        <div class="col-sm-12">
-          <label class="col-form-label">Details Text</label>
-
-          <dx-text-area
+        <div class="col-sm-3">
+          <label class="col-form-label">Blood group</label>
+          <dx-select-box
             class="w-100"
-            [maxHeight]="140"
-            height="120px"
-            [(ngModel)]="model.DetailText"
-            (onChange)="model.DetailText = model.DetailText.trim()"
-          ></dx-text-area>
-          <!-- <dx-validator validationGroup="validationGrp">
-                                <dxi-validation-rule type="required" message="Headline Required"></dxi-validation-rule>
-                              </dx-validator> -->
+            [dataSource]="categoryList"
+            valueExpr="Id"
+            displayExpr="Name"
+            [searchEnabled]="true"
+            [searchExpr]="['Name']"
+            [(ngModel)]="model.CategoryId"
+        
+          >
+            <dx-validator validationGroup="validationGrp">
+              <dxi-validation-rule
+                type="required"
+                message="Type is required"
+              ></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
+        </div>
+        <div class="col-sm-6">
+          <label class="col-form-label">Educational Qualification</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.InStockText"
+            (onChange)="model.InStockText = model.InStockText.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                     <dxi-validation-rule type="required" message="InStockText Required"></dxi-validation-rule>
+              </dx-validator> -->
+          </dx-text-box>
         </div>
       </div>
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <label class="col-form-label">Present Address</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.InStockText"
+            (onChange)="model.InStockText = model.InStockText.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                     <dxi-validation-rule type="required" message="InStockText Required"></dxi-validation-rule>
+              </dx-validator> -->
+          </dx-text-box>
+        </div>
+        <div class="col-sm-6">
+          <label class="col-form-label">Permanent Address</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.InStockText"
+            (onChange)="model.InStockText = model.InStockText.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                     <dxi-validation-rule type="required" message="InStockText Required"></dxi-validation-rule>
+              </dx-validator> -->
+          </dx-text-box>
+        </div>
 
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2">
+          <label class="col-form-label">Marital Status</label>
+          <dx-select-box
+            class="w-100"
+            [dataSource]="categoryList"
+            valueExpr="Id"
+            displayExpr="Name"
+            [searchEnabled]="true"
+            [searchExpr]="['Name']"
+            [(ngModel)]="model.CategoryId"
+        
+          >
+            <dx-validator validationGroup="validationGrp">
+              <dxi-validation-rule
+                type="required"
+                message="Type is required"
+              ></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
+        </div>
+        <div class="col-sm-2">
+          <label class="col-form-label">Marriage Date</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.InStockText"
+            (onChange)="model.InStockText = model.InStockText.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                     <dxi-validation-rule type="required" message="InStockText Required"></dxi-validation-rule>
+              </dx-validator> -->
+          </dx-text-box>
+        </div>
+        <div class="col-sm-8">
+          <label class="col-form-label">Family details</label>
+          <dx-text-box
+            class="w-100"
+            [(ngModel)]="model.InStockText"
+            (onChange)="model.InStockText = model.InStockText.trim()"
+          >
+            <!-- <dx-validator validationGroup="validationGrp">
+                     <dxi-validation-rule type="required" message="InStockText Required"></dxi-validation-rule>
+              </dx-validator> -->
+          </dx-text-box>
+        </div>
+
+      </div>
       <div class="text-center mt-3">
         <button (click)="editMode? editProduct() : onDataSubmit()" class="btn btn-primary px-5">
           {{ editMode ? "Edit " : "Add " }} Product
